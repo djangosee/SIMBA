@@ -23,15 +23,24 @@ ui <- material_page(
       ## Download pdf analisis
         ## input.Rnw (plantilla generica)
     material_parallax(
-      image_source = "./www/3D6.jpg"
-    ),
+      image_source = "https://github.com/djangosee/TFGShinyApp/blob/UserInterface/www/3D6.jpeg?raw=true"
+      ),
       material_tabs(
-        tabs = c("About"="About.Tab"),
+        tabs = c("About"="About.Tab","Usage"="About.Tab2","Analysis"="About.Tab3"),
         color = themecolor
       ),
       material_tab_content(
-      tab_id = "About.Tab"
-      )
+      tab_id = "About.Tab",
+      tags$h1("Treball de fi de grau: Estadistica Aplicada")
+      ),
+    material_tab_content(
+      tab_id = "About.Tab2",
+      tags$h1("Tutorial: T3LP shiny app")
+    ),
+    material_tab_content(
+      tab_id = "About.Tab3",
+      tags$h1("Analisis de microarrays")
+    )
     
   )
   
