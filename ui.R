@@ -1,5 +1,9 @@
 source("./ui/GetUsageMaterialTabContent.R")
+source("./ui/GetAboutMaterialTabContent.R")
+source("./ui/GetAnalizeMaterialTabContent.R")
+
 themecolor <- "teal"
+
 ui <- material_page(
   
   title = tags$a(tags$img(src='https://github.com/djangosee/TFGShinyApp/blob/UserInterface/www/logo.png?raw=true',height=70,width=70)),
@@ -23,8 +27,8 @@ ui <- material_page(
   ## Plots, taules i cards
   ## Download pdf analisis
   ## input.Rnw (plantilla generica)
-  GetMaterialUsageTabContent()
-  #GetMaterialAboutTabContent()
-  #GetMaterialAnalysisTabContent()
+  GetMaterialUsageTabContent(),
+  GetMaterialAboutTabContent(),
+  GetMaterialAnalizeTabContent()
   
 )
