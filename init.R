@@ -2,6 +2,6 @@
 
 #Llistat de paquets
 list.of.packages <- c("shiny","shinymaterial","stringi")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages())]
 if(length(new.packages)) suppressMessage(install.packages(new.packages))
 lapply(list.of.packages, require, character.only = TRUE, quietly = T)
