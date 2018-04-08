@@ -7,7 +7,7 @@ ui <- material_page(
   nav_bar_color = themecolor,
   background_color = "#c8e6c9",
   material_tabs(
-    tabs = c("About"="About","Usage"="Usage","Analize"="Analize"),
+    tabs = c("Usage"="Usage","Analize"="Analize","About"="About"),
     color = themecolor
   ),
   #Hauré de fer una funció apply per definir el entorn de les pagines
@@ -25,6 +25,6 @@ ui <- material_page(
   ## input.Rnw (plantilla generica)
   GetMaterialUsageTabContent()
   #GetMaterialAboutTabContent()
-  #GetMaterialUsageTabContent()
+  #GetMaterialAnalysisTabContent()
   
 )
