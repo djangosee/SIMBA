@@ -1,19 +1,19 @@
-source("./ui/GetUsageMaterialTabContent.R")
-source("./ui/GetAboutMaterialTabContent.R")
-source("./ui/GetAnalizeMaterialTabContent.R")
+source(paste0(script.dirname,"/ui/GetUsageMaterialTabContent.R"))
+source(paste0(script.dirname,"/ui/GetAboutMaterialTabContent.R"))
+source(paste0(script.dirname,"/ui/GetAnalizeMaterialTabContent.R"))
 
-themecolor <- "teal"
 
-ui <- material_page(
-  
-  title = tags$a(tags$img(src='https://github.com/djangosee/TFGShinyApp/blob/UserInterface/www/logo.png?raw=true',height=70,width=70)),
-  nav_bar_fixed = T,
-  nav_bar_color = themecolor,
-  background_color = "#c8e6c9",
-  material_tabs(
-    tabs = c("Usage"="Usage","Analize"="Analize","About"="About"),
-    color = themecolor
-  ),
+ui <- fluidPage(theme=shinytheme("flatly"), 
+   title = "T3LP: Statistical software analysis for GeneExpression",
+   tags$style(type="text/css", "body {padding-top: 70px;}"),
+   navbarPage(title = div("T3LP", img(src = "https://github.com/djangosee/TFGShinyApp/blob/UserInterface/www/logo.png?raw=true", height = "70px", 
+              style = "position: fixed; right: 10px;  top: -5px;")),
+              collapsible = T,
+              position = "fixed-top",
+    #tabPanel("Usage",GetMaterialUsageTabContent()),
+    GetMaterialAnalizeTabContent
+    #tabPanel("About",GetMaterialAboutTabContent())
+  ))
   #Hauré de fer una funció apply per definir el entorn de les pagines
   #Inicialment només seria necesari fer 3 tabs
   ## About: Descripció del frontend, objectius i autor
@@ -27,8 +27,6 @@ ui <- material_page(
   ## Plots, taules i cards
   ## Download pdf analisis
   ## input.Rnw (plantilla generica)
-  GetMaterialUsageTabContent(),
-  GetMaterialAboutTabContent(),
-  GetMaterialAnalizeTabContent()
+
   
-)
+

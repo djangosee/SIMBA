@@ -1,18 +1,13 @@
 #Aixo es per treballar desde el Rstudio
+script.dirname<- dirname(rstudioapi::getSourceEditorContext()$path)
 
-#getwd()
+source(paste0(script.dirname,"/init.R")) # Script per obrir tots els paquets necesaris
+source(paste0(script.dirname,"/ui.R")) # User Interface
+source(paste0(script.dirname,"/server.R")) #Server
 
-#setwd("/home/toni/TFGShinyApp/")
+options(warn=-1)
 
-#####
-
-
-source("./init.R",local = TRUE)
-source("./ui.R", local = TRUE)
-source("./server.R", local = TRUE)
-
-
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server, options = c(launch.browser=T))
 
 
 
