@@ -57,12 +57,16 @@ server <- function(input, output,session) {
   output$table <-renderTable({dt()})
   
   output$tableHead <- renderTable({
-    validate(need(input$factors,"Select factors of dataset"))
-    validate(need(input$covariables,"Select covariable of dataset"))
+    validate(need(input$file1,"Insert File!"))
+    validate(need(input$factors,"Select all factors of dataset"))
+    validate(need(input$covariables,"Select covariable"))
     head(exprs(dataExpression()),n=6)
-  })
+  },rownames=T)
   
   output$tableMCA<- renderTable({
+    validate(need(input$file1,"Insert File!"))
+    validate(need(input$factors,"Select all factors of dataset"))
+    validate(need(input$covariables,"Select covariable"))
     tt=rowFtests(dataExpression(),as.factor(pData(dataExpression())[,input$covariables]))
     p.BH = p.adjust(tt[,"p.value"], "BH" )
     tt <- cbind(tt,p.BH)
@@ -82,8 +86,17 @@ server <- function(input, output,session) {
     }
     
   },rownames=T)
-  output$heatmap <-renderPlotly({
-    heatmaply(exprs(dataExpression()), margins = c(120,120,20,120),seriate = "OLO",limits = c(-1,1))
+  observeEvent(input$button,{
+    output$heatmap <-renderPlotly({
+    validate(need(input$file1,"Insert File!"))
+    validate(need(input$factors,"Select factors of dataset"))
+    validate(need(input$covariables,"Select covariable of dataset"))
+    Covariable<- as.factor(pData(dataExpression())[,input$covariables])
+    Covariable <- as.data.frame(Covariable)
+    colnames(Covariable) <- input$covariables
+    heatmaply(exprs(dataExpression()),na.value = "grey50",na.rm=F,ColSideColors=Covariable,margins = c(120,120,20,120),seriate = "OLO")
+    
+    })
   })
   #Codi per tancar automaticament l'aplicacio web
   session$onSessionEnded(function() {
