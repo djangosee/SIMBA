@@ -1,5 +1,6 @@
 #Aixo es per treballar desde el Rstudio
-script.dirname<- dirname(rstudioapi::getSourceEditorContext()$path)
+
+script.dirname <- "/home/toni/TFGShinyApp/"
 
 source(paste0(script.dirname,"/init.R")) # Script per obrir tots els paquets necesaris
 source(paste0(script.dirname,"/ui.R")) # User Interface

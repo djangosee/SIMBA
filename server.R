@@ -45,7 +45,7 @@ server <- function(input, output,session) {
     colnames(df) <- as.character(input$covariables)
     idx <- match(input$factors, names(newData))
     idx <- sort(c(idx-1, idx))
-    nw <- log10(newData[,-idx])
+    nw <- log10(newData[,-idx])   
     #nw <- subset(newData, colnames(newData) %in% input$factors)
     Expression <- ExpressionSet(as.matrix(t(nw)),phenoData = AnnotatedDataFrame(data=df))
     Expression
@@ -86,6 +86,7 @@ server <- function(input, output,session) {
     }
     
   },rownames=T)
+  
   observeEvent(input$button,{
     output$heatmap <-renderPlotly({
     validate(need(input$file1,"Insert File!"))
@@ -98,6 +99,36 @@ server <- function(input, output,session) {
     
     })
   })
+  observeEvent(input$button,{
+  output$lineplot <- renderPlot({
+    validate(need(input$file1,"Insert File!"))
+    validate(need(input$factors,"Select factors of dataset"))
+    validate(need(input$covariables,"Select covariable of dataset"))
+    dat <- dt()
+    bad.sample <- colMeans(is.na(dat)) > 0.8
+    bad.gene <- rowMeans(is.na(dat)) > 0.5
+    newData <- as.data.frame(dat[!bad.gene,!bad.sample])
+    rownames(newData) <- paste("Sample", 1:nrow(newData),sep="")
+    idx <- match(input$factors, names(newData))
+    idx <- sort(c(idx-1, idx))
+    nw <- log10(newData[,-idx])
+    nw[[input$covariables]] <- newData[,input$covariables]
+    caca<- lapply(1:length(levels(as.factor(newData[,input$covariables]))),function(x) colMeans(subset(nw,nw[[input$covariables]]==x)[,-ncol(nw)],na.rm = T))
+    maxim <- max(unlist(lapply(caca,function(x) max(x))))
+    minim <- min(unlist(lapply(caca,function(x) min(x))))
+    for(i in 1:length(levels(as.factor(newData[,input$covariables])))){
+      if(i == 1){
+        plot(colMeans(subset(nw,nw[[input$covariables]]==i)[,-ncol(nw)],na.rm = T),ylim=c(-1,1),type="o",pch=19,col=i,xaxt='n',xlab=NA,ylab=NA)
+        axis(1, at=1:(ncol(nw)-1), labels=colnames(nw)[-ncol(nw)],las=2, cex.axis=0.8)
+      }else{
+      lines(colMeans(subset(nw,nw[[input$covariables]]==i)[,-ncol(nw)],na.rm = T),col=i,type="o",pch=19)
+    }
+    }
+    legend("topright",paste0("T",1:length(levels(as.factor(newData[,input$covariables])))), cex=0.8, col=1:length(levels(as.factor(newData[,input$covariables]))),lty=1, title=input$covariables)
+  })
+  })
+  
+  
   #Codi per tancar automaticament l'aplicacio web
   session$onSessionEnded(function() {
     stopApp()
