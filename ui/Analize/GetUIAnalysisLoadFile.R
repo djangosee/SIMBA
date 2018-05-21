@@ -9,7 +9,8 @@ GetAnalysisLoadFile <- sidebarPanel("",
           uiOutput("covariableSelection"),
           sliderInput("alpha","Significance Levels (alpha):",value=0.1,min=0.05,max=0.2,step=0.05),
           conditionalPanel("input.tabselected==2",
-                           actionButton("button","Render HeatMap")
+                           p("STEP3. Have you selected all requirements? Then You can render plots, click!"),
+                           actionButton("button","Render plots")
                            )
         )
 GetAnalysisExpressionSet <- tabPanel("ExpressionData Analysis",

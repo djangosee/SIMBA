@@ -99,6 +99,7 @@ server <- function(input, output,session) {
     
     })
   })
+  
   observeEvent(input$button,{
   output$lineplot <- renderPlot({
     validate(need(input$file1,"Insert File!"))
@@ -113,20 +114,27 @@ server <- function(input, output,session) {
     idx <- sort(c(idx-1, idx))
     nw <- log10(newData[,-idx])
     nw[[input$covariables]] <- newData[,input$covariables]
-    caca<- lapply(1:length(levels(as.factor(newData[,input$covariables]))),function(x) colMeans(subset(nw,nw[[input$covariables]]==x)[,-ncol(nw)],na.rm = T))
-    maxim <- max(unlist(lapply(caca,function(x) max(x))))
-    minim <- min(unlist(lapply(caca,function(x) min(x))))
+    maxim <- list()
+    minim <- list()
+    for(i in 1:length(levels(as.factor(nw[,input$covariables])))){
+      
+      maxim[[i]] <- as.numeric(max(colMeans(subset(nw,nw[[input$covariables]]==i)[,-ncol(nw)],na.rm = T)))
+      minim[[i]] <- as.numeric(min(colMeans(subset(nw,nw[[input$covariables]]==i)[,-ncol(nw)],na.rm = T)))
+
+    }
+    
     for(i in 1:length(levels(as.factor(newData[,input$covariables])))){
       if(i == 1){
-        plot(colMeans(subset(nw,nw[[input$covariables]]==i)[,-ncol(nw)],na.rm = T),ylim=c(-1,1),type="o",pch=19,col=i,xaxt='n',xlab=NA,ylab=NA)
+        plot(colMeans(subset(nw,nw[[input$covariables]]==i)[,-ncol(nw)],na.rm = T),ylim=c(min(as.numeric(na.omit(unlist(minim))))-0.1,max(as.numeric(na.omit(unlist(maxim))))+0.1),type="o",pch=19,col=i,xaxt='n',xlab=NA,ylab=NA)
         axis(1, at=1:(ncol(nw)-1), labels=colnames(nw)[-ncol(nw)],las=2, cex.axis=0.8)
       }else{
       lines(colMeans(subset(nw,nw[[input$covariables]]==i)[,-ncol(nw)],na.rm = T),col=i,type="o",pch=19)
     }
     }
     legend("topright",paste0("T",1:length(levels(as.factor(newData[,input$covariables])))), cex=0.8, col=1:length(levels(as.factor(newData[,input$covariables]))),lty=1, title=input$covariables)
-  })
-  })
+    
+  })})
+
   
   
   #Codi per tancar automaticament l'aplicacio web
