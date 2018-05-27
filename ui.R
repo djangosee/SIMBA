@@ -10,7 +10,15 @@ ui <- fluidPage(theme=shinytheme("flatly"),
               style = "position: fixed; right: 10px;  top: -5px;")),
               collapsible = T,
               position = "fixed-top",
-    #tabPanel("Usage",GetMaterialUsageTabContent()),
+    tabPanel("DataVisualitzation",GetAnalysisDataVisualitzationSidebar,
+             mainPanel("",
+                       h2("Main Database"),
+                       hr(),
+                       dataTableOutput('table'),
+                       h2("Functions Database"),
+                       hr(),
+                       dataTableOutput('table2'))
+             ),
     GetMaterialAnalizeTabContent
     #tabPanel("About",GetMaterialAboutTabContent())
   ))
