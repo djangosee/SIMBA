@@ -2,7 +2,7 @@
 
 #Llistat de paquets
 
-list.of.packages <- c("zoo","colourpicker","RColorBrewer","shinycssloaders","shinyjs","ggplot2","heatmaply","gplots","Biobase","RCurl","genefilter","shinythemes","DT","tools","readxl","shiny","shinymaterial","stringi")
+list.of.packages <- c("FactoMineR","knitr","zoo","colourpicker","RColorBrewer","shinycssloaders","shinyjs","ggplot2","heatmaply","gplots","Biobase","RCurl","genefilter","shinythemes","DT","tools","readxl","shiny","shinymaterial","stringi")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages())]
 if(length(new.packages)){
   install.packages(new.packages)

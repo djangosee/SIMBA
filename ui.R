@@ -10,6 +10,7 @@ ui <- fluidPage(theme=shinytheme("flatly"),
               style = "position: fixed; right: 10px;  top: -5px;")),
               collapsible = T,
               position = "fixed-top",
+    # tabPanel("Usage",uiOutput('markdown')),
     tabPanel("DataVisualitzation",GetAnalysisDataVisualitzationSidebar,
              mainPanel("",
                        h2("Main Database"),
@@ -17,9 +18,10 @@ ui <- fluidPage(theme=shinytheme("flatly"),
                        dataTableOutput('table'),
                        h2("Functions Database"),
                        hr(),
-                       dataTableOutput('table2'))
-             ),
-    GetMaterialAnalizeTabContent
+                       dataTableOutput('table2')
+             )),
+    GetMaterialAnalizeTabContent,
+    tabPanel("Usage",includeMarkdown(paste0(script.dirname,"Usage.md")))
     #tabPanel("About",GetMaterialAboutTabContent())
   ))
   #Hauré de fer una funció apply per definir el entorn de les pagines

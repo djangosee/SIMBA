@@ -43,6 +43,7 @@ server <- function(input, output,session) {
   }
   })
 
+
   #####
   #
   # Leer las funciones de los genes
@@ -153,7 +154,7 @@ server <- function(input, output,session) {
     validate(need(input$file1,"Insert File!"))
     validate(need(input$factors,"Select all factors of dataset"))
     validate(need(input$covariables,"Select covariable"))
-    head(exprs(dataExpression()),n=6)
+    exprs(dataExpression())[1:6,1:6]
   },rownames=T)
   
   ####
@@ -161,6 +162,17 @@ server <- function(input, output,session) {
   # Tabla Ftests
   #
   ####
+  significatius <- reactive({
+    functions <- Functions()
+    Express <- dataExpression() 
+    if(provador==T){Express <- Expression}
+    tt=rowFtests(Express,as.factor(pData(Express)[,input$covariables]))
+    p.BH = p.adjust(tt[,"p.value"], "BH" )
+    tt <- cbind(tt,p.BH)
+    functions<- functions[functions$Gens %in% rownames(tt),]
+    rownames(tt) <- paste0(functions$Funcions,"_",functions$Gens)
+    tt
+  })
   
     output$tableMCA<- renderTable({
     validate(need(input$file1,"Insert File!"))
@@ -191,8 +203,10 @@ server <- function(input, output,session) {
   # Tabla Tukey
   #
   ####
-    
    output$tableTukey <- renderTable({
+     a<- significatius()
+     g <- which( a[,3] <= input$alpha)
+     validate(need(g,"No hi ha cap valor significatiu"))
       Tukey_test<- function(dataExpression){
       Tuk <- list()
       for(i in 1:nrow(exprs(dataExpression))){
@@ -244,18 +258,6 @@ server <- function(input, output,session) {
     lapply(1:length(levels(as.factor(newDat[[input$covariables]]))), function(i) {
       input[[paste("col", i, sep="_")]]
     })
-  })
-  
-  significatius <- reactive({
-    functions <- Functions()
-    Express <- dataExpression() 
-    if(provador==T){Express <- Expression}
-    tt=rowFtests(Express,as.factor(pData(Express)[,input$covariables]))
-    p.BH = p.adjust(tt[,"p.value"], "BH" )
-    tt <- cbind(tt,p.BH)
-    functions<- functions[functions$Gens %in% rownames(tt),]
-    rownames(tt) <- paste0(functions$Funcions,"_",functions$Gens)
-    tt
   })
 
   treat <- reactive({
@@ -342,7 +344,9 @@ server <- function(input, output,session) {
       lines(mitjanes[,i],col=colorins[i],type="o",pch=19)
     }
     }
-    
+    a<- significatius()
+    g <- which( a[,3] <= input$alpha)
+    validate(need(g,"No hi ha cap valor significatiu"))
     sign<- significatius()
     if(provador==T){sign <- tt}
     sign <- na.omit(sign)
@@ -378,12 +382,45 @@ server <- function(input, output,session) {
     # Components principals
     #
     #### 
-
+    output$pca <- renderPlot({
+      validate(need(input$file1,"Insert File!"))
+      validate(need(input$factors,"Select factors of dataset"))
+      validate(need(input$covariables,"Select covariable of dataset"))
+      newDat <- newData()
+      functions <- Functions()
+      if(provador==T){ newDat <- newData;input$defCol=1;input$orderLine=1}
+      idx <- match(input$factors, names(newDat))
+      idx <- sort(c(idx-1, idx))
+      nw <- log10(newDat[,-idx])
+      nw[[input$covariables]] <- newDat[,input$covariables]
+      mitjanes <- list()
+      for(i in 1:length(levels(as.factor(newDat[,input$covariables])))){
+          mitjanes[[i]] <- colMeans(subset(nw,nw[[input$covariables]]==i)[,-ncol(nw)],na.rm = T)
+      }
+      mitjanes <- as.data.frame(matrix(unlist(mitjanes),nrow=length(mitjanes[[1]]),byrow=F))
+      colnames(mitjanes) <- levels(as.factor(newDat[,input$covariables]))
+      rownames(mitjanes) <- colnames(nw)[-ncol(nw)]
+      funcions<- functions[unlist(functions[,1]) %in% colnames(nw),2]
+      mitjanes<- cbind(funcions,mitjanes)
+      
+      pcajetr<-PCA(mitjanes,quali.sup=1,graph=F)
+      par(mfrow = c(1,2),
+          oma = c(0,0,0,0) + 0.5,
+          mar = c(4,4,4,4) + 0.5)
+      plot(pcajetr,choix="var",col.var="blue",cex.main=0.7)
+      plot(pcajetr,choix="ind",habillage=1,label="quali",cex.main=0.7)
+        
+    })
   ####
   #
   # Codi per tancar automaticament l'aplicacio web
   #
   ####
+  
+  # output$markdown <- renderUI({
+  #   HTML(markdown::markdownToHTML(paste0(script.dirname,'Usage.md')))
+  # })
+  
   
   session$onSessionEnded(function() {
     stopApp()
