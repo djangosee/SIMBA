@@ -150,13 +150,16 @@ server <- function(input, output,session) {
   ####
   
   
-  output$tableHead <- renderTable({
+  output$tableHead <- renderTable({    
     validate(need(input$file1,"Insert File!"))
     validate(need(input$factors,"Select all factors of dataset"))
     validate(need(input$covariables,"Select covariable"))
-    exprs(dataExpression())[1:6,1:6]
+    if(input$checkbox==F){
+      exprs(dataExpression())[1:6,1:6]
+    }else if(input$checkbox){
+      exprs(dataExpression())
+    }
   },rownames=T)
-  
   ####
   #
   # Tabla Ftests
@@ -174,29 +177,22 @@ server <- function(input, output,session) {
     tt
   })
   
-    output$tableMCA<- renderTable({
+    output$tableMCA<- DT::renderDataTable({
     validate(need(input$file1,"Insert File!"))
     validate(need(input$factors,"Select all factors of dataset"))
     validate(need(input$covariables,"Select covariable"))
-    tt=rowFtests(dataExpression(),as.factor(pData(dataExpression())[,input$covariables]))
-    p.BH = p.adjust(tt[,"p.value"], "BH" )
-    tt <- cbind(tt,p.BH)
-    rownames(tt) <- rownames(exprs(dataExpression()))
+    tt <- significatius()
+    tt <- na.omit(tt)
     tt$p.value <- format(tt$p.value,4)
     tt$p.BH <- format(tt$p.BH,4)
+    colnames(tt) <- c("Contrast Statistic", "P-value", "P-value(FDR)")
+    aligned <- 'rrr'
     g <- which( tt[,2] <= input$alpha)
-    if( length(g) > 0){
-      pvaluesTable<- data.frame(tt[g,])
-      colnames(pvaluesTable) <- c("Contrast Statistic", "P-value", "P-value Benjamini-Hochberg (FDR)")
-      rownames(pvaluesTable) <- rownames(tt[g,])
-      aligned <- 'rrr'
-      pvaluesTable
-    }else{
-      aligned=NULL
-      print("No hi ha cap significatiu")
-    }
-    
-  },rownames=T)
+    pvaluesTable<- tt[g,]
+    pvaluesTable <- datatable(pvaluesTable) %>%
+      formatStyle("P-value(FDR)",backgroundColor = styleInterval(c(input$alphaFDR),c("#b5f2b6","white")))
+    pvaluesTable
+  })
   
   ####
   #
@@ -221,7 +217,7 @@ server <- function(input, output,session) {
     tt <- significatius()
     names(Tuk) <- rownames(tt)
     dataTuk <- as.data.frame(na.omit(t(sapply(Tuk,function(x) x$`as.factor(pData(dataExpression)[, 1])`[,4], USE.NAMES = F))))
-    dataTuk <- dataTuk[rowSums(dataTuk <= input$alpha)>=1,]
+    dataTuk <- dataTuk[rowSums(dataTuk <= input$alphaTukey)>=1,]
     dataTuk
     },rownames = T,digits=4)
     
@@ -420,9 +416,9 @@ server <- function(input, output,session) {
   # output$markdown <- renderUI({
   #   HTML(markdown::markdownToHTML(paste0(script.dirname,'Usage.md')))
   # })
-  
-  
-  session$onSessionEnded(function() {
-    stopApp()
-  })
+  # 
+  # 
+  # session$onSessionEnded(function() {
+  #   stopApp()
+  # })
 }

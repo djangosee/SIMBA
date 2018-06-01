@@ -13,8 +13,10 @@ GetAnalysisAnalizeSidebar <- sidebarPanel("",
           uiOutput("covariableSelection"),
           uiOutput("TissueSelection"),
           uiOutput("TissueCategory"),
-          sliderInput("alpha","Significance Levels (alpha):",value=0.1,min=0.05,max=0.2,step=0.05),
-          sliderInput("NAInput","Percentage of missing values to remove by treatment.",value=0.5,min=0,max=0.95,step=0.05),
+          sliderInput("alpha","Significance Levels for ANOVA(alpha):",value=0.1,min=0.05,max=0.2,step=0.05),
+          sliderInput("alphaFDR","FDR's alpha:",value=0.1,min=0.05,max=0.2,step=0.05),
+          sliderInput("alphaTukey","Tukey's alpha",value=0.1,min=0.05,max=0.2,step=0.05),
+          sliderInput("NAInput","Percentage of missing values to remove by treatment in each gene.",value=0.5,min=0,max=0.95,step=0.05),
           actionButton("Start", "Start Analysis")
            )
 
