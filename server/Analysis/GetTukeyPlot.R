@@ -122,7 +122,7 @@ ff.plot<-function(data,funcg,genes,
 
   ngr<-length(l.dat.pre)   ## num teixits
   ntr<-length(levels(as.factor(l.dat.pre[[1]][,treat])))  # num tractaments
-  noms.gr<-levels(as.factor(unlist(newData[,grup])))
+  noms.gr<-rev(levels(as.factor(unlist(newData[,grup]))))
 
 ## APLICACIÓ MASSIVA A TOTS ELS GENS  
   
@@ -202,7 +202,7 @@ ff.plot<-function(data,funcg,genes,
 ## CREACIÓ DE LA LLISTA "l.df" per tenir els subsets  A, B,.. separats  
   
   ## separem els caràcters de la combinació de grup
-  aux<-apply(df,1,function(v){v[4]}) ## llista de caràcters del nom de la variable grups
+  aux<-apply(df,1,function(v){strsplit(v[4],"1")}) ## llista de caràcters del nom de la variable grups
   aux<-lapply(aux,function(x)x[[1]])
   ## creem la llista de subsets de df per grup
   l.df<-list()
@@ -254,7 +254,7 @@ ff.plot<-function(data,funcg,genes,
   for (i in 1:ngr) {# i=1  # primer grup
     col.omplir<-cols[i]:(cols[i]+ncol.grup-1) 
     for (j in 1:ndf){### j=1
-      if (names(l.tuk.pval)[i] %in% strsplit(auxi$grup[j],"")[[1]]) {
+      if (names(l.tuk.pval)[i] %in% strsplit(auxi$grup[j],"1")[[1]]) {
         auxi[j,col.omplir]<- l.df.complet[[i]][i.grup[i],-c(1:4)]  ## l.df.complet[[i]] és ordenat
         i.grup[i]<-i.grup[i]+1 }}}
   df.complet<-auxi 
@@ -384,7 +384,7 @@ ff.plot<-function(data,funcg,genes,
  ## points(seqx,rep(ytop-0.3,lx),pch=21,cex=.7)
  
 ### PLOT DELS RECTANGLES AMB LA FUNCIÓ "plot.grup"
- if (is.null(nomsgrups)) nomrec<-names(l.array) else nomrec<-nomsgrups
+ if (is.null(nomsgrups)) nomrec<-names(l.array) else nomrec<-rev(nomsgrups)
  ##################for (i in (1:ngr)) apply(l.array[[i]],1:2,"plot.grup",nom=names(l.array[i])) 
  for (i in (1:ngr)) apply(l.array[[i]],1:2,"plot.grup",nom=nomrec[i],cexrec=1) 
  coords<-"topleft"
