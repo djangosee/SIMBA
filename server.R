@@ -1,5 +1,5 @@
 source(paste0(script.dirname,"/server/Analysis/RenderLoadFiles.R"))
-
+source(paste0(script.dirname,"/server/Analysis/GetTukeyPlot.R"))
 server <- function(input, output,session) {
   ##### 
   #Provador
@@ -13,7 +13,9 @@ server <- function(input, output,session) {
     input$covariables <- c("trat")
     input$Tissue <- c("Teixit")
     input$tissuecat <- c("Ili")
+    input$alphaTukey <- 0.1
     input$NAInput <- 0.5
+    input$id <- "X__1"
     }
 
   
@@ -91,6 +93,10 @@ server <- function(input, output,session) {
     validate(need(input$factors,"Select factors of dataset"))
     validate(need(input$covariables,"Select covariable of dataset"))
     selectizeInput("Tissue","Select Tissue variable:",choices = c(input$factors),selected=F, multiple = FALSE)})
+  output$IDSelection <- renderUI({
+    validate(need(input$factors,"Select factors of dataset"))
+    validate(need(input$covariables,"Select covariable of dataset"))
+    selectizeInput("id","Select id variable:",choices = c(input$factors),selected=F, multiple = FALSE)})
   output$TissueCategory <- renderUI({
     datTiss<- dt()
     conditionalPanel(condition = "input.Tissue",
@@ -117,10 +123,9 @@ server <- function(input, output,session) {
       datCat <- subset(dat, dat[,input$covariables]==levels(as.factor(unlist(dat[,input$covariables])[i])))
       bad.sample[[i]]<- colMeans(is.na(datCat)) > input$NAInput
     }
-    
     newData <- as.data.frame(dat[,!colnames(dat) %in% unique(names(which(unlist(bad.sample)==T)))])
     newData <- subset(newData, newData[,input$Tissue]==input$tissuecat)
-    rownames(newData) <- paste("Sample", 1:nrow(newData),sep="")
+    rownames(newData) <- newData[,input$id] 
     newData
   })
   
@@ -130,7 +135,7 @@ server <- function(input, output,session) {
     newDataFact <- newDat[,input$factors]
     colnames(newDataFact) <- input$factors
     df <- data.frame(newDataFact[,input$covariables],
-                   row.names=paste("Sample", 1:nrow(newDataFact), sep=""))
+                   row.names=rownames(newDataFact))
     colnames(df) <- as.character(input$covariables)
     idx <- match(input$factors, names(newDat))
     idx <- sort(c(idx-1, idx))
@@ -139,6 +144,34 @@ server <- function(input, output,session) {
     Expression <- ExpressionSet(as.matrix(t(nw)),phenoData = AnnotatedDataFrame(data=df))
     Expression
     })
+  
+  GetTukeyList <- eventReactive(input$Start,{
+    dat <- dt()
+    if(provador==T){dat <- newData}    
+    bad.sample <- list()
+    ##Bye bye NA's
+    for(i in 1:length(levels(as.factor(unlist(dat[,input$covariables]))))){
+      datCat <- subset(dat, dat[,input$covariables]==levels(as.factor(unlist(dat[,input$covariables])[i])))
+      bad.sample[[i]]<- colMeans(is.na(datCat)) > input$NAInput
+    }
+    newData <- as.data.frame(dat[,!colnames(dat) %in% unique(names(which(unlist(bad.sample)==T)))])
+    newData1 <- subset(newData, newData[,input$Tissue]==input$tissuecat)
+    tratnewData <- newData1[,input$covariables]
+    idx <- match(input$factors, names(newData1))
+    idx <- sort(c(idx-1, idx))
+    newData1 <- log10(newData1[,-idx])
+    newData1<- cbind(newData1,tratnewData)
+    colnames(newData1)[ncol(newData1)] <- input$covariables
+    newData2 <- subset(newData, newData[,input$Tissue]!=input$tissuecat)
+    tratnewData <- newData2[,input$covariables]
+    idx <- match(input$factors, names(newData2))
+    idx <- sort(c(idx-1, idx))
+    newData2 <- log10(newData2[,-idx])
+    newData2<- cbind(newData2,tratnewData)
+    colnames(newData2)[ncol(newData2)] <- input$covariables
+    llista <- list(newData1,newData2)
+    llista
+  })
 
   #Load file function server
   output$table <-renderDataTable({dt()})
@@ -190,7 +223,8 @@ server <- function(input, output,session) {
     g <- which( tt[,2] <= input$alpha)
     pvaluesTable<- tt[g,]
     pvaluesTable <- datatable(pvaluesTable) %>%
-      formatStyle("P-value(FDR)",backgroundColor = styleInterval(c(input$alphaFDR),c("#b5f2b6","white")))
+      formatStyle("P-value(FDR)",backgroundColor = styleInterval(c(input$alphaFDR),c("#b5f2b6","white")))%>%
+      formatRound(columns=colnames(pvaluesTable), digits=4)
     pvaluesTable
   })
   
@@ -199,7 +233,7 @@ server <- function(input, output,session) {
   # Tabla Tukey
   #
   ####
-   output$tableTukey <- renderTable({
+   output$tableTukey <- DT::renderDataTable({
      a<- significatius()
      g <- which( a[,3] <= input$alpha)
      validate(need(g,"No hi ha cap valor significatiu"))
@@ -218,8 +252,11 @@ server <- function(input, output,session) {
     names(Tuk) <- rownames(tt)
     dataTuk <- as.data.frame(na.omit(t(sapply(Tuk,function(x) x$`as.factor(pData(dataExpression)[, 1])`[,4], USE.NAMES = F))))
     dataTuk <- dataTuk[rowSums(dataTuk <= input$alphaTukey)>=1,]
+    dataTuk <- datatable(dataTuk) %>%
+      formatStyle(colnames(dataTuk),backgroundColor = styleInterval(c(input$alphaTukey),c("#b5f2b6","white"))) %>%
+      formatRound(columns=colnames(dataTuk), digits=4)
     dataTuk
-    },rownames = T,digits=4)
+    })
     
   ######
   #
@@ -227,6 +264,23 @@ server <- function(input, output,session) {
   #
   #####
    
+   output$tukeyplot<- renderPlot({
+   newData <- dt()
+   l.dat.pre.data <- GetTukeyList() 
+   functions <- Functions()
+   # ff.plot(funcg=functions$Funcions,genes = functions$Funcions, l.dat.pre=l.dat.pre.data, 
+   #                         treat=input$covariables, grup=input$Tissue, alf=input$alphaTukey, 
+   #                         a=0.3,     # desplaçament de l'inici dels rectangles
+   #                         eps=0.2,   # y del plot a nivell x=0
+   #                         incy=0.4,  # alçada rectanglets
+   #                         nomsgrups=c("Il","Je"))
+   ff.plot(data=newData,funcg=functions$Funcions,genes = functions$Gens, l.dat.pre=l.dat.pre.data, 
+           treat=input$covariables, grup=input$Tissue, alf=input$alphaTukey, 
+           a=0.3,     # desplaçament de l'inici dels rectangles
+           eps=0.2,   # y del plot a nivell x=0
+           incy=0.4,  # alçada rectanglets
+           nomsgrups=c("Il","Je"), mida=1)
+   })
   
     
   ####
@@ -362,15 +416,27 @@ server <- function(input, output,session) {
         validate(need(input$factors,"Select factors of dataset"))
         validate(need(input$covariables,"Select covariable of dataset"))
         newDat <- newData()
+        if(provador==T){
+          newDat <- newData;
+          Covariable<- as.factor(pData(Expression)[,input$covariables])
+          nomscols <- functions[functions$Gens %in% rownames(Expression),"Funcions"]
+          Covariable <- as.data.frame(Covariable)
+        }
+        functions<- Functions()
+        nomscols <- data.frame("Funcions"=functions[functions$Gens %in% rownames(exprs(dataExpression())),"Funcions"])
+        rownames(nomscols) <- unlist(functions[functions$Gens %in% rownames(exprs(dataExpression())),"Gens"])
         Covariable<- as.factor(pData(dataExpression())[,input$covariables])
         Covariable <- as.data.frame(Covariable)
         colnames(Covariable) <- input$covariables
+        rownames(Covariable) <- colnames(exprs(dataExpression()))
         divergent_viridis_magma <- c(viridis(10, begin = 0.3), rev(magma(10, begin = 0.3)))
         rwb <- colorRampPalette(colors = c("darkred", "white", "darkgreen"))
         BrBG <- colorRampPalette(brewer.pal(11, "BrBG"))
         Spectral <- colorRampPalette(rev(brewer.pal(40, "Spectral")))
-        heatmaply(exprs(dataExpression()),colors=Spectral,na.value = "grey50",na.rm=F,ColSideColors=Covariable,margins = c(120,120,20,120),seriate = "OLO")
-        
+        heatmaply(exprs(dataExpression()),colors=Spectral,na.value = "grey50",na.rm=F,col_side_colors=Covariable,row_side_colors = nomscols,margins = c(120,120,20,120),seriate = "OLO") %>%
+          colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 1) %>%
+          colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 2)
+
       })
     
     ####
