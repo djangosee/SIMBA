@@ -2,7 +2,7 @@
 GetAnalysisDataVisualitzationSidebar<- sidebarPanel("",
           p("STEP1. Load the file (ExpressionGeneData)"),
           fileInput('file1',"Select main file:",accept=c(".xlsx"),buttonLabel = "Load File"),
-          p("Example file (TFGShinyApp/www/Example.xlsx)"),
+          p("Example file (TFGShinyApp/www/data/)"),
           hr(),
           uiOutput("NAs")
           )
