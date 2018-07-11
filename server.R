@@ -139,7 +139,11 @@ server <- function(input, output,session) {
     colnames(df) <- as.character(input$covariables)
     idx <- match(input$factors, names(newDat))
     idx <- sort(c(idx-1, idx))
-    nw <- log10(newDat[,-idx])
+    data.idx <- newDat[,-idx]
+    data.idx2 <- apply(data.idx,2,function(x) as.numeric(x))
+    nw <- log10(data.idx2)
+    rownames(nw) <- rownames(data.idx)
+    colnames(nw) <- colnames(data.idx)
     #nw <- subset(newData, colnames(newData) %in% input$factors)
     Expression <- ExpressionSet(as.matrix(t(nw)),phenoData = AnnotatedDataFrame(data=df))
     Expression
@@ -326,7 +330,11 @@ server <- function(input, output,session) {
     if(provador==T){ newDat <- newData;input$defCol=1;input$orderLine=1}
     idx <- match(input$factors, names(newDat))
     idx <- sort(c(idx-1, idx))
-    nw <- log10(newDat[,-idx])
+    data.idx <- newDat[,-idx]
+    data.idx2 <- apply(data.idx,2,function(x) as.numeric(x))
+    nw <- log10(data.idx2)
+    rownames(nw) <- rownames(data.idx)
+    colnames(nw) <- colnames(data.idx)
     nw[[input$covariables]] <- newDat[,input$covariables]
     maxim <- list()
     minim <- list()
@@ -411,34 +419,34 @@ server <- function(input, output,session) {
     #
     #### 
     
-    output$heatmap <-renderPlotly({
-        validate(need(input$file1,"Insert File!"))
-        validate(need(input$factors,"Select factors of dataset"))
-        validate(need(input$covariables,"Select covariable of dataset"))
-        newDat <- newData()
-        if(provador==T){
-          newDat <- newData;
-          Covariable<- as.factor(pData(Expression)[,input$covariables])
-          nomscols <- functions[functions$Gens %in% rownames(Expression),"Funcions"]
-          Covariable <- as.data.frame(Covariable)
-        }
-        functions<- Functions()
-        nomscols <- data.frame("Funcions"=functions[functions$Gens %in% rownames(exprs(dataExpression())),"Funcions"])
-        rownames(nomscols) <- unlist(functions[functions$Gens %in% rownames(exprs(dataExpression())),"Gens"])
-        Covariable<- as.factor(pData(dataExpression())[,input$covariables])
-        Covariable <- as.data.frame(Covariable)
-        colnames(Covariable) <- input$covariables
-        rownames(Covariable) <- colnames(exprs(dataExpression()))
-        divergent_viridis_magma <- c(viridis(10, begin = 0.3), rev(magma(10, begin = 0.3)))
-        rwb <- colorRampPalette(colors = c("darkred", "white", "darkgreen"))
-        BrBG <- colorRampPalette(brewer.pal(11, "BrBG"))
-        Spectral <- colorRampPalette(rev(brewer.pal(40, "Spectral")))
-        heatmaply(exprs(dataExpression()),colors=Spectral,na.value = "grey50",na.rm=F,col_side_colors=Covariable,row_side_colors = nomscols,margins = c(120,120,20,120),seriate = "OLO") %>%
-          colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 1) %>%
-          colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 2)
-
-      })
-    
+    # output$heatmap <-renderPlotly({
+    #     validate(need(input$file1,"Insert File!"))
+    #     validate(need(input$factors,"Select factors of dataset"))
+    #     validate(need(input$covariables,"Select covariable of dataset"))
+    #     newDat <- newData()
+    #     if(provador==T){
+    #       newDat <- newData;
+    #       Covariable<- as.factor(pData(Expression)[,input$covariables])
+    #       nomscols <- functions[functions$Gens %in% rownames(Expression),"Funcions"]
+    #       Covariable <- as.data.frame(Covariable)
+    #     }
+    #     functions<- Functions()
+    #     nomscols <- data.frame("Funcions"=functions[functions$Gens %in% rownames(exprs(dataExpression())),"Funcions"])
+    #     rownames(nomscols) <- unlist(functions[functions$Gens %in% rownames(exprs(dataExpression())),"Gens"])
+    #     Covariable<- as.factor(pData(dataExpression())[,input$covariables])
+    #     Covariable <- as.data.frame(Covariable)
+    #     colnames(Covariable) <- input$covariables
+    #     rownames(Covariable) <- colnames(exprs(dataExpression()))
+    #     divergent_viridis_magma <- c(viridis(10, begin = 0.3), rev(magma(10, begin = 0.3)))
+    #     rwb <- colorRampPalette(colors = c("darkred", "white", "darkgreen"))
+    #     BrBG <- colorRampPalette(brewer.pal(11, "BrBG"))
+    #     Spectral <- colorRampPalette(rev(brewer.pal(40, "Spectral")))
+    #     heatmaply(exprs(dataExpression()),colors=Spectral,na.value = "grey50",na.rm=F,col_side_colors=Covariable,row_side_colors = nomscols,margins = c(120,120,20,120),seriate = "OLO") %>%
+    #       colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 1) %>%
+    #       colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 2)
+    # 
+    #   })
+    # 
     ####
     #
     # Components principals
@@ -487,4 +495,66 @@ server <- function(input, output,session) {
   # session$onSessionEnded(function() {
   #   stopApp()
   # })
+    
+  ######
+  # Codi per generar multiple xlsx summary
+  ######
+    llistaTables <- reactive({
+      llista <- list()
+      llista[[1]] <- dt() #guardem la taula principal
+      llista[[2]] <- Functions() #guardem les funcions
+      # llista[[3]] <- as.data.frame(exprs(dataExpression()))#guardem la matriu d'expressió
+      # tt <- significatius()
+      # tt <- na.omit(tt)
+      # tt$p.value <- format(tt$p.value,4)
+      # tt$p.BH <- format(tt$p.BH,4)
+      # colnames(tt) <- c("Contrast Statistic", "P-value", "P-value(FDR)")
+      # aligned <- 'rrr'
+      # g <- which( tt[,2] <= input$alpha)
+      # pvaluesTable<- tt[g,]
+      # pvaluesTable <- datatable(pvaluesTable) %>%
+      #   formatStyle("P-value(FDR)",backgroundColor = styleInterval(c(input$alphaFDR),c("#b5f2b6","white")))%>%
+      #   formatRound(columns=colnames(pvaluesTable), digits=4)
+      # llista[[4]] <- pvaluesTable #anova
+      # a<- significatius()
+      # g <- which( a[,3] <= input$alpha)
+      # validate(need(g,"No hi ha cap valor significatiu"))
+      # Tukey_test<- function(dataExpression){
+      #   Tuk <- list()
+      #   for(i in 1:nrow(exprs(dataExpression))){
+      #     if( sum(is.na(exprs(dataExpression)[i,])) < length(exprs(dataExpression)[i,])-2){
+      #       Tuk[[i]] <- TukeyHSD(aov(exprs(dataExpression)[i,]~ as.factor(pData(dataExpression)[,1])))
+      #       names(Tuk)[[i]] <- rownames(exprs(dataExpression))[i]
+      #     }
+      #   }
+      #   return(na.omit(Tuk))
+      # }
+      # Tuk <- Tukey_test(dataExpression())
+      # tt <- significatius()
+      # names(Tuk) <- rownames(tt)
+      # dataTuk <- as.data.frame(na.omit(t(sapply(Tuk,function(x) x$`as.factor(pData(dataExpression)[, 1])`[,4], USE.NAMES = F))))
+      # dataTuk <- dataTuk[rowSums(dataTuk <= input$alphaTukey)>=1,]
+      # dataTuk <- datatable(dataTuk) %>%
+      #   formatStyle(colnames(dataTuk),backgroundColor = styleInterval(c(input$alphaTukey),c("#b5f2b6","white"))) %>%
+      #   formatRound(columns=colnames(dataTuk), digits=4)
+      # llista[[5]] <- dataTuk #tukey
+      names(llista) <- c("MainData","Functions")
+      llista
+    })
+    
+    output$ExcelButton <- downloadHandler(
+      filename = "Results.xlsx",
+      content = function(file) {
+        dat <- llistaTables()
+        # wb <- createWorkbook()
+        # for (i in 1:2) {
+        #   addWorksheet(wb,sheetName=names(dat)[i])
+        #   writeData(wb, sheet=i,dat[[i]])
+        #   saveWorkbook(wb,file,overwrite = T)
+        # }
+        write_xlsx(dat)
+      }
+    )
+      
+    
 }
