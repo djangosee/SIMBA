@@ -4,9 +4,12 @@
 \usepackage[catalan]{babel}
 \usepackage{lmodern}
 \usepackage{microtype}
+\usepackage{graphicx}
 \usepackage{babel,blindtext}
 \usepackage{geometry}
 \usepackage{amsmath}
+\usepackage{framed}
+\usepackage[font=footnotesize,labelfont=bf]{caption}
  \geometry{
  a4paper,
  total={170mm,257mm},
@@ -88,7 +91,7 @@ Encara que l'aplicatiu web s'ha creat a partir d'aquest estudi, la idea ha sigut
 %https://stats.stackexchange.com/questions/78920/mathematical-explanations-behind-anova
 En aquest apartat queden definits els mètodes estadístics utilitzats en el protocol d'anàlisi. Cada mètode ha sigut implementat en l'aplicatiu i més endavant es mostren els resultats del cas d'estudi.
 \subsection{Anàlisi de la variància (ANOVA)}
-L'anàlisi de la variància (ANOVA) és el mètode clàssic per comparar mitjanes entre grups dos grups o més. Suposem que tenim $N$ observacions repartides en $k$ grups i definim $n=\frac{N}{k}$. Llavors $x_{ij}$ seria l'individu $j$ corresponent al grup $i$. En aquest cas assumim que l'estudi és balancejat, és a dir, el número d'individus per grup és el mateix. Denotem $\bar{x.}$ com la mitjana de la mostra global, i $\bar{x_{i}}$ com la mitjana del grup $i$.
+L'anàlisi de la variància (ANOVA) és el mètode clàssic per comparar mitjanes entre grups dos grups o més. Suposem que tenim $N$ observacions repartides en $k$ grups i definim $n=\frac{N}{k}$. Llavors $x_{ij}$ seria l'individu $j$ corresponent al grup $i$. En aquest cas assumim que l'estudi és balancejat, és a dir, el nombre d'individus per grup és el mateix. Denotem $\bar{x.}$ com la mitjana de la mostra global, i $\bar{x_{i}}$ com la mitjana del grup $i$.
 Les observacions es poden tornar a escriure com:
 \begin{equation*}
 x_{ij} = \bar{x.} + (\bar{x_{i}} - \bar{x.}) + (x_{ij} - \bar{x_{i}})
@@ -132,44 +135,99 @@ Per tant, podem escriure la suma de quadrats totals com:
 SST = SSG + SSE
 \end{equation*}
 
-Si la variabilitat entre grups és gran en relació amb la variabilitat intra grups, llavors les dades suggereixen que les mitjanes de les poblacions són significativament diferents. Si no existeixen diferencies entre els grups, esperaríem que les mitjanes quadràtiques
+Si la variabilitat entre grups és gran en relació amb la variabilitat intra grups, llavors les dades suggereixen que les mitjanes de les poblacions són significativament diferents. Si no existeixen diferencies, entre els grups, esperaríem que les mitjanes quadràtiques
 \begin{equation*}
 MSG = \frac{SSG}{(k-1)}
 \end{equation*}
 \begin{equation*}
 MSE = \frac{SSE}{(N-k)}
 \end{equation*}
-siguin similars. El test estadístic ANOVA es defineix com el ràtio entre les dues mitjanes quadràtiques:
+siguin similars. El test estadístic ANOVA es defineix com la ràtio entre les dues mitjanes quadràtiques:
 \begin{equation*}
 F = \frac{MSG}{MSE}
 \end{equation*}
-L'estadístic $F$ segueix una distribució F de Snedecor amb $k-1$ i $N-k$ graus de llibertat. Si la hipòtesi nul·la és certa, $F$ seria proper a 1. D'altra banda, si la mitjana quadràtica entre grups $MSG$ és gran, suposaria un valor gran de l'estadístic F. Bàsicament, ANOVA examina les dues fons de la variància total i mira quina part contribueix més. Per aquest motiu, s'anomena anàlisi de la variància encara que la intenció sigui comparar les mitjanes dels grups.
+L'estadístic $F$ segueix una distribució F de Snedecor amb $k-1$ i $N-k$ graus de llibertat. Si la hipòtesi nul·la és certa, $F$ seria proper a 1. D'altra banda, si la mitjana quadràtica entre grups $MSG$ és gran, suposaria un valor gran de l'estadístic F. Bàsicament, l'ANOVA examina les dues fons de la variància total i mira quina part contribueix més. Per aquest motiu, s'anomena anàlisi de la variància encara que la intenció sigui comparar les mitjanes dels grups.
 \\
 
 Hi ha una sèrie de supòsits que s'han de fer abans que s'apliqui l'ANOVA, la desviació en aquests supòsits portaran a resultats que poden ser enganyosos o inexactes. Aquests supòsits inclouen la independència, normalitat i variància constant dels errors. En algunes situacions, hi ha transformacions que poden ser
-utilitzades per evitar les violacions d'aquests supòsits, com ara la transformació logaritmica de les dades.
+utilitzades per evitar les violacions d'aquests supòsits, com ara la transformació logarítmica de les dades.
 
 \subsubsection{Anova per a dissenys desbalancejats}
-When performing statistical tests, balanced designs are usually preferred for several reasons, including:
-
-The test will have larger statistical power,
-The test statistic is less susceptible to small departures from the assumption of equal variances (homoscedasticity).
-However, for single factor ANOVA, a lack of balance doesn’t usually affect the results (Milliken and Johnson, 1984).
+\clearpage
 
 \subsection{Correcció per multiplicitat de contrastos}
 %http://www.stat.cmu.edu/~genovese/talks/hannover1-04.pdf
-Un problema comú què ens podem trobar a qualsevol investigació és voler comparar més de 2 grups de dades per detectar possibles diferències entre ells. L'utilització de models d'ANOVA ens pot permetre detectar diferències, a nivell global, entre les mitjanes involucrades, però en moltes ocasions volem detectar les diferències entre grups concrets. Aquest cas només és possible mitjançant l'ús dels Procediments de Comparacions múltiples (PCM).
+%Limma
+Un problema comú què ens podem trobar a qualsevol investigació és voler comparar més de 2 grups de dades per detectar possibles diferències entre ells. La utilització de models d'ANOVA ens pot permetre detectar diferències, a escala global, entre les mitjanes involucrades, però en moltes ocasions volem detectar les diferències entre grups concrets. Aquest cas només és possible mitjançant l'ús dels Procediments de Comparacions múltiples (PCM).
 \\
 
-Quan volem fer un test estadístic, segons la conclusió que fem, podem recaure en 2 tipus de errors:
+En aquest treball el nostre interès no és avaluar si un o dos gens concrets s'expressen d'una forma diferencial entre les condicions considerades. Volem veure això a un nivell global i respondre a una pregunta com: Quins gens s'expressen d'una manera diferent (diferencial si utilitzem la literatura biològica) en els grups/tractaments que considerem? L'objectiu és poder contestar aquesta pregunta de manera que puguem controlar les vegades que afirmem expressions diferencials quan realment no la tenen (Error de tipus I).
+\\
+
+Si numerem els gens $i = 1,...,N$ llavors per a l'i-èssim gen estem considerant el següent contrast:
 \begin{itemize}
-    \item Error de tipus I: Rebutjar $H_{0}$ quan realment és certa.
-    \item Error de tipus II: No rebutjar $H_{0}$ quan realment és falsa.
+\item $H_{0}$ : El gen i no té una expressió diferencial entre les condicions considerades.
+\item $H_{1}$: El gen i té una expressió diferencial entre les condicions considerades.
 \end{itemize}
-Se pretende una visión global. Pre-tendemos responder a una pregunta como: ¿qué genes se expresan de un modo distinto (o diferencial en la jerga habitual en esta literatura) en los dos grupos que consideramos? Tenemos miles de genes: ¿cuáles de ellos tienen realmente una expresión diferencial?
-Y, lo importante, pretendemos res- ponder la pregunta de modo que controlemos, de algún modo, las veces que admitimos una expresión diferencial cuando no la tiene. ¿Qué contrastes de hipótesis estamos evaluando? Si numeramos los genes con i = 1, . . . , N entonces para el i-ésimo gen estamos considerando el contraste de hipótesis siguiente:
-\textbf{LIMA LO EXPLICA}
+Si plantegem aquest contrast per a cada gen, podem denotar com $G={1,..,N}$ el conjunt d'hipòtesis nul·les que estem avaluant. El número d'hipòtesis que avaluem és conegut a priori, ja que correspon al número de gens que volem avaluar. És important destacar que en els estudis d'investigació en intentar acceptar o rebutjar la hipòtesi nul·la ($H_{0}$) es poden cometre dos tipus d'errors:
+\begin{itemize}
+\item Error de tipus I: Rebutjar $H_{0}$ quan realment és certa.
+\item Error de tipus II: No rebutjar $H_{0}$ quan realment és falsa.
+\end{itemize}
+Imaginem que fem un test contrastant diferencies entre mitjanes, i fixem un nivell de significació $\alpha=0.05$, i sabem que la hipòtesis nul·la és certa; llavors l'error de tipus I serà exactament el nivell de significació $\alpha$. Per tant, podem definir la probabilitat de tenir un fals positiu en un test, és a dir, rebutjar $H_{0}$ quan realment és certa:
+\begin{equation*}
+P(\text{Fals positiu}) = \alpha
+\end{equation*}
+\begin{equation*}
+P(\text{No cometre l'error}) = 1 - \alpha
+\end{equation*}
+Per tant, si definim $m$ tests d'hipòtesis podem definir la probabilitat d'almenys tenir 1 fals positiu com:
+\begin{equation*}
+P(\text{No cometre l'error en m tests}) = (1 - \alpha)^m
+\end{equation*}
+\begin{equation*}
+P(\text{Almenys 1 fals positiu en m tests}) = 1 - (1 - \alpha)^m
+\end{equation*}
+Per exemple, si tenim 1 test, i fixem $\alpha=0.05$, la probabilitat d'obtenir almenys 1 fals positiu és de:
+\begin{equation*}
+P(\text{Almenys 1 fals positiu}) = 1-(1-0.05)= 0.05
+\end{equation*}
+Si ara tenim 50 tests i calculem la mateixa probabilitat:
+\begin{equation*}
+P(\text{Almenys 1 fals positiu}) = 1-(1-0.05)^{50}= 0.92
+\end{equation*}
+
+Aquí recau el gran problema de la multiplicitat de contrastos, podem observar que si fem un test moltes vegades, hi ha una inflació en l'error de tipus I.
+\begin{center}
+\includegraphics[scale=0.5]{FalsPositiu.png}
+\captionof{figure}{Gràfic contraposant el nombre de tests amb la probabilitat d'obtenir almenys 1 fals positiu. S'observa un increment en la probabilitat quan augmenta el nombre de tests.}
+\end{center}
+En el nostre estudi es important tenir clar aquest problema, ja que si tenim molts gens, i no apliquem una correcció, podem caure en l'error d'afirmar que un gen s'expressa diferencialment quan realment no ho fa.
 \subsubsection{False discovery Rate}
+%http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture10.pdf
+%https://rpubs.com/Joaquin_AR/236898
+Existeixen molts mètodes per corregir el problema de la multiplicitat de contrastos. El més simple és el métode de Bonferroni, on cada p valor es multiplica pel número de tests realitzats (acotant la probabilitat màxima a 1). És un métode molt conservador i no és el més indicat per al nostre cas d'estudi. Llavors la correcció que hem utilitzat per controlar l'error de tipus I, s'anomena False discovery Rate (FDR).
+\\
+
+Los métodos descritos anteriormente se centran en corregir la inflación del error de tipo I (false positive rate), es decir, la probabilidad de rechazar la hipótesis nula siendo esta cierta. Esta aproximación es útil cuando se emplea un número limitado de comparaciones. Para escenarios de large-scale multiple testing como los estudios genómicos, en los que se realizan miles de test de forma simultanea, el resultado de estos métodos es demasiado conservativo e impide que se detecten diferencias reales. Una alternativa es controlar el false discovery rate.
+El false discovery rate (FDR) se define como: (todas las definiciones son equivalentes)
+La proporción esperada de test en los que la hipótesis nula es cierta, de entre todos los test que se han considerado significativos. FDR es la probabilidad de que una hipótesis nula sea cierta habiendo sido rechazada por el test estadístico.
+De entre todos los test considerados significativos, el FDR es la proporción esperada de esos test para los que la hipótesis nula es verdadera.
+Es la proporción de test significativos que realmente no lo son.La proporción esperada de falsos positivos de entre todos los test considerados como significativos.
+
+El objetivo de controlar el false discovery rate es establecer un límite de significancia para un conjunto de test tal que, de entre todos los test considerados como significativos, la proporción de hipótesis nulas verdaderas (falsos positivos) no supere un determinado valor. Otra ventaja añadida es su fácil interpretación, por ejemplo, si un estudio publica resultados estadísticamente significativos para un FDR del 10, el lector tiene la seguridad de que, como máximo, un 10 de los resultados considerados como significativos son realmente falsos positivos.
+
+Cuando un investigador emplea un nivel de significancia $\alpha$, por ejemplo de 0.05, suele esperar cierta seguridad de que solo una pequeña fracción de los test significativos se correspondan con hipótesis nulas verdaderas (falsos positivos). Sin embargo, esto no tiene por qué ser así. La razón por la que un false positive rate bajo no tiene por qué traducirse en una probabilidad baja de hipótesis nulas verdaderas entre los test significativos (false discovery rate) se debe a que esta última depende de la frecuencia con la que la hipótesis nula contrastada es realmente verdadera. Un caso extremo sería el planteado en el ejemplo 1, en el que todas las hipótesis nulas son realmente ciertas y por lo tanto el 100 de los test que resultan significativos son falsos positivos. Así pues, la proporción de falsos positivos (false discovery rate) depende de la cantidad de hipótesis nulas que sean ciertas de entre todas los contrastes.
+
+Los análisis de tipo exploratorio en los que el investigador trata de identificar resultados significativos sin apenas conocimiento previo se caracterizan por una proporción alta de hipótesis nulas falsas. Los análisis que se hacen para confirmar hipótesis, en los que el diseño se ha orientado en base a un conocimiento previo, suelen tener una proporción de hipótesis nulas verdaderas alta. Idealmente, si se conociera de antemano la proporción de hipótesis nulas verdaderas de entre todos los contrastes se podría ajustar con precisión el límite significancia adecuado a cada escenario, sin embargo, esto no ocurre en la realidad.
+
+La primera aproximación para controlar el FDR fue descrita por Benjamini y Hochberg en 1995. Acorde a su publicación, si se desea controlar que en un estudio con n comparaciones el FDR no supere un porcentaje d hay que:
+
+%Ordenar los n test de menor a mayor p-value (p1, p2, ... pnp1, p2, ... pn)
+%Se define k como la última posición para la que se cumple que %pi≤dinpi≤din%
+%Se consideran significativos todos los p-value hasta la posición k (p1, p2, ... %pkp1, p2, ... pk)
+El método propuesto por Benjamini $\&$ Hochberg asume a la hora de estimar el número de hipótesis nulas erróneamente consideradas falsas, que todas las hipótesis nulas son ciertas. Como consecuencia, la estimación del FDR está inflada y por lo tanto es conservadora. A continuación se describen métodos más sofisticados que estiman la frecuencia de hipótesis nulas verdaderas a partir de la distribución de los p-values.
+
 \subsection{Post hoc testing: Tukey}
 \subsection{Anàlisi de components principals}
 \subsection{Heatmap}
