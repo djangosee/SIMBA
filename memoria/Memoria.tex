@@ -18,8 +18,6 @@
  }
 
 \begin{document}
-\title{Protocol d'Anàlisi de Dades d'Expressió Gènica amb Shiny}
-\author{Antonio Rodríguez Gómez}
 \newcommand\makeAbstract{%
 \begin{center}\textbf{Abstract (versió en català)}\end{center}
 \begin{list}{}{\leftmargin=3em\rightmargin=\leftmargin}\item\relax
@@ -37,7 +35,27 @@ El análisis de datos de expresión genética es uno de los grandes retos estad�
  Data gene expression analysis is one of the major statistical challenges to detect differential expressions between genes under a given condition. The main idea is the creation of an interactive analysis protocol of gene expression matrix. Methods are presented for detecting differential expression using statistical hypothesis testing methods including analysis of variance (ANOVA). Methods for multiple testing correction and their application are described. Graphical methods such as heatmaps are used. This analysis protocol is implemented in a web application developed in Shiny.
 \end{list}\par\vspace{6mm}%
 }
+
+\title{
+\textsc{Treball de final de grau}\\[2.6cm]
+{\LARGE \bfseries Protocol d'anàlisi per a dades d'expressió gènica amb shiny}\\{\Large\bfseries Grau d'Estadística Aplicada}\\[5cm]
+}
+
+\author{
+\textsc{Autor:} Antonio Rodríguez Gómez
+}
+
+\date{
+\textsc{Supervisor:} Mer\c{c}è Farre \\[1em]
+\today
+}
+
 \maketitle
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "test"
+%%% End:
+
 \thispagestyle{empty}
 \clearpage
 \twocolumn[\makeAbstract]
@@ -206,27 +224,46 @@ En el nostre estudi es important tenir clar aquest problema, ja que si tenim mol
 \subsubsection{False discovery Rate}
 %http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture10.pdf
 %https://rpubs.com/Joaquin_AR/236898
-Existeixen molts mètodes per corregir el problema de la multiplicitat de contrastos. El més simple és el métode de Bonferroni, on cada p valor es multiplica pel número de tests realitzats (acotant la probabilitat màxima a 1). És un métode molt conservador i no és el més indicat per al nostre cas d'estudi. Llavors la correcció que hem utilitzat per controlar l'error de tipus I, s'anomena False discovery Rate (FDR).
+Existeixen molts mètodes per corregir el problema de la multiplicitat de contrastos. El més simple és el mètode de Bonferroni, on cada p valor es multiplica pel nombre de tests realitzats (acotant la probabilitat màxima a 1). És un mètode molt conservador i no és el més indicat per al nostre cas d'estudi.
+Per a escenaris de large-scale multiple testing com els estudis de genòmica, els quals es realitzen milers de test de forma simultània, el resultat d'aquests mètodes és massa conservador i impedeix que es detectin diferències reals. Una alternativa és controlar el false discovery rate.
 \\
 
-Los métodos descritos anteriormente se centran en corregir la inflación del error de tipo I (false positive rate), es decir, la probabilidad de rechazar la hipótesis nula siendo esta cierta. Esta aproximación es útil cuando se emplea un número limitado de comparaciones. Para escenarios de large-scale multiple testing como los estudios genómicos, en los que se realizan miles de test de forma simultanea, el resultado de estos métodos es demasiado conservativo e impide que se detecten diferencias reales. Una alternativa es controlar el false discovery rate.
-El false discovery rate (FDR) se define como: (todas las definiciones son equivalentes)
-La proporción esperada de test en los que la hipótesis nula es cierta, de entre todos los test que se han considerado significativos. FDR es la probabilidad de que una hipótesis nula sea cierta habiendo sido rechazada por el test estadístico.
-De entre todos los test considerados significativos, el FDR es la proporción esperada de esos test para los que la hipótesis nula es verdadera.
-Es la proporción de test significativos que realmente no lo son.La proporción esperada de falsos positivos de entre todos los test considerados como significativos.
+El false discovery rate ($FDR$) es defineix com la proporció esperada de falsos positius d'entre tots els tests considerats com significatius. L'objectiu de controlar el false discovery rate es establir un límit de significació per a un conjunt de tests tal que, d'entre tots els tests considerats com significatius, la proporció d'hipòtesis nul·les (falsos positius) no superin un determinat valor.
+Un altre avantatge afegit és la seva fàcil interpretació, per exemple, si un estudi publica resultats estadísticament significatius per a un $FDR$ del 10$\%$, el lector té la seguretat que, com a màxim, un 10$\%$ dels resultats considerats com a significatius són realment falsos positius.
+\\
+La primera aproximació per controlar el FDR va ser descrita per Benjamini $\%$ Hochberg en 1995. D'acord amb la seva publicació si es desitja controlar que en un estudi amb $n$ comparacions el $FDR$ no superi un percentatge $d$ hem de:
 
-El objetivo de controlar el false discovery rate es establecer un límite de significancia para un conjunto de test tal que, de entre todos los test considerados como significativos, la proporción de hipótesis nulas verdaderas (falsos positivos) no supere un determinado valor. Otra ventaja añadida es su fácil interpretación, por ejemplo, si un estudio publica resultados estadísticamente significativos para un FDR del 10, el lector tiene la seguridad de que, como máximo, un 10 de los resultados considerados como significativos son realmente falsos positivos.
+\begin{itemize}
+\item Ordenar els $n$ tests de menor a major $pvalor$ ($p_{1}$,$p_{2}$,... $p_n$).
+\item Es defineix $k$ com l'última posició per la qual es compleix que $p_i \leq d\frac{i}{n}$.
+\item Es consideren significatius tots els $pvalors$ fins a la posició $k$ ($p_{1}$,$p_{2}$,... $p_k$).
 
-Cuando un investigador emplea un nivel de significancia $\alpha$, por ejemplo de 0.05, suele esperar cierta seguridad de que solo una pequeña fracción de los test significativos se correspondan con hipótesis nulas verdaderas (falsos positivos). Sin embargo, esto no tiene por qué ser así. La razón por la que un false positive rate bajo no tiene por qué traducirse en una probabilidad baja de hipótesis nulas verdaderas entre los test significativos (false discovery rate) se debe a que esta última depende de la frecuencia con la que la hipótesis nula contrastada es realmente verdadera. Un caso extremo sería el planteado en el ejemplo 1, en el que todas las hipótesis nulas son realmente ciertas y por lo tanto el 100 de los test que resultan significativos son falsos positivos. Así pues, la proporción de falsos positivos (false discovery rate) depende de la cantidad de hipótesis nulas que sean ciertas de entre todas los contrastes.
+\end{itemize}
 
-Los análisis de tipo exploratorio en los que el investigador trata de identificar resultados significativos sin apenas conocimiento previo se caracterizan por una proporción alta de hipótesis nulas falsas. Los análisis que se hacen para confirmar hipótesis, en los que el diseño se ha orientado en base a un conocimiento previo, suelen tener una proporción de hipótesis nulas verdaderas alta. Idealmente, si se conociera de antemano la proporción de hipótesis nulas verdaderas de entre todos los contrastes se podría ajustar con precisión el límite significancia adecuado a cada escenario, sin embargo, esto no ocurre en la realidad.
+El mètode proposat per Benjamini $\&$ Hochberg assumeix a l'hora d'estimar el nombre d'hipòtesis nul·les erròniament considerades falses, que totes les hipòtesis nul·les són certes. Com a conseqüència, l'estimació del $FDR$ està inflada i és un mètode conservador. Per poder veure l'afectació d'utilitzar un mètode com Bonferroni o utilitzar el métode Benjamini $\&$ Hochberg, tenim la següent taula d'exemple:
+\\
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+\hline
+& Pvalor & Bonferroni & Benjamini$\&$Hochberg \\
+\hline
+1 & 0.0010 & 0.0550 & 0.0037 \\
+2 & 0.0020 & 0.11 & 0.0069 \\
+3 & 1 & 1 & 1 \\
+4 & 0.0010 & 0.0550 & 0.0037 \\
+5 & 0.0010 & 0.0550 & 0.0037 \\
+6 & 0.0010 & 0.0550 & 0.0037 \\
+7 & 0.25 & 1 & 0.3929 \\
+8 & 0.48 & 1 & 0.6286 \\
+9 & 0.09 & 1 & 0.1650 \\
+10 & 0.51 & 1 & 0.6523 \\
+\hline
+\end{tabular}
+\caption{A l'exemple de la taula hi ha una columna amb les $pvalors$ sense corregir, un altre amb la correcció de Bonferroni i per últim una amb la correcció proposada per Benjamini$\&$Hochberg, per a un total de 55 $pvalors$ (Encara que només es mostren els 10 primers). Observem que Bonferroni és un mètode molt més conservador i cap $pvalor$ és significatiu. (Dels 55 $pvalors$, 0 són significatius amb Bonferroni). En canvi, amb el mètode de Benjamini$\&$Hochberg, observem que del total de $pvalors$, hi ha 26 significatius.(En aquest cas hem fixat un $\alpha=0.05$ i un $FDR=0.05$) }
+\end{table}
 
-La primera aproximación para controlar el FDR fue descrita por Benjamini y Hochberg en 1995. Acorde a su publicación, si se desea controlar que en un estudio con n comparaciones el FDR no supere un porcentaje d hay que:
-
-%Ordenar los n test de menor a mayor p-value (p1, p2, ... pnp1, p2, ... pn)
-%Se define k como la última posición para la que se cumple que %pi≤dinpi≤din%
-%Se consideran significativos todos los p-value hasta la posición k (p1, p2, ... %pkp1, p2, ... pk)
-El método propuesto por Benjamini $\&$ Hochberg asume a la hora de estimar el número de hipótesis nulas erróneamente consideradas falsas, que todas las hipótesis nulas son ciertas. Como consecuencia, la estimación del FDR está inflada y por lo tanto es conservadora. A continuación se describen métodos más sofisticados que estiman la frecuencia de hipótesis nulas verdaderas a partir de la distribución de los p-values.
+A l'hora de decidir quin tipus de correcció aplicar, és important utilitzar un mètode adequat per tal d'obtenir resultats més acurats. En els estudis exploratoris és d'esperar que la proporció d'hipòtesis nul·les falses, és a dir, tests que són realment significatius, sigui alta. Per tant, mètodes que només depenen del nombre de tests no són els més potents per aquest tipus d'estudis, com hem vist anteriorment.
 
 \subsection{Post hoc testing: Tukey}
 \subsection{Anàlisi de components principals}
