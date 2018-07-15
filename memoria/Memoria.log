@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.8)  14 JUL 2018 19:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.8)  16 JUL 2018 00:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -761,12 +761,18 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 3.
 
-Overfull \hbox (0.97415pt too wide) in paragraph at lines 17--17
+Overfull \hbox (23.26094pt too wide) in paragraph at lines 11--11
+ [][] []\T1/lmr/m/n/10 (-20) Métode de Tukey (\T1/lmr/m/it/10 (-20) Honestly-si
+gnificant- 
+ []
+
+
+Overfull \hbox (0.97415pt too wide) in paragraph at lines 18--18
  [][] []\T1/lmr/m/n/10 (-20) Correcció per mul-ti-pli-ci-tat de con- 
  []
 
 
-Overfull \hbox (1.10124pt too wide) in paragraph at lines 21--21
+Overfull \hbox (1.10124pt too wide) in paragraph at lines 22--22
  [] []\T1/lmr/bx/n/10 TL3P: Apli-ca-tiu Web amb el pa-quet Shiny 
  []
 
@@ -855,7 +861,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 183--185
 
  []
 
-<FalsPositiu.png, id=34, 419.31656pt x 447.17062pt>
+<FalsPositiu.png, id=35, 419.31656pt x 447.17062pt>
 File: FalsPositiu.png Graphic file (type png)
  <use FalsPositiu.png>
 Package pdftex.def Info: FalsPositiu.png used on input line 221.
@@ -873,33 +879,56 @@ Underfull \hbox (badness 1168) in paragraph at lines 264--264
  una co-lum-na
  []
 
-[7] (./Memoria.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--272
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--290
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 310--312
+
+ []
+
+[8
+
+] [9
+
+
+] (./Memoria.aux) ) 
 Here is how much of TeX's memory you used:
- 6604 strings out of 493029
- 99713 string characters out of 6136235
- 227713 words of memory out of 5000000
- 9868 multiletter control sequences out of 15000+600000
- 79650 words of font info for 120 fonts, out of 8000000 for 9000
+ 6617 strings out of 493029
+ 99899 string characters out of 6136235
+ 226713 words of memory out of 5000000
+ 9873 multiletter control sequences out of 15000+600000
+ 88574 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,9n,42p,1218b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
--ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fo
-nts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi5.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on Memoria.pdf (7 pages, 323807 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
+exmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-e
+c.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/font
+s/enc/dvips/lm/lm-mathex.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12
+.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lms
+y7.pfb>
+Output written on Memoria.pdf (9 pages, 386539 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
+ 127 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 23558 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 26118 words of extra memory for PDF output out of 29859 (max. 10000000)
 

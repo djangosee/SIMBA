@@ -266,10 +266,67 @@ El mètode proposat per Benjamini $\&$ Hochberg assumeix a l'hora d'estimar el n
 
 A l'hora de decidir quin tipus de correcció aplicar, és important utilitzar un mètode adequat per tal d'obtenir resultats més acurats. En els estudis exploratoris és d'esperar que la proporció d'hipòtesis nul·les falses, és a dir, tests que són realment significatius, sigui alta. Per tant, mètodes que només depenen del nombre de tests no són els més potents per aquest tipus d'estudis, com hem vist anteriorment.
 
-\subsection{Post hoc testing: Tukey}
+\subsection{Comparacions múltiples}
+Un cop realitzat l'anàlisi de la variancia i si aquest confirma l'existencia de diferencies significatives entre els grups o tractaments, es convenient investigar quines mitjanes son diferents. El conjunt de tècniques que tracten aquest problema es denominen \textit{contrastos per comparacions múltiples}.
+\\
+
+\subsubsection{Métode de Tukey (\textit{Honestly-significant-difference})}
+%http://www.ugr.es/~bioestad/guiaspss/practica7/ArchivosAdjuntos/ComparacionesMultiples.pdf
+%http://www2.hawaii.edu/~taylor/z631/multcomp.pdf
+Recordem que quan el nombre de possibles comparacions és elevat, per a un nivell de significació $\alpha$ donat, pot conduir a una inflació de l'error de tipus I, com també hem vist quan parlàvem de multiplicitat de contrastos.
+\\
+Per identificar quins tractaments són significativament diferents entre ells i corregir el problema de la inflació de l'error de tipus I, hem utilitzat el mètode de Tukey i les seves hipòtesis són:
+
+\begin{equation*}
+H_{0}: \mu_1 = \mu_2 = ... = \mu_k
+\end{equation*}
+\vspace{-0.5cm}
+\begin{equation*}
+H_{1}: \mu_1 \neq \mu_2 \neq ... \neq \mu_k
+\end{equation*}
+\\
+Aquest contrast es basa en la distribució del rang estudentitzat, que es defineix a partir del nombre de grups a comparar i dels graus de llibertat de l'estimador de la variància. Aquests tipus de procediments, permeten superar les dificultats que hi ha quan augmentem el nombre de grups a comparar i no podem controlar els falsos positius. En general, són mètodes conservadors, es a dir, la probabilitat real de rebutjar la hipòtesi nul·la quan és certa és menor que el nivell de significació $\alpha$ fixat.
+\\
+
+Per definir el rang estudentitzat, suposem que disposem de $k$ observacions independents $y_1,y_2,...,y_k$ d'una distribució Normal amb mitjana $\mu$ i variància $\sigma^2$. Suposem també que disposem d'un estimador $S^2$ de $\sigma^2$ que té $v$ graus de lliberat i és independent de les $y_i$. Definim $R$ com el rang d'aquest conjunt d'observacions,
+\begin{equation*}
+R = max(y_i) - min(y_i)
+\end{equation*}
+Sota aquestes condicions, es defineix el rang estudentitzat com el quocient,
+\begin{equation*}
+\frac{max(y_i) - min(y_i)}{S} = \frac{R}{S}
+\end{equation*}
+que es denota com $q_{k,v}$. Aquest estadístic segueix una distribució que depèn dels paràmetres $k$ i $v$, coneguda com la distribució del rang estudentitzat. L'estadístic de contrast que utilitza el test de Tukey, també segueix una distribució del rang estudentitzat. L'estadístic compara les mitjanes dels grups $j$ i $k$, i ve donat per la següent equació:
+\begin{equation*}
+HSD = q_{I,N-I}(\alpha)\sqrt{\frac{\hat{S}^2}{n}} ,
+\end{equation*}
+
+\begin{equation*}
+q_{I,N-I}(\alpha) = \frac{\bar{X}_j - \bar{X}_k}{\sqrt{\frac{\hat{S}^2}{n}}}
+\end{equation*}
+on $\hat{X}_j$ i $\hat{X}_k$ són la mitjana del grup $j$ i $k$, respectivament, i $\hat{X}_j >; \hat{X}_k$. $\hat{S}^2$ és l'estimació de la variància del error o residual; i $n$ és la grandària mostral per a tots els grups; on $I$ i $N-I$ són els graus de llibertat de la distribució del rang estudentitzat ($I$ correspon al nombre de nivells que té el factor, $N$ correspon a la grandària mostral).En el cas de tenir grandàries mostrals diferents entre els nivells del factor, hem d'utilitzar un altre $n$ (mitjana harmònica):
+\begin{equation*}
+n_h = \frac{t}{\sum_{i=1}^{t}\frac{1}{n_i}}
+\end{equation*}
+\\
+
+La diferència entre mitjanes serà significativa amb un nivell de significació $\alpha$ si
+\begin{equation*}
+|\bar{X}_j - \bar{X}_k |>; HSD
+\end{equation*}
+L'interval de confian\c{c}a per a la diferència de mitjanes el definim com:
+\begin{equation*}
+IC(\mu_j - \mu_k)_{(1-\alpha)}= (\bar{X}_j - \bar{X}_k) \pm q_{I,N-I,1-\alpha}\sqrt{\frac{\hat{S}^2}{n}}
+\end{equation*}
+Si l'interval de la diferència inclou el 0, no rebutjem la hipòtesi nul·la del test i per tant, no hi ha diferències entre $\mu_j$ i $\mu_k$.
+
+
+
+
 \subsection{Anàlisi de components principals}
 \subsection{Heatmap}
 %%% RESULTS
+\clearpage
 \section{Cas d'estudi:Resultats del protocol d'anàlisi}
 \subsection{Resultats}
 \subsubsection{Tractament de les dades}
