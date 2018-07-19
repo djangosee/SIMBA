@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.8)  16 JUL 2018 00:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.8)  19 JUL 2018 16:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -570,43 +570,62 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \FrameRule=\dimen129
 \FrameSep=\dimen130
 )
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2014/10/28 v2.10 `tabularx' package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen131
+\extrarowheight=\dimen132
+\NC@list=\toks24
+\extratabsurround=\skip48
+\backup@length=\skip49
+)
+\TX@col@width=\dimen133
+\TX@old@table=\dimen134
+\TX@old@col=\dimen135
+\TX@target=\dimen136
+\TX@delta=\dimen137
+\TX@cols=\count124
+\TX@ftn=\toks25
+)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen131
-\captionmargin@=\dimen132
-\captionwidth=\dimen133
-\caption@tempdima=\dimen134
-\caption@indent=\dimen135
-\caption@parindent=\dimen136
-\caption@hangindent=\dimen137
+\captionmargin=\dimen138
+\captionmargin@=\dimen139
+\captionwidth=\dimen140
+\caption@tempdima=\dimen141
+\caption@indent=\dimen142
+\caption@parindent=\dimen143
+\caption@hangindent=\dimen144
 )
-\c@ContinuedFloat=\count124
+\c@ContinuedFloat=\count125
 ) (./Memoria.aux)
 \openout1 = `Memoria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 21.
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \l on input line 20.
-LaTeX Info: Redefining \L on input line 20.
-LaTeX Info: Redefining \microtypecontext on input line 20.
+LaTeX Info: Redefining \l on input line 21.
+LaTeX Info: Redefining \L on input line 21.
+LaTeX Info: Redefining \microtypecontext on input line 21.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -623,17 +642,17 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count125
-\scratchdimen=\dimen138
+\scratchcounter=\count126
+\scratchdimen=\dimen145
 \scratchbox=\box28
-\nofMPsegments=\count126
-\nofMParguments=\count127
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count128
-\MPscratchDim=\dimen139
-\MPnumerator=\count129
-\makeMPintoPDFobject=\count130
-\everyMPtoPDFconversion=\toks25
+\nofMPsegments=\count127
+\nofMParguments=\count128
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count129
+\MPscratchDim=\dimen146
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
+\everyMPtoPDFconversion=\toks27
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -717,33 +736,33 @@ Package caption Info: End \AtBeginDocument code.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 53.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 54.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 53.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 54.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 53.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 54.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 53.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 54.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 53.
+(Font)              <12> on input line 54.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 53.
+(Font)              <8> on input line 54.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 53.
+(Font)              <6> on input line 54.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -767,12 +786,12 @@ gnificant-
  []
 
 
-Overfull \hbox (0.97415pt too wide) in paragraph at lines 18--18
+Overfull \hbox (0.97415pt too wide) in paragraph at lines 19--19
  [][] []\T1/lmr/m/n/10 (-20) Correcció per mul-ti-pli-ci-tat de con- 
  []
 
 
-Overfull \hbox (1.10124pt too wide) in paragraph at lines 22--22
+Overfull \hbox (1.10124pt too wide) in paragraph at lines 23--23
  [] []\T1/lmr/bx/n/10 TL3P: Apli-ca-tiu Web amb el pa-quet Shiny 
  []
 
@@ -784,151 +803,254 @@ Overfull \hbox (1.10124pt too wide) in paragraph at lines 22--22
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
+Underfull \hbox (badness 10000) in paragraph at lines 68--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--72
+Underfull \hbox (badness 10000) in paragraph at lines 71--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--75
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 81.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 82.
 (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 81.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 82.
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--83
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Underfull \hbox (badness 10000) in paragraph at lines 82--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
+Underfull \hbox (badness 10000) in paragraph at lines 85--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--92
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
 
  []
 
 
-Overfull \hbox (5.335pt too wide) in paragraph at lines 96--96
+Underfull \hbox (badness 10000) in paragraph at lines 91--93
+
+ []
+
+
+Overfull \hbox (5.335pt too wide) in paragraph at lines 97--97
 []\T1/lmr/bx/n/12 Cas d'es-tu-di: Pro-to-col d'aná-li-si d'un
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
+Underfull \hbox (badness 10000) in paragraph at lines 104--106
 
  []
 
 [4
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 166--169
+Underfull \hbox (badness 10000) in paragraph at lines 167--170
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 180--182
+Underfull \hbox (badness 10000) in paragraph at lines 181--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--185
+Underfull \hbox (badness 10000) in paragraph at lines 184--186
 
  []
 
 <FalsPositiu.png, id=35, 419.31656pt x 447.17062pt>
 File: FalsPositiu.png Graphic file (type png)
  <use FalsPositiu.png>
-Package pdftex.def Info: FalsPositiu.png used on input line 221.
+Package pdftex.def Info: FalsPositiu.png used on input line 222.
 (pdftex.def)             Requested size: 209.65776pt x 223.58476pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--231
+Underfull \hbox (badness 10000) in paragraph at lines 229--232
 
  []
 
 [6
 
  <./FalsPositiu.png>]
-Underfull \hbox (badness 1168) in paragraph at lines 264--264
+Underfull \hbox (badness 1168) in paragraph at lines 265--265
 []\T1/lmr/bx/n/8 Taula 1: |\T1/lmr/m/n/8 (+20) A l'e-xem-ple de la tau-la hi ha
  una co-lum-na
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--272
+Underfull \hbox (badness 10000) in paragraph at lines 271--273
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--290
+Underfull \hbox (badness 10000) in paragraph at lines 287--291
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 310--312
+Underfull \hbox (badness 10000) in paragraph at lines 311--313
 
  []
 
-[8
 
-] [9
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
+
+ []
 
 
-] (./Memoria.aux) ) 
+Underfull \hbox (badness 10000) in paragraph at lines 332--334
+
+ []
+
+<heatmap.png, id=49, 1163.34625pt x 744.7825pt>
+File: heatmap.png Graphic file (type png)
+ <use heatmap.png>
+Package pdftex.def Info: heatmap.png used on input line 337.
+(pdftex.def)             Requested size: 232.66513pt x 148.95386pt.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 338.
+
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--343
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--346
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--349
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--352
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--355
+
+ []
+
+
+Overfull \hbox (0.2569pt too wide) in paragraph at lines 356--358
+[]\T1/lmr/m/n/10 (-20) La im-ple-men-ta-ció \T1/lmtt/m/n/10 hclust \T1/lmr/m/n/
+10 (-20) (\T1/lmr/m/it/10 (-20) hie-rarc-hi-cal clus-ter analy-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--358
+
+ []
+
+[8 <./heatmap.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 359--362
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 363--365
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--368
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 385--388
+
+ []
+
+[9
+
+] [10
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 436--454
+
+ []
+
+
+Overfull \hbox (8.15169pt too wide) in alignment at lines 469--469
+[][][][][][] 
+ []
+
+<dendrograma.png, id=62, 459.96844pt x 495.35063pt>
+File: dendrograma.png Graphic file (type png)
+ <use dendrograma.png>
+Package pdftex.def Info: dendrograma.png used on input line 475.
+(pdftex.def)             Requested size: 183.98412pt x 198.13673pt.
+
+[11
+
+
+
+ <./dendrograma.png>] (./Memoria.aux) ) 
 Here is how much of TeX's memory you used:
- 6617 strings out of 493029
- 99899 string characters out of 6136235
- 226713 words of memory out of 5000000
- 9873 multiletter control sequences out of 15000+600000
- 88574 words of font info for 125 fonts, out of 8000000 for 9000
+ 6779 strings out of 493029
+ 102017 string characters out of 6136235
+ 228489 words of memory out of 5000000
+ 10008 multiletter control sequences out of 15000+600000
+ 89847 words of font info for 134 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,9n,42p,1218b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
-exmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-e
-c.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/font
-s/enc/dvips/lm/lm-mathex.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lms
-y7.pfb>
-Output written on Memoria.pdf (9 pages, 386539 bytes).
+ 38i,10n,42p,1218b,354s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fon
+ts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/
+usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}</usr/share/texmf/fonts/type1/
+public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share
+/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi5.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmtt8.pfb>
+Output written on Memoria.pdf (11 pages, 505160 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 151 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 26118 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 27152 words of extra memory for PDF output out of 29859 (max. 10000000)
 

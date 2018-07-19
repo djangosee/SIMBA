@@ -9,6 +9,7 @@
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{framed}
+\usepackage{tabularx}
 \usepackage[font=footnotesize,labelfont=bf]{caption}
  \geometry{
  a4paper,
@@ -267,7 +268,7 @@ El mètode proposat per Benjamini $\&$ Hochberg assumeix a l'hora d'estimar el n
 A l'hora de decidir quin tipus de correcció aplicar, és important utilitzar un mètode adequat per tal d'obtenir resultats més acurats. En els estudis exploratoris és d'esperar que la proporció d'hipòtesis nul·les falses, és a dir, tests que són realment significatius, sigui alta. Per tant, mètodes que només depenen del nombre de tests no són els més potents per aquest tipus d'estudis, com hem vist anteriorment.
 
 \subsection{Comparacions múltiples}
-Un cop realitzat l'anàlisi de la variancia i si aquest confirma l'existencia de diferencies significatives entre els grups o tractaments, es convenient investigar quines mitjanes son diferents. El conjunt de tècniques que tracten aquest problema es denominen \textit{contrastos per comparacions múltiples}.
+Un cop realitzat l'anàlisi de la variància i si aquest confirma l'existencia de diferències significatives entre els grups o tractaments, és convenient investigar quines mitjanes són diferents. El conjunt de tècniques que tracten aquest problema es denominen \textit{contrastos per comparacions múltiples}.
 \\
 
 \subsubsection{Métode de Tukey (\textit{Honestly-significant-difference})}
@@ -312,19 +313,83 @@ n_h = \frac{t}{\sum_{i=1}^{t}\frac{1}{n_i}}
 
 La diferència entre mitjanes serà significativa amb un nivell de significació $\alpha$ si
 \begin{equation*}
-|\bar{X}_j - \bar{X}_k |>; HSD
+|\bar{X}_j - \bar{X}_k |> HSD
 \end{equation*}
 L'interval de confian\c{c}a per a la diferència de mitjanes el definim com:
 \begin{equation*}
 IC(\mu_j - \mu_k)_{(1-\alpha)}= (\bar{X}_j - \bar{X}_k) \pm q_{I,N-I,1-\alpha}\sqrt{\frac{\hat{S}^2}{n}}
 \end{equation*}
 Si l'interval de la diferència inclou el 0, no rebutjem la hipòtesi nul·la del test i per tant, no hi ha diferències entre $\mu_j$ i $\mu_k$.
+\subsection{Mètodes descriptius visuals}
+%http://mural.uv.es/rata3/PECS/Genomica%20Funcional%20y%20Analisis%20de%20Microarrays%20PEC2.pdf
+A l'hora de crear el protocol d'anàlisi teníem la necessitat de descriure el comportament de l'expressió dels gens segons unes covariables. Una manera de veure aquests patrons era amb l'ús de tècniques visuals, que tenen una base matemàtica que explicarem en els següents apartats.
+\subsubsection{Heatmap}
+%http://wpd.ugr.es/~bioestad/guia-spss/practica-8/#8
+%http://www.opiniomics.org/you-probably-dont-understand-heatmaps/
+Un \textit{Heatmap} (o mapa de calor) és una representació gràfica de dades on els valors individuals continguts en una matriu es representen com a colors.
+\\
 
+En mapes de calor, les dades es mostren en una quadrícula on cada fila representa un gen i cada columna representa una mostra. El color i la intensitat de les caselles s'utilitzen per representar canvis (no en valor absolut) de l'expressió gènica.
+\\
 
+Tenim el següent exemple que podem obtenir a l'aplicatiu:
+\begin{center}
+\includegraphics[scale=0.2]{heatmap.png}
+\captionof{figure}{\texttt{Heatmap} generat a partir de 34 gens i 16 mostres. A les files trobem els gens i a les columnes les mostres. A més, es troben agrupats tant per gens com per mostres per mitjà d'un clúster jeràrquic. Per obtenir més informació, s'ha afegit variables fora de la matriu, concretament, a quin tractament correspon la mostra, i quina funció desenvolupa el gen.}
+\end{center}
 
+El mapa de calor també es pot combinar amb mètodes de \textit{clustering} que agrupen els gens i les mostres junts en funció de la similitud del seu patró d'expressió gènica. Això pot ser útil per identificar els gens que normalment s'expressen molt semblant i detectar patrons sota condicions o covariables establertes. El mètode implementat per la funció \texttt{heatmap}, utilitza l'anàlisi de clústers jeràrquics.
+\\
 
-\subsection{Anàlisi de components principals}
-\subsection{Heatmap}
+En el cas dels mètodes jeràrquics les dades s'ordenen en nivells de manera que els nivells superiors contenen als inferiors. La jerarquia construïda permet obtenir també una partició de les dades en grups. S'utilitza la matriu de distàncies o similituds entre els elements de la matriu original de les dades.
+\\
+
+Els algoritmes \textit{jeràrquics} poden ser de dos tipus: De divisió i d'Aglomeració.
+\\
+
+L'\textit{algoritme de divisió} assumeix que en un primer pas totes les dades conformen un sol conglomerat. Aquest clúster es va dividint successivament en conglomerats més petits d'acord a algun criteri seleccionat prèviament. El resultat d'aquest procediment es representa pel dendrograma.
+\\
+
+L'\textit{algoritme d'aglomeració} assumeix que cada observació inicialment és un conglomerat i en cada pas s'associen els conglomerats més similars fins a arribar a un sol clúster.
+\\
+
+La implementació \texttt{hclust} (\textit{hierarchical cluster analysis}) de \texttt{R} utilitza el mètode  \textit{Mètode de Ward} que calcula i actualitza a cada pas la dissimilaritat entre clústers, aquest mètode és d'aglomeració.
+\\
+\clearpage
+\noindent\textbf{Mètode de Ward}
+\\
+%http://www.ugr.es/~gallardo/pdf/cluster-3.pdf
+
+\noindent Ward va proposar que la pèrdua d'informació que es produeix en integrar els diferents individus en clústers pot mesurar-se a través de la suma total dels quadrats de les desviacions entre cada punt (individu) i la mitjana del clúster en el qual s'integra. Perquè el procés de clusterització resulti òptim, en el sentit que els grups formats no distorsionin les dades originals, proposava la següent estratègia:
+\\
+
+A cada pas de l'anàlisi, es considera la possibilitat de la unió de cada parell de grups i optar per la fusió d'aquells dos grups que menys incrementin la suma dels quadrats de les desviacions en unir-se.
+\\
+
+Definim:
+\begin{itemize}
+\item $x_{ij}^k$ com el valor de la j-èssima variables sobre l'i-èssim individu del k-èssim clúster, suposant que aquest clúster té $n_k$ individus.
+\item $m^k$ com el centroide del clúster $k$, amb components $m_{j}^k$
+\item $E_k$ com la suma de quadrats dels errors del clúster $k$, és a dir, la distancia euclídea al quadrat entre cada individu del cluster $k$ al seu centroide:
+\begin{equation*}
+E_k = \sum_{i=1}^{n_k}\sum_{j=1}^{n}(x_{ij}^k - m_{j}^k)^2
+\end{equation*}
+\item $E$ com la suma de quadrats dels errors per a tots els clústers, és a dir, si suposem $h$ clústers:
+\begin{equation*}
+E = \sum_{k=1}^{h} E_k
+\end{equation*}
+\end{itemize}
+El procés comen\c{c}a amb $m$ clústers, cada clúster només té un sol individu, per tant, cada individu coincideix amb el centre del clúster i en aquest primer pas $E_k=0$, per a cada clúster i això fa que $E=0$. L'objectiu del mètode de Ward és trobar en cada etapa aquells dos clústers els quals la seva unió proporcioni el menor increment en la suma total d'errors $E$. Suposem que els clústers $C_p$ i $C_q$ s'uneixen resultant un nou clúster $C_t$, llavors definim l'increment de $E$ com,
+\begin{equation*}
+\bigtriangleup E_{pq} = E_t - E_p - E_q
+\end{equation*}
+el procés es repeteix fins a l'obtenció del dendrograma i l'agrupació dels individus en els diferents clústers. Un exemple aclaridor d'aquest procés iteratiu, amb dades reals, es pot trobar a l'annex \ref{annex:a}.
+\\
+
+\textbf{Observació.} El mètode de Ward és un dels més utilitzats en la pràctica; posseeix gairebé tots els avantatges del mètode de la mitjana i sol ser més discriminant en la determinació dels nivells d'agrupació. Una investigació duta a terme per Kuiper i Fisher va provar que aquest mètode era capa\c{c} d'encertar millor amb la classificació òptima que altres mètodes.
+\subsubsection{Components principals}
+%http://www.knowledgeviz.com/pdf/UKC2009.pdf
+En procés...
 %%% RESULTS
 \clearpage
 \section{Cas d'estudi:Resultats del protocol d'anàlisi}
@@ -338,15 +403,6 @@ Si l'interval de la diferència inclou el 0, no rebutjem la hipòtesi nul·la de
 %%Shiny
 \section{TL3P: Aplicatiu Web amb el paquet Shiny de R}
 \subsection{Introducció a Shiny}
-An alternative method to create web-based teaching tool applications is provided by Shiny
-(Chang, Cheng, Allaire, Xie $\&$ McPherson, 2015), a recent technology created by RStudio.
-Shiny is a web application framework for R (R Core Team, 2015) that only requires knowledge
-in the R programming language. It is not uncommon for instructors to build their
-own teaching tools via scripts written in R and, as we will show, it is not difficult to convert
-existing R scripts into Shiny applications, known simply as ‘Shiny apps’. With Shiny,
-instructors can build a teaching tool that is interactive, dynamic, user-friendly, visually
-appealing, and, with similar functionality to Java/Javascript applets; the only requirement
-is some familiarity in R.
 \subsubsection{Estructura de l'aplicatiu}
 \subsubsection{Gestió per mitjà de repositoris Github}
 \subsection{Funcionalitats de l'aplicació}
@@ -354,7 +410,70 @@ is some familiarity in R.
 %Bibliografia
 \section{Bibliografia}
 %%Appendix
+\clearpage
+\appendix
+\onecolumn
+\section{Mètode de Ward: Exemple del mètode amb gens}
+\label{annex:a}
+Observem com funciona aquest mètode en el cas de tenir 3 gens on es mesura l'expressió gènica per a 3 mostres. Les dades són les següents:
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+\hline
+& $X_{1}$ & $X_2$ & $X_3$ \\
+\hline
+$Gen_1$ & 1.02 & 0.21 & 6.29 \\
+$Gen_2$ & 10.06 & 8.19 & 7.29 \\
+$Gen_3$ & 10.11 & 14.63 & 7.62 \\
+\hline
+\end{tabular}
+\caption{Expressió gènica de cada gen $Gen_i$ per a cada mostra $X_j$.}
+\end{table}
+\\
+Recordem que per utilitzar aquest mètode necessitem la matriu de distàncies euclidianes. La distància euclidiana entre dos punts ${\displaystyle \,P=(p_{1},p_{2},\dots p_{n})}$ i $ {\displaystyle \,Q=(q_{1},q_{2},\dots q_{n})}$ es defineix com:
+\begin{equation*}
+{\displaystyle d_{E}(P,Q)={\sqrt {(p_{1}-q_{1})^{2}+(p_{2}-q_{2})^{2}+\cdots +(p_{n}-q_{n})^{2}}}}
+\end{equation*}
+Per tant, obtenim aquesta matriu de distàncies:
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+\hline
+& $Gen_1$ & $Gen_2$ & $Gen_3$ \\
+\hline
+$Gen_1$ & 0 & 12.10 & 17.10 \\
+$Gen_2$ & 12.10 & 0 & 6.45 \\
+$Gen_3$ & 17.10 & 6.45 & 0 \\
+\hline
+\end{tabular}
+\caption{Matriu de distàncies. La distància utilitzada és l'euclidiana.}
+\end{table}
+\\
+En aquest cas, com tenim només 3 gens, tenim un total de 3 combinacions possibles de 2 elements. Per tant, calcularem $\bigtriangleup E$ per a cada combinació i escollirem el més petit com el millor clúster.
+\\
 
+\begin{table}[ht]
+\onecolumn
+\centering
+\begin{tabularx}{\linewidth}{llllll}
+\hline
+& $Particions$ & $Centroides$ & $E_k$ & $E$ & $\bigtriangleup E$ \\
+\hline
+& $(Gen_1,Gen_2),Gen_3$ & $C_{Gen_1,Gen_2} = (5.54,4.19,6.78) $ & $E_{Gen_1,Gen_2}=72.92$
+$E_{Gen_3}=0$ & $72.92$ & $72.92$ \\
+& $(Gen_1,Gen_3),Gen_2$ & $C_{Gen_1,Gen_2} = (7.06,7.67,7.06) $ & $E_{Gen_1,Gen_3}=112.42$
+$E_{Gen_2}=0$ & $112.42$ & $112.42$ \\
+& $(Gen_2,Gen_3),Gen_1$ & $C_{Gen_1,Gen_2} = (10.08,11.41,7.45)$ & $E_{Gen_2,Gen_3}=20.79$
+$E_{Gen_1}=0$ & $20.79$ & $20.79$ \\
+\hline
+\end{tabularx}
+\caption{Taula resum dels càlculs proposats per obtenir l'increment de la suma de quadrats residuals. Les particions són possibles combinacions de 2 gens en un total de 3.}
+\end{table}
 
+\noindent Podem observar que segons el criteri de Ward, escolliríem unificar el $Gen_2$ i el $Gen_3$ en un mateix clúster. Si fem el mateix però automàticament amb la funció \texttt{hclust}, obtenim el següent dendrograma:
+\begin{center}
+\includegraphics[scale=0.4]{dendrograma.png}
+\captionof{figure}{Dendrograma obtingut amb la funció \texttt{hclust}. Si apliquem directament la funció \texttt{hclust}, que utilitza el mètode de Ward, obtenim 2 clústers. El primer clúster amb el $Gen_1$ i un segon clúster amb el $Gen_2$ i el $Gen_3$. Trobem els mateixos clústers amb el procediment manual que hem calculat anteriorment.}
+\end{center}
 
 \end{document}
