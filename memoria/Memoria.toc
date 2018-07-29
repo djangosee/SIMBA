@@ -11,20 +11,19 @@
 \contentsline {subsubsection}{\numberline {2.3.1}M\IeC {\'e}tode de Tukey (\textit {Honestly-significant-difference})}{7}
 \contentsline {subsection}{\numberline {2.4}M\IeC {\`e}todes descriptius visuals}{8}
 \contentsline {subsubsection}{\numberline {2.4.1}Heatmap}{8}
-\contentsline {subsubsection}{\numberline {2.4.2}Components principals}{9}
-\contentsline {section}{\numberline {3}Cas d'estudi:Resultats del protocol d'an\IeC {\`a}lisi}{10}
-\contentsline {subsection}{\numberline {3.1}Resultats}{10}
-\contentsline {subsubsection}{\numberline {3.1.1}Tractament de les dades}{10}
-\contentsline {subsubsection}{\numberline {3.1.2}An\IeC {\`a}lisi de la vari\IeC {\`a}ncia (ANOVA)}{10}
-\contentsline {subsubsection}{\numberline {3.1.3}Correcci\IeC {\'o} per multiplicitat de contrastos}{10}
-\contentsline {subsubsection}{\numberline {3.1.4}An\IeC {\`a}lisi de components principals}{10}
-\contentsline {subsubsection}{\numberline {3.1.5}Heatmap an\IeC {\`a}lisi}{10}
-\contentsline {subsection}{\numberline {3.2}Conclusions}{10}
-\contentsline {section}{\numberline {4}TL3P: Aplicatiu Web amb el paquet Shiny de R}{10}
-\contentsline {subsection}{\numberline {4.1}Introducci\IeC {\'o} a Shiny}{10}
-\contentsline {subsubsection}{\numberline {4.1.1}Estructura de l'aplicatiu}{10}
-\contentsline {subsubsection}{\numberline {4.1.2}Gesti\IeC {\'o} per mitj\IeC {\`a} de repositoris Github}{10}
-\contentsline {subsection}{\numberline {4.2}Funcionalitats de l'aplicaci\IeC {\'o}}{10}
-\contentsline {subsection}{\numberline {4.3}Desenvolupament i futures versions}{10}
-\contentsline {section}{\numberline {5}Bibliografia}{10}
-\contentsline {section}{\numberline {A}M\IeC {\`e}tode de Ward: Exemple del m\IeC {\`e}tode amb gens}{11}
+\contentsline {subsubsection}{\numberline {2.4.2}Biplot}{9}
+\contentsline {section}{\numberline {3}Cas d'estudi}{11}
+\contentsline {subsection}{\numberline {3.1}Descripci\IeC {\'o} de l'estudi}{11}
+\contentsline {subsection}{\numberline {3.2}Resultats}{12}
+\contentsline {subsubsection}{\numberline {3.2.1}An\IeC {\`a}lisi de la vari\IeC {\`a}ncia (ANOVA)}{12}
+\contentsline {subsubsection}{\numberline {3.2.2}Comparacions m\IeC {\'u}ltiples 2 a 2}{14}
+\contentsline {subsubsection}{\numberline {3.2.3}M\IeC {\`e}todes visuals}{14}
+\contentsline {subsection}{\numberline {3.3}Conclusions}{14}
+\contentsline {section}{\numberline {4}TL3P: Aplicatiu Web amb el paquet \texttt {Shiny} de R}{14}
+\contentsline {subsection}{\numberline {4.1}Introducci\IeC {\'o} a Shiny}{14}
+\contentsline {subsubsection}{\numberline {4.1.1}Estructura de l'aplicatiu}{14}
+\contentsline {subsubsection}{\numberline {4.1.2}Gesti\IeC {\'o} i control de versions}{14}
+\contentsline {subsection}{\numberline {4.2}Funcionalitats de l'aplicaci\IeC {\'o}}{14}
+\contentsline {subsection}{\numberline {4.3}Desenvolupament i futures versions}{14}
+\contentsline {section}{\numberline {A}M\IeC {\`e}tode de Ward: Exemple del m\IeC {\`e}tode amb gens}{16}
+\contentsline {section}{\numberline {B}Gens diana utilitzats a l'estudi}{17}

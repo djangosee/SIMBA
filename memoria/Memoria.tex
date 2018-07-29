@@ -9,6 +9,8 @@
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{framed}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,colortbl,xcolor}
 \usepackage{tabularx}
 \usepackage[font=footnotesize,labelfont=bf]{caption}
  \geometry{
@@ -110,7 +112,13 @@ Encara que l'aplicatiu web s'ha creat a partir d'aquest estudi, la idea ha sigut
 %https://stats.stackexchange.com/questions/78920/mathematical-explanations-behind-anova
 En aquest apartat queden definits els mètodes estadístics utilitzats en el protocol d'anàlisi. Cada mètode ha sigut implementat en l'aplicatiu i més endavant es mostren els resultats del cas d'estudi.
 \subsection{Anàlisi de la variància (ANOVA)}
-L'anàlisi de la variància (ANOVA) és el mètode clàssic per comparar mitjanes entre grups dos grups o més. Suposem que tenim $N$ observacions repartides en $k$ grups i definim $n=\frac{N}{k}$. Llavors $x_{ij}$ seria l'individu $j$ corresponent al grup $i$. En aquest cas assumim que l'estudi és balancejat, és a dir, el nombre d'individus per grup és el mateix. Denotem $\bar{x.}$ com la mitjana de la mostra global, i $\bar{x_{i}}$ com la mitjana del grup $i$.
+L'anàlisi de la variància (ANOVA) és el mètode clàssic per comparar mitjanes entre grups dos grups o més.
+\\
+
+\textbf{Observació.} Hi ha una sèrie de supòsits que s'han de fer abans que s'apliqui l'ANOVA, la desviació en aquests supòsits portaran a resultats que poden ser enganyosos o inexactes. Aquests supòsits inclouen la independència, normalitat i variància constant dels errors. En algunes situacions, hi ha transformacions que poden ser utilitzades per evitar les violacions d'aquests supòsits, com ara la transformació logarítmica de les dades.
+\\
+
+Suposem que tenim $N$ observacions repartides en $k$ grups i definim $n=\frac{N}{k}$. Llavors $x_{ij}$ seria l'individu $j$ corresponent al grup $i$. En aquest cas assumim que l'estudi és balancejat, és a dir, el nombre d'individus per grup és el mateix. Denotem $\bar{x.}$ com la mitjana de la mostra global, i $\bar{x_{i}}$ com la mitjana del grup $i$.
 Les observacions es poden tornar a escriure com:
 \begin{equation*}
 x_{ij} = \bar{x.} + (\bar{x_{i}} - \bar{x.}) + (x_{ij} - \bar{x_{i}})
@@ -167,9 +175,6 @@ F = \frac{MSG}{MSE}
 \end{equation*}
 L'estadístic $F$ segueix una distribució F de Snedecor amb $k-1$ i $N-k$ graus de llibertat. Si la hipòtesi nul·la és certa, $F$ seria proper a 1. D'altra banda, si la mitjana quadràtica entre grups $MSG$ és gran, suposaria un valor gran de l'estadístic F. Bàsicament, l'ANOVA examina les dues fons de la variància total i mira quina part contribueix més. Per aquest motiu, s'anomena anàlisi de la variància encara que la intenció sigui comparar les mitjanes dels grups.
 \\
-
-Hi ha una sèrie de supòsits que s'han de fer abans que s'apliqui l'ANOVA, la desviació en aquests supòsits portaran a resultats que poden ser enganyosos o inexactes. Aquests supòsits inclouen la independència, normalitat i variància constant dels errors. En algunes situacions, hi ha transformacions que poden ser
-utilitzades per evitar les violacions d'aquests supòsits, com ara la transformació logarítmica de les dades.
 
 \subsubsection{Anova per a dissenys desbalancejats}
 En procés...
@@ -305,7 +310,7 @@ HSD = q_{I,N-I}(\alpha)\sqrt{\frac{\hat{S}^2}{n}} ,
 \begin{equation*}
 q_{I,N-I}(\alpha) = \frac{\bar{X}_j - \bar{X}_k}{\sqrt{\frac{\hat{S}^2}{n}}}
 \end{equation*}
-on $\hat{X}_j$ i $\hat{X}_k$ són la mitjana del grup $j$ i $k$, respectivament, i $\hat{X}_j >; \hat{X}_k$. $\hat{S}^2$ és l'estimació de la variància del error o residual; i $n$ és la grandària mostral per a tots els grups; on $I$ i $N-I$ són els graus de llibertat de la distribució del rang estudentitzat ($I$ correspon al nombre de nivells que té el factor, $N$ correspon a la grandària mostral).En el cas de tenir grandàries mostrals diferents entre els nivells del factor, hem d'utilitzar un altre $n$ (mitjana harmònica):
+on $\hat{X}_j$ i $\hat{X}_k$ són la mitjana del grup $j$ i $k$, respectivament, i $\hat{X}_j > \hat{X}_k$. $\hat{S}^2$ és l'estimació de la variància del error o residual; i $n$ és la grandària mostral per a tots els grups; on $I$ i $N-I$ són els graus de llibertat de la distribució del rang estudentitzat ($I$ correspon al nombre de nivells que té el factor, $N$ correspon a la grandària mostral).En el cas de tenir grandàries mostrals diferents entre els nivells del factor, hem d'utilitzar un altre $n$ (mitjana harmònica):
 \begin{equation*}
 n_h = \frac{t}{\sum_{i=1}^{t}\frac{1}{n_i}}
 \end{equation*}
@@ -387,28 +392,276 @@ el procés es repeteix fins a l'obtenció del dendrograma i l'agrupació dels in
 \\
 
 \textbf{Observació.} El mètode de Ward és un dels més utilitzats en la pràctica; posseeix gairebé tots els avantatges del mètode de la mitjana i sol ser més discriminant en la determinació dels nivells d'agrupació. Una investigació duta a terme per Kuiper i Fisher va provar que aquest mètode era capa\c{c} d'encertar millor amb la classificació òptima que altres mètodes.
-\subsubsection{Components principals}
+\subsubsection{Biplot}
 %http://www.knowledgeviz.com/pdf/UKC2009.pdf
-En procés...
+L'anàlisi de components principals és una de les diferents maneres per analitzar l'estructura d'una matriu de correlacions donada. En aquest apartat parlarem del biplot, un tipus de gràfic exploratori on s'analitzen les correlacions entre les variables.
+\\
+
+Les components principals
+\\
+
+El biplot aproxima la distribució d'una mostra multivariant en un espai de dimensió reduïda, normalment de dues dimensions, i superposa sobre la mateixa gràfica les representacions de les variables sobre les quals es mesura la mostra. Un biplot permet mostrar gràficament la informació de les files (individus, casos, etc, ...) i les columnes (variables) d'una matriu de dades multivariants. El prefix bi es refereix a aquest fet i no al fet que el gràfic es fa normalment en dues dimensions.
+\\
+
+\noindent Podem veure un exemple a la següent figura:
+\begin{center}
+\includegraphics[scale=0.55]{biplot.png}
+\captionof{figure}{ Biplot de les dues primeres components (dades escalades). Aquest és un exemple que es pot trobar al llibre \textit{A Handbook of Statistical Analyses Using R. Brian S. Everitt and Torsten Hothorn}. Les dades corresponen als resultats de 25 competidors en 7 proves esportives.}
+\end{center}
+El gràfic esta format per:
+\begin{itemize}
+\item La puntuació per a cada individu (atletes) en les dues primeres components principals. (Eix esquerra i eix inferior)
+\item Els \textit{loadings} per a cada variable (esdeveniments esportius) en les dues primeres components principals. (Eix dreta i eix superior)
+\end{itemize}
+En general el biplot serà més representatiu de l'estructura dels casos i les variables si les dues components escollides expliquen una quantitat suficient de la variància.
+
+
 %%% RESULTS
 \clearpage
-\section{Cas d'estudi:Resultats del protocol d'anàlisi}
+\section{Cas d'estudi}
+El cas d'estudi consisteix en un disseny experimental fet amb porcins que han sigut alimentats amb diferents fonts de proteïnes (diverses combinacions de productes de soja, plasma animal i mucosa) a principis del deslletament. L'objectiu principal del estudi és avaluar la salut intestinal del porc poc després d'administrar les diferents dietes. A més, és vol veure si els tractaments tenen un efecte en el creixement del porc, i per tant, en la productivitat de l'empresa.
+\subsection{Descripció de l'estudi}
+L'estudi es defineix breument en els següents punts\\
+
+\noindent\textbf{Objectiu de l'estudi}
+\begin{itemize}
+  \item Analitzar i comparar els diferents tractaments i com afecten a l'expressió dels gens.
+  \item Trobar relacions entre la funcionalitat del gen i la seva expressió sota diferents tractaments.
+\end{itemize}
+\noindent\textbf{Disseny de l'estudi}\\
+Estudi experimental amb una mostra total de 46 casos.
+\noindent\textbf{Tractaments}
+\begin{itemize}
+  \item \textbf{T1}: Inclusió d'aliments de soja a la dieta.
+  \item \textbf{T2}: Inclusió de plasma animal a la dieta.
+  \item \textbf{T3}: Inclusió de $33\%$ de plasma animal i  $66\%$ de mucosa a la dieta.
+  \item \textbf{T4}: Inclusió de $50\%$ de plasma animal i  $50\%$ de mucosa a la dieta.
+\end{itemize}
+\noindent\textbf{Variables explicatives}\\
+La principal variable explicativa és:
+\begin{itemize}
+  \item Tractament
+\end{itemize}
+Les variables secundàries que també trobem a l'estudi:
+\begin{enumerate}
+  \item ID: nom del cas.
+  \item Teixit: l'estudi es fa paral·lelament amb 2 tipus de teixits diferents, per tant, es farà un estudi amb cada teixit. (Dels 46 casos, queden 23 casos per teixit)
+  \begin{itemize}
+    \item Jejunum
+    \item Ileum
+  \end{itemize}
+\end{enumerate}
+\noindent\textbf{Variables genètiques}\\
+Cada gen és una variable on es mesura l'abundancia de material genètic. Els gens han sigut escollits pels investigadors basant-se en les seves recerques i reben el nom de gens \textit{diana}. A l'annex \ref{annex:b} trobem una taula de tots els gens de l'estudi amb la seva funcionalitat dins de l'organisme.
+\newpage
+\noindent\textbf{Tractament de dades faltants}\\
+El tractament dels NA’s és el següent:
+\begin{enumerate}
+\item S’eliminen aquelles files i columnes sense cap observació vàlida.
+\item S’eliminen aquelles columnes (gens) que tinguin més del 50$\%$ de valors perduts en algun tractament.
+\end{enumerate}
+\noindent\textbf{Mètodes estadístics}\\
+L'anàlisi estadístic ha sigut realitzat utilitzant \texttt{R} amb la versió 3.4.3.
+\\
+
+Per a tots els tests estadístics s'ha aplicat un nivell de significació del $5\%$ (P < 0.05). S'han realitzat correccions per multiplicitat de contrastos; \textit{Benjamini$\&$Hochberg} per l'ANOVA i \textit{Tukey} per les comparacions 2 a 2 entre tractaments.
+\\
+
+Tota la documentació, codi i \textit{outputs} han sigut emmagatzemats en un repositori públic a la plataforma \textit{GitHub}.\\
+\noindent\textbf{Tractament de les dades}\\
+Les dades han sigut validades abans de l'anàlisi, qualsevol inconsistencia en el format de les dades ha sigut eliminat o canviat. Més endavant s'expliquen quins criteris de l'estructura de la base de dades són els adequats perquè sigui funcional a l'aplicatiu.
+\\
+
+A més, hem aplicat una tranformació logarítmica als valors d'expressió gènica per a cada gen, amb l'objectiu de treballar amb una distribució normal i poder aplicar els mètodes estadístics descrits anteriorment.
+\begin{center}
+\includegraphics[scale=0.45]{logsdades.png}
+\captionof{figure}{(1) El gràfic de l'esquerra mostra les dades sense cap tipus de transformació.(2) El gràfic de la dreta mostra les dades amb una transformació logarítmica.}
+\end{center}
+\clearpage
 \subsection{Resultats}
-\subsubsection{Tractament de les dades}
+Degut al disseny de l'estudi, s'analitzen paral·lelament 2 tipus de teixits, \textit{Ilenum} i \textit{Jejunum}. L'anàlisi que es duu a terme consta d'una primera part on s'examinen quins gens s'expressen diferencialment en cada teixit sota els 4 tractaments, i es determinen quins tractaments són diferents entre ells per a cada gen. Després hi ha una segona part més desciptiva on s'analitzen els patrons trobats en els mètodes visuals.
 \subsubsection{Anàlisi de la variància (ANOVA)}
-\subsubsection{Correcció per multiplicitat de contrastos}
-\subsubsection{Anàlisi de components principals}
-\subsubsection{Heatmap anàlisi}
+Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferents tractaments s'ha aplicat l'anàlisi de la variancia per a cada teixit:
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrc}
+    \toprule
+{\textbf{Nom del gen}} & {\textbf{Funció del gen }} & {\textbf{Estadístic F}} & {\textbf{P-valor}} & {\textbf{P-valor (Benjamini$\&$Hochberg)}} \\
+  \midrule
+{\textcolor{gray}{TFF3}} & Barrier Function & 5.2927 & 0.0086 & $0.0603^{*}$ \\
+  {\textcolor{gray}{OCLN}} & Barrier Function & 1.2861 & 0.3094 & 0.4572 \\
+  {\textcolor{gray}{ZO1}} & Barrier Function & 0.9128 & 0.4544 & 0.5979 \\
+  {\textcolor{gray}{MUC2}} & Barrier Function & 7.2461 & 0.0022 & $0.0272^{***}$ \\
+  {\textcolor{gray}{MUC13}} & Barrier Function & 2.1769 & 0.1261 & 0.2425 \\
+  {\textcolor{gray}{SI}} & Enzymed/Hormone & 3.1867 & 0.0488 & 0.1525 \\
+  {\textcolor{gray}{DAO1}} & Enzymed/Hormone & 1.2813 & 0.3109 & 0.4572 \\
+  {\textcolor{gray}{HNMT}} & Enzymed/Hormone & 0.5736 & 0.6396 & 0.6953 \\
+  {\textcolor{gray}{ANPEP}} & Enzymed/Hormone & 1.9658 & 0.1553 & 0.2773 \\
+  {\textcolor{gray}{GCG}} & Enzymed/Hormone & 1.1972 & 0.3390 & 0.4709 \\
+  {\textcolor{gray}{IGF1R}} & Enzymed/Hormone &  &  &  \\
+  {\textcolor{gray}{GPX2}} & Enzymed/Hormone & 10.5231 & 0.0003 & $0.0079^{***}$\\
+  {\textcolor{gray}{SOD2m}} & Enzymed/Hormone & 3.3427 & 0.0424 & 0.1516 \\
+  {\textcolor{gray}{ALPI}} & Enzymed/Hormone & 2.1929 & 0.1241 & 0.2425 \\
+  {\textcolor{gray}{TNF$\alpha$}} & Inmune Response &  &  &  \\
+  {\textcolor{gray}{TGF$\beta_1$}} & Inmune Response & 1.7353 & 0.1956 & 0.3260 \\
+  {\textcolor{gray}{CCL20}} & Inmune Response &  &  &  \\
+  {\textcolor{gray}{IFNGR1}} & Inmune Response & 4.5897 & 0.0148 & $0.0741^{*}$ \\
+  {\textcolor{gray}{HSPB1.HSP27}} & Inmune Response & 0.8298 & 0.4947 & 0.6184 \\
+  {\textcolor{gray}{HSPA4.HSP70}} & Inmune Response & 0.6819 & 0.5745 & 0.6529 \\
+  {\textcolor{gray}{FAXDC2}} & Inmune Response &  &  &  \\
+  {\textcolor{gray}{GBP1}} & Inmune Response & 0.6991 & 0.5647 & 0.6529 \\
+  {\textcolor{gray}{IL8}} & Inmune Response & 5.1389 & 0.0096 & 0.0603 \\
+  {\textcolor{gray}{SLC5A1.SGLT1}} & Nutrient Transport& 2.5431 & 0.0886 & 0.2013 \\
+  {\textcolor{gray}{SLC16A1.MCT1}} & Nutrient Transport & 0.1985 & 0.8961 & 0.9334 \\
+  {\textcolor{gray}{SLC15A1.PEPT1}} & Nutrient Transport &  &  &  \\
+  {\textcolor{gray}{SLC13A1.NAS1}} & Nutrient Transport & 2.8547 & 0.0661 & 0.1652 \\
+  {\textcolor{gray}{SLC11A2.DMT1}} & Nutrient Transport &  &  &  \\
+  {\textcolor{gray}{SLC30A1.ZnT1}} & Nutrient Transport & 4.2445 & 0.0196 & $0.0818^{*}$ \\
+  {\textcolor{gray}{SLC39A4.ZIP4}} & Nutrient Transport & 3.0217 & 0.0567 & 0.1575 \\
+  {\textcolor{gray}{NR3C1.Gr$\alpha$}} & Stress & 0.0308 & 0.9925 & 0.9925 \\
+   \bottomrule
+\end{tabular}
+\onecolumn
+\caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Ileum}. Els pvalors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
+\end{table}
+
+\noindent El nivell de significació és $\alpha$=0.05, però degut al conjunt de tests realitzats s'aplica una correcció (\textit{Benjamini $\&$ Hochberg}). Per tant, només s'haurien de considerar significatius del conjunt experimental aquells tests en els que el p-valor de \textit{Benjamini $\&$ Hochberg} estigui per sota de determinat llindar, en aquest cas hem fixat un nivell de significació del 5$\%$, encara que en aquests tipus d'experiments poden arrbiar al $10\%$. Observem que hi ha gens sense cap pvalor, això es degut a que després de fer el tractament de dades faltants (descrit a l'apartat anterior) encara hi ha NA's, per tant, l'anàlisi de la variància no contempla aquests gens.
+%Jejunum
+\onecolumn
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrc}
+  \toprule
+ {\textbf{Nom del gen}} & {\textbf{Funció del gen }} & {\textbf{Estadístic F}} & {\textbf{P-valor}} & {\textbf{P-valor (Benjamini$\&$Hochberg)}} \\
+  \midrule
+{\textcolor{gray}{TFF3}} & Barrier Function & 5.2048 & 0.0099 & $0.0635^{*}$  \\
+  {\textcolor{gray}{OCLN}} & Barrier Function & 3.7353 & 0.0314 & $0.0919^{*}$  \\
+  {\textcolor{gray}{ZO1}} & Barrier Function & 2.4161 & 0.1020 & 0.1962 \\
+  {\textcolor{gray}{MUC2}} & Barrier Function & 5.0794 & 0.0108 & $0.0635^{*}$  \\
+  {\textcolor{gray}{MUC13}} & Barrier Function & 2.1372 & 0.1332 & 0.2220 \\
+  {\textcolor{gray}{SI}} & Enzymed/Hormone & 3.6748 & 0.0331 & $0.0919^{*}$  \\
+  {\textcolor{gray}{DAO1}} & Enzymed/Hormone & 4.8678 & 0.0127 & $0.0635^{*}$  \\
+  {\textcolor{gray}{HNMT}} & Enzymed/Hormone & 4.5122 & 0.0167 & $0.0697^{*}$  \\
+  {\textcolor{gray}{ANPEP}} & Enzymed/Hormone & 2.3119 & 0.1126 & 0.2011 \\
+  {\textcolor{gray}{GCG}} & Enzymed/Hormone & 6.6996 & 0.0035 & $0.0433^{***}$ \\
+  {\textcolor{gray}{IGF1R}} & Enzymed/Hormone &  &  &  \\
+  {\textcolor{gray}{PYY}} & Enzymed/Hormone &  &  &  \\
+  {\textcolor{gray}{GPX2}} & Enzymed/Hormone &  &  &  \\
+  {\textcolor{gray}{SOD2m}} & Enzymed/Hormone & 1.4329 & 0.2680 & 0.3526 \\
+  {\textcolor{gray}{ALPI}} & Enzymed/Hormone & 1.0417 & 0.3994 & 0.4755 \\
+  {\textcolor{gray}{TLR4}} & Inmune Response &  &  &  \\
+  {\textcolor{gray}{TGF$\beta1$}} & Inmune Response & 1.7069 & 0.2034 & 0.3178 \\
+  {\textcolor{gray}{CCL20}} & Inmune Response &  &  &  \\
+  {\textcolor{gray}{IFNGR1}} & Inmune Response & 1.5036 & 0.2495 & 0.3526 \\
+  {\textcolor{gray}{HSPB1.HSP27}} & Inmune Response & 0.3366 & 0.7991 & 0.8324 \\
+  {\textcolor{gray}{HSPA4.HSP70}} & Inmune Response & 0.8326 & 0.4943 & 0.5617 \\
+  {\textcolor{gray}{FAXDC2}} & Inmune Response &  &  &  \\
+  {\textcolor{gray}{GBP1}} & Inmune Response & 0.0084 & 0.9989 & 0.9989 \\
+  {\textcolor{gray}{IL8}} & Inmune Response & 2.5729 & 0.0881 & 0.1835 \\
+  {\textcolor{gray}{SLC5A1.SGLT1}} & Nutrient Transport & 4.1519 & 0.0223 & $0.0796^{*}$  \\
+  {\textcolor{gray}{SLC16A1.MCT1}} & Nutrient Transport &  &  &  \\
+  {\textcolor{gray}{SLC15A1.PEPT1}} & Nutrient Transport & 2.9677 & 0.0613 & 0.1394 \\
+  {\textcolor{gray}{SLC13A1.NAS1}} & Nutrient Transport & 3.5486 & 0.0368 & $0.0921^{*}$  \\
+  {\textcolor{gray}{SLC11A2.DMT1}} & Nutrient Transport & 1.3570 & 0.2895 & 0.3618 \\
+  {\textcolor{gray}{SLC30A1.ZnT1}} & Nutrient Transport & 0.4630 & 0.7118 & 0.7737 \\
+  {\textcolor{gray}{SLC39A4.ZIP4}} & Nutrient Transport & 19.3772 & 0.0000 & $0.0003^{***}$ \\
+  {\textcolor{gray}{NR3C1.Gr$\alpha$}} & Stress & 1.4606 & 0.2606 & 0.3526 \\
+   \bottomrule
+\end{tabular}
+\caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Jejunum}. Els pvalors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
+\end{table}
+\clearpage
+\onecolumn
+\subsubsection{Comparacions múltiples 2 a 2}
+\begin{table}[ht]
+\centering
+\scalebox{1}{
+\begin{tabular}{rrrrrrr}
+  \toprule
+ & {\textbf{2-1}} & {\textbf{3-1}} & {\textbf{4-1}} & {\textbf{3-2}} & {\textbf{4-2}} & {\textbf{4-3}} \\
+  \midrule
+{\textcolor{gray}{TFF3}} & 0.3188 & 0.3478 & 0.0044 & 0.9990 & 0.1862 & 0.1238 \\
+  {\textcolor{gray}{MUC2}} & 0.0399 & 0.6594 & 0.0023 & 0.2903 & 0.5807 & 0.0243 \\
+  {\textcolor{gray}{GPX2}} & 0.0028 & 0.8767 & 0.0632 & 0.0006 & 0.5016 & 0.0147 \\
+  {\textcolor{gray}{IFNGR1}} & 0.6521 & 0.0625 & 0.0160 & 0.5062 & 0.1856 & 0.8559 \\
+  {\textcolor{gray}{IL8}} & 0.0203 & 0.7625 & 0.0329 & 0.1273 & 0.9959 & 0.1907 \\
+  {\textcolor{gray}{SLC30A1.ZnT1}} & 0.8488 & 0.0984 & 0.3940 & 0.0249 & 0.1293 & 0.8790 \\
+   \bottomrule
+\end{tabular}
+}
+\caption{Dels gens significatius per al teixit \textbf{Ilenum}, s'apliquen comparacions per multiplicitat de contrastos Gene-Tractament}
+\end{table}
+\begin{table}[ht]
+\centering
+\scalebox{1}{
+\begin{tabular}{rrrrrrr}
+  \toprule
+ & {\textbf{2-1}} & {\textbf{3-1}} & {\textbf{4-1}} & {\textbf{3-2}} & {\textbf{4-2}} & {\textbf{4-3}} \\
+  \midrule
+{\textcolor{gray}{TFF3}} & 0.3103 & 0.7306 & 0.2612 & 0.0512 & 0.0074 & 0.8416 \\
+  {\textcolor{gray}{OCLN}} & 0.7919 & 0.2620 & 0.3580 & 0.0510 & 0.0713 & 0.9903 \\
+  {\textcolor{gray}{MUC2}} & 0.2886 & 0.6525 & 0.3436 & 0.0357 & 0.0098 & 0.9583 \\
+  {\textcolor{gray}{SI}} & 0.8958 & 0.4620 & 0.0283 & 0.8557 & 0.1154 & 0.4220 \\
+  {\textcolor{gray}{DAO1}} & 0.9388 & 0.0422 & 0.0368 & 0.1245 & 0.1152 & 0.9999 \\
+  {\textcolor{gray}{HNMT}} & 0.4370 & 0.0211 & 0.0357 & 0.3378 & 0.5138 & 0.9766 \\
+  {\textcolor{gray}{GCG}} & 0.9985 & 0.0896 & 0.0142 & 0.0662 & 0.0100 & 0.8457 \\
+  {\textcolor{gray}{SLC5A1.SGLT1}} & 0.9227 & 0.2469 & 0.1394 & 0.0842 & 0.0410 & 0.9937 \\
+  {\textcolor{gray}{SLC13A1.NAS1}} & 0.1100 & 0.2227 & 0.0286 & 0.9754 & 0.9335 & 0.7387 \\
+  {\textcolor{gray}{SLC39A4.ZIP4}} & 0.0015 & 0.3812 & 0.1450 & 0.0001 & 0.0000 & 0.9453 \\
+   \bottomrule
+\end{tabular}
+}
+\caption{Dels gens significatius per al teixit \textbf{Jejunum}, s'apliquen comparacions per multiplicitat de contrastos Gene-Tractament}
+\end{table}
+\subsubsection{Mètodes visuals}
 \subsection{Conclusions}
 %%Shiny
-\section{TL3P: Aplicatiu Web amb el paquet Shiny de R}
+\section{TL3P: Aplicatiu Web amb el paquet \texttt{Shiny} de R}
 \subsection{Introducció a Shiny}
 \subsubsection{Estructura de l'aplicatiu}
-\subsubsection{Gestió per mitjà de repositoris Github}
+\subsubsection{Gestió i control de versions}
 \subsection{Funcionalitats de l'aplicació}
 \subsection{Desenvolupament i futures versions}
 %Bibliografia
-\section{Bibliografia}
+\begin{thebibliography}{9}
+\bibitem{caca8}
+Mark D. Robinson, Davis J. McCarthy, Gordon K. Smyth; edgeR: a Bioconductor package for differential expression analysis of digital gene expression data, Bioinformatics, Volume 26, Issue 1, 1 January 2010, Pages 139–140,
+\\\texttt{https://doi.org/10.1093/bioinformatics/btp616}
+
+\bibitem{caca7}
+K. R. GABRIEL; The biplot graphic display of matrices with application to principal component analysis, Biometrika, Volume 58, Issue 3, 1 December 1971, Pages 453–467, \\\texttt{https://doi.org/10.1093/biomet/58.3.453}
+
+\bibitem{caca2}
+Ramón Tamarit Agusti. Análisis de cluster no supervisados. Aplicaciones en
+la búsqueda y visualización de perfiles de expresión
+en datos de microarrays.
+\\\texttt{http://mural.uv.es/rata3/PECSspace.html}
+
+\bibitem{pca}
+Dong Hyun Jeong, Caroline Ziemkiewicz, William Ribarsky and Remco Chang: Understanding Principal Component Analysis Using a Visual Analytics Tool,
+\\\texttt{http://www.knowledgeviz.com/pdf/UKC2009.pdf}
+
+\bibitem{caca1}
+Universidad de Granada: Comparaciones múltiples.
+\\\texttt{http://wpd.ugr.es/$\sim$bioestad/guia-spss/practica7}
+
+\bibitem{caca}
+Universidad de Granada: Métodos de análisis multivariante. Análisis clúster.
+\\\texttt{http://wpd.ugr.es/$\sim$bioestad/guia-spss/}
+
+\bibitem{cl}
+Universidad de Granada: Métodos Jerárquicos de Análisis Cluster.
+\\\texttt{http://www.ugr.es/$\sim$gallardo/pdf/cluster-3.pdf}
+
+\bibitem{caca5}
+\textit{NCBI, National Center of Biotechnology Information.}
+\\\texttt{https://www.ncbi.nlm.nih.gov/}. USA
+
+\bibitem{caca6}
+\textit{PubMed. US National Library of Medicine.}
+\\\texttt{https://www.ncbi.nlm.nih.gov/pubmed/}. USA
+
+\end{thebibliography}
 %%Appendix
 \clearpage
 \appendix
@@ -475,5 +728,10 @@ $E_{Gen_1}=0$ & $20.79$ & $20.79$ \\
 \includegraphics[scale=0.4]{dendrograma.png}
 \captionof{figure}{Dendrograma obtingut amb la funció \texttt{hclust}. Si apliquem directament la funció \texttt{hclust}, que utilitza el mètode de Ward, obtenim 2 clústers. El primer clúster amb el $Gen_1$ i un segon clúster amb el $Gen_2$ i el $Gen_3$. Trobem els mateixos clústers amb el procediment manual que hem calculat anteriorment.}
 \end{center}
-
+\section{Gens diana utilitzats a l'estudi}
+\label{annex:b}
+\begin{center}
+\includegraphics[scale=0.7]{genes.png}
+\captionof{figure}{Gens \textit{diana} i la seva funció dins de l'organisme.}
+\end{center}
 \end{document}
