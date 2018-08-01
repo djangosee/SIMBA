@@ -112,7 +112,7 @@ Encara que l'aplicatiu web s'ha creat a partir d'aquest estudi, la idea ha sigut
 %https://stats.stackexchange.com/questions/78920/mathematical-explanations-behind-anova
 En aquest apartat queden definits els mètodes estadístics utilitzats en el protocol d'anàlisi. Cada mètode ha sigut implementat en l'aplicatiu i més endavant es mostren els resultats del cas d'estudi.
 \subsection{Anàlisi de la variància (ANOVA)}
-L'anàlisi de la variància (ANOVA) és el mètode clàssic per comparar mitjanes entre grups dos grups o més.
+L'anàlisi de la variància (ANOVA) és el mètode clàssic per comparar mitjanes entre grups, dos grups o més.
 \\
 
 \textbf{Observació.} Hi ha una sèrie de supòsits que s'han de fer abans que s'apliqui l'ANOVA, la desviació en aquests supòsits portaran a resultats que poden ser enganyosos o inexactes. Aquests supòsits inclouen la independència, normalitat i variància constant dels errors. En algunes situacions, hi ha transformacions que poden ser utilitzades per evitar les violacions d'aquests supòsits, com ara la transformació logarítmica de les dades.
@@ -177,9 +177,9 @@ L'estadístic $F$ segueix una distribució F de Snedecor amb $k-1$ i $N-k$ graus
 \\
 
 \subsubsection{Anova per a dissenys desbalancejats}
-En procés...
-\clearpage
-
+Si la mida d'una mostra és diferent per a cada grup o tractament, es minimitzarà la potència estadística en comparació amb un disseny balancejat. El poder estadístic no és més que la probabilitat que l'estudi detecti un efecte si realment hi ha un efecte. És inversament proporcional a l'error Tipus II. Si el poder estadístic és alt, significa que la probabilitat de cometre un error de tipus II serà petita. En altres paraules, ens constarà més trobar diferencies signficatives i els nostres resultats estaran esbiaixats.
+\\
+A l'annex \ref{annex:c} s'expliquen mètodes per tractar un disseny desbalancejat.
 \subsection{Correcció per multiplicitat de contrastos}
 %http://www.stat.cmu.edu/~genovese/talks/hannover1-04.pdf
 %Limma
@@ -392,28 +392,123 @@ el procés es repeteix fins a l'obtenció del dendrograma i l'agrupació dels in
 \\
 
 \textbf{Observació.} El mètode de Ward és un dels més utilitzats en la pràctica; posseeix gairebé tots els avantatges del mètode de la mitjana i sol ser més discriminant en la determinació dels nivells d'agrupació. Una investigació duta a terme per Kuiper i Fisher va provar que aquest mètode era capa\c{c} d'encertar millor amb la classificació òptima que altres mètodes.
-\subsubsection{Biplot}
+\subsubsection{Anàlisi per mitjà del Biplot}
 %http://www.knowledgeviz.com/pdf/UKC2009.pdf
-L'anàlisi de components principals és una de les diferents maneres per analitzar l'estructura d'una matriu de correlacions donada. En aquest apartat parlarem del biplot, un tipus de gràfic exploratori on s'analitzen les correlacions entre les variables.
+%http://www.econ.upf.edu/~satorra/M/ComponentsPrincipals.pdf
+L'anàlisi de components principals és una de les diferents maneres per analitzar l'estructura d'una matriu de correlacions donada. En aquest apartat definirem la teoria de l'anàlisi de components principals més enfocada al biplot, un tipus de gràfic exploratori on s'analitzen les correlacions entre les variables.
 \\
 
-Les components principals
+\noindent\textbf{L'objectiu amb les Components Principals}\\
+
+Donades $p$ variables $X_1, X_2,...,X_p$, volem construir $p$ noves variables $Z_1,Z_2,...,Z_p$ (que anomenarem components principals) amb les següents condicions:
+\begin{enumerate}
+\item Les noves variables han de contenir la mateixa informació que les variables originals
+\item Les noves variables han de ser incorrelacionades i de variància 1
+\item Les noves variables han d'estar ordenades de major a menor importància
+\end{enumerate}
+Les variables originals han de ser una mitjana ponderada de les components principals,
+on les variables més importants tinguin un major pes:
+\begin{equation*}
+ X_j = w_{j1} Z_1 + w_{j2} Z_2 + ... + w_{jp} Z_p
+\end{equation*}
+per a $i = 1,2,...,p$.
 \\
+
+L'element clau d'una anàlisi de components principals és, doncs, la matriu de pesos que
+permet expressar les variables originals com a combinació lineal de les noves variables.
+\begin{center}
+$ \begin{bmatrix}
+w_{11} & w_{12} & ... & w_{1p}\\
+w_{21} & w_{22} & ... & w_{2p} \\
+... & ... & ... & ... \\
+w_{31} & w_{32} & ... & w_{33}
+\end{bmatrix}  $
+\end{center}
+Com que hem construït les variables $Z_1,Z_2,...,Z_p$ de manera que fossin incorrelacionades, es verifica que la suma dels quadrats dels pesos de la fila $i$ és igual a la variància de $X_i$:
+\begin{equation*}
+    w_{i12} + w_{i22} + ... + w_{ip2} = s_{i2}
+\end{equation*}
+També es demostra que la suma dels quadrats dels pesos de la columna $j$ és la variància
+total que captura $Z_j$ , que anomenarem variància explicada per la component $j$ i la
+denotarem per $\lambda_j$ :
+\begin{equation*}
+w_{1j}^2 + w_{2j}^2 + ... + w_{pj}^2 = \lambda_{j}
+\end{equation*}
+Com que hem posat la condició que les noves variables estiguin ordenades per ordre
+d'importància i que les components més importants tinguin un major pes, en la matriu de
+pesos observem que la primera columna (que conté els pesos de la primera component
+principal en les variables originals) contindrà nombres en conjunt més grans que els de la
+segona; aquesta els contindrà més grans que els de la tercera; i així successivament. Per
+tant:
+\begin{equation*}
+\lambda_{1} \geq \lambda_{2} \geq ... \geq \lambda_{p}
+\end{equation*}
+
+Com que la suma dels quadrats de tots els elements de la matriu dels pesos ha de ser la
+mateixa tant si la suma es fa per files ($\Sigma s_i^2$ ) com si es fa per columnes ($\Sigma\lambda_i$ ), les components principals $Z_1,Z_2,...,Z_p$ contenen la mateixa informació que les dades
+originals i la suma dels seus valors propis coincideix amb la variància total de les
+variables $X_1, X_2,...,X_p$ :
+\begin{center}
+$\lambda_{1} + \lambda_{2} + ... + \lambda_{p} = s_1^2 + s_2^2 + ... + s_p^2 =$ Variació Total
+\end{center}
+Per tant, el percentatge de la variació total del model que està continguda en la
+component $j$ és igual a:
+\begin{equation*}
+\frac{\lambda_j}{\Sigma_{i=1}^p \lambda_i}\cdot 100
+\end{equation*}
+\noindent\textbf{Biplot}\\
 
 El biplot aproxima la distribució d'una mostra multivariant en un espai de dimensió reduïda, normalment de dues dimensions, i superposa sobre la mateixa gràfica les representacions de les variables sobre les quals es mesura la mostra. Un biplot permet mostrar gràficament la informació de les files (individus, casos, etc, ...) i les columnes (variables) d'una matriu de dades multivariants. El prefix bi es refereix a aquest fet i no al fet que el gràfic es fa normalment en dues dimensions.
 \\
 
 \noindent Podem veure un exemple a la següent figura:
 \begin{center}
-\includegraphics[scale=0.55]{biplot.png}
+\includegraphics[scale=0.5]{biplot.png}
 \captionof{figure}{ Biplot de les dues primeres components (dades escalades). Aquest és un exemple que es pot trobar al llibre \textit{A Handbook of Statistical Analyses Using R. Brian S. Everitt and Torsten Hothorn}. Les dades corresponen als resultats de 25 competidors en 7 proves esportives.}
 \end{center}
-El gràfic esta format per:
-\begin{itemize}
-\item La puntuació per a cada individu (atletes) en les dues primeres components principals. (Eix esquerra i eix inferior)
-\item Els \textit{loadings} per a cada variable (esdeveniments esportius) en les dues primeres components principals. (Eix dreta i eix superior)
-\end{itemize}
-En general el biplot serà més representatiu de l'estructura dels casos i les variables si les dues components escollides expliquen una quantitat suficient de la variància.
+Aquest gràfic és important ja que ens dóna molta informació:
+\\
+
+``\textit{La longitud de cada fletxa ens informa del percentatge de variació de cada variable explicada per les dues components principals.}''
+\\
+
+De fet, la longitud és exactament igual a l'arrel quadrada de la comunalitat de l'extracció
+(que és el percentatge de la variació de cada variable que queda explicada). En efecte, el
+teorema de Pitàgores ens diu que la suma dels quadrats dels catets és igual al quadrat de
+la hipotenusa i, en aquest cas, els catets són els pesos i la hipotenusa la longitud del
+vector. Per tant, tenim que:
+\begin{equation*}
+(longitud del vector)^2 = w_{11}^2 + w_{12}^2
+\end{equation*}
+Si una variable quedés explicada en un $100\%$, la longitud del vector seria 1. Si, en canvi, quedés molt mal explicada, la longitud del vector corresponent seria propera a zero. Per tant, com més properes al cercle unitat estiguin les variables, més llargues seran les fletxes i millor quedaran representades. És a dir, menor serà la pèrdua d'informació que es produeix en substituir les variables originals per les components principals.
+En aquest exemple, el gràfic ens mostra que les quatre variables queden molt ben
+representades.
+\\
+
+``\textit{Els angles que formen dues fletxes entre sí, ens mostren la correlació existent entre les corresponents variables}''
+\\
+
+El cosinus de l'angle format pels dos vectors és proporcional a la seva correlació. Com
+més petit sigui l'angle, més gran la correlació. Així, dues variables que quedin
+representades en punts molt propers tindran vectors que formaran un angle proper a zero, fet que indica que tindran una correlació molt forta. En canvi, dues variables representades per punts molt separats i els vectors de les quals formin un angle proper a l'angle recte, seran pràcticament incorrelacionades.
+\\
+
+``\textit{Els sentits dels vectors indiquen el signe de la correlació existent entre les
+corresponents variables}''
+\\
+
+Dos vectors que tinguin una mateixa direcció però sentits oposats tindran una correlació
+molt forta en sentit negatiu. És a dir, valors elevats en una variable es corresponen amb
+valors baixos en l'altra.
+\\
+
+``\textit{La posició de les variables en el gràfic mostra l'estructura de les dades i suggereix possibles interpretacions de les components principals}''
+\\
+
+El fet que hi hagi un grup de variables ben representades i en posicions properes en el
+gràfic indica que totes elles estan molt relacionades entre sí i que ens subministren
+bàsicament la mateixa informació. Quan apareixen varis grups de variables vol dir que hi
+ha diferents aspectes descrits per la matriu de dades. També el fet que alguna variable quedi molt ben representada i que en el gràfic li correspongui un punt proper a un dels eixos de coordenades, ens està indicant que una de les dues primeres components principals està fortament correlacionada amb aquesta variable i, per tant, se li pot donar una interpretació similar.
 
 
 %%% RESULTS
@@ -616,10 +711,36 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
 \subsubsection{Mètodes visuals}
 \subsection{Conclusions}
 %%Shiny
+\twocolumn
 \section{TL3P: Aplicatiu Web amb el paquet \texttt{Shiny} de R}
+Implementar una eina capa\c{c} de realitzar el protocol d'anàlisi d'una manera interactiva i generalitzada ha sigut el objectiu principal del treball. En els següents apartats s'introdueix el software i la metodologia utilitzada per crear l'eina.
 \subsection{Introducció a Shiny}
-\subsubsection{Estructura de l'aplicatiu}
+Amb l'idea de facilitar futures investigacions als grups de recerca de la UAB, va sorgir la idea de crear una aplicació mitjan\c{c}ant \texttt{Shiny}.
+\\
+
+\texttt{Shiny} és un paquet d'\texttt{R} que facilita la creació d'aplicacions web interactives (apps) directament des de \texttt{R}.
+\\
+
+Principalment el codi esta dividit en 3 scripts, anomenats:
+\begin{itemize}
+    \item \texttt{ui.R} (\textit{A user interface object})
+    \item \texttt{server.R} (\textit{A server function})
+    \item \texttt{App.R} (\textit{A call to the \texttt{shinyApp} function})
+\end{itemize}
+L'objecte \textit{user interface (ui)} controla l'aparen\c{c}a de l'aplicació i interactua amb llenguatges com \textit{HTML, CSS, Javascript}. La funció \textit{server} conté els càlculs interns de l'aplicació. Finalment, la funció \texttt{shinyApp} fa una crida a l'\textit{ui} i el \textit{server} per obrir l'aplicació.
+\\
+
+Això seria una petita introducció al paquet \texttt{Shiny}, la pròpia pàgina de \texttt{Rstudio} té tutorials que aprofundeixen més amb totes les funcionalitats del paquet (https://shiny.rstudio.com/tutorial/).
+
+%https://shiny.rstudio.com/articles/basics.html
 \subsubsection{Gestió i control de versions}
+Abans de parlar sobre l'aplicació que hem desenvolupat, caldria destacar quina ha sigut la metodologia a l'hora de guardar el codi. Habitualment treballem guardant els scripts sense cap tipus de versió i sempre sobreescribint el treball realitzat. Aquesta manera de treballar és molt poc eficient i comporta molts problemes si es treballa en grup. Per tant, per desenvolupar l'aplicació d'una manera més efica\c{c} i segura, hem treballat amb \textit{GitHub}.
+\\
+
+\noindent \textit{GitHub} és una plataforma de desenvolupament col·labo-ratiu de programari per allotjar projectes utilitzant el sistema de control de versions \textit{Git} \footnote{Git és un programari de control de versions. El control de versions, resumint molt, és la gestió dels diversos canvis que es realitzen sobre un repositori (un repositori és el nom que rep el lloc on s'allotja el codi d'un projecte de desenvolupament en algun llenguatge de programació).}. El codi s'emmagatzema de forma pública, encara que també es pot fer de forma privada.
+%https://github.com/Hispano/Guia-sobre-Git-Github-y-Metodologia-de-Desarrollo-de-Software-usando-Git-y-Github
+
+\subsubsection{Estructura de l'aplicatiu}
 \subsection{Funcionalitats de l'aplicació}
 \subsection{Desenvolupament i futures versions}
 %Bibliografia
@@ -734,4 +855,8 @@ $E_{Gen_1}=0$ & $20.79$ & $20.79$ \\
 \includegraphics[scale=0.7]{genes.png}
 \captionof{figure}{Gens \textit{diana} i la seva funció dins de l'organisme.}
 \end{center}
+\clearpage
+\section{Anova unifactorial per a dissenys desbalancejats}
+\label{annex:c}
+
 \end{document}

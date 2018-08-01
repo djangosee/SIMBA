@@ -226,6 +226,7 @@ INPUT logsdades.png
 INPUT ./logsdades.png
 INPUT ./logsdades.png
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtk10.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtti10.tfm
 INPUT dendrograma.png
 INPUT ./dendrograma.png
 INPUT ./dendrograma.png
@@ -235,8 +236,8 @@ INPUT ./genes.png
 INPUT Memoria.aux
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc
-INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc
+INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb
@@ -264,3 +265,4 @@ INPUT /usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb
