@@ -6,12 +6,12 @@ Repositorio oficial del trabajo de final de grado.
 Para descargar el repositorio, hay una opción en verde "Clone or download" para descargarlo en ".ZIP".
 
 ### Descargar repositorio desde la terminal
-Para clonar el repositorio localmente, és necesario ejectuar la siguiente linea en la terminal de linux:
+Para clonar el repositorio localmente, es necesario ejecutar la siguiente linea en la terminal de Linux:
 
 ```
 git clone https://github.com/djangosee/TFGShinyApp.git
 ```
-### Cómo abrir la aplicación?
+### Cómo abrir la aplicación
 
 1. Extraer el ".ZIP" en una carpeta local.
 2. Abrir el script App.R
