@@ -1,17 +1,17 @@
-# TFGShinyApp:"The three little pigs"
+# T3LP: Protocolo de análisis de datos genéticos en Shiny.
 
 Repositorio oficial del trabajo de final de grado.
 
-## Descargar repositorio desde el navegador
+### Descargar repositorio desde el navegador
 Para descargar el repositorio, hay una opción en verde "Clone or download" para descargarlo en ".ZIP".
 
-## Descargar repositorio desde la terminal
+### Descargar repositorio desde la terminal
 Para clonar el repositorio localmente, és necesario ejectuar la siguiente linea en la terminal de linux:
 
 ```
 git clone https://github.com/djangosee/TFGShinyApp.git
 ```
-## Cómo abrir la aplicación?
+### Cómo abrir la aplicación?
 
 1. Extraer el ".ZIP" en una carpeta local.
 2. Abrir el script App.R
