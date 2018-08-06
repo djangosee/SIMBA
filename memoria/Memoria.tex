@@ -12,6 +12,18 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{booktabs,colortbl,xcolor}
 \usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{listings}
+\lstset{
+basicstyle=\scriptsize\tt,
+}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
 \usepackage[font=footnotesize,labelfont=bf]{caption}
  \geometry{
  a4paper,
@@ -730,20 +742,93 @@ Principalment el codi esta dividit en 3 scripts, anomenats:
 L'objecte \textit{user interface (ui)} controla l'aparen\c{c}a de l'aplicació i interactua amb llenguatges com \textit{HTML, CSS, Javascript}. La funció \textit{server} conté els càlculs interns de l'aplicació. Finalment, la funció \texttt{shinyApp} fa una crida a l'\textit{ui} i el \textit{server} per obrir l'aplicació.
 \\
 
-Això seria una petita introducció al paquet \texttt{Shiny}, la pròpia pàgina de \texttt{Rstudio} té tutorials que aprofundeixen més amb totes les funcionalitats del paquet (https://shiny.rstudio.com/tutorial/).
+Això seria una petita introducció al paquet \texttt{Shiny}, la pròpia pàgina de \texttt{Rstudio} té tutorials que aprofundeixen més amb totes les funcionalitats del paquet. (\url{https://shiny.rstudio.com/tutorial/})
 
 %https://shiny.rstudio.com/articles/basics.html
 \subsubsection{Gestió i control de versions}
 Abans de parlar sobre l'aplicació que hem desenvolupat, caldria destacar quina ha sigut la metodologia a l'hora de guardar el codi. Habitualment treballem guardant els scripts sense cap tipus de versió i sempre sobreescribint el treball realitzat. Aquesta manera de treballar és molt poc eficient i comporta molts problemes si es treballa en grup. Per tant, per desenvolupar l'aplicació d'una manera més efica\c{c} i segura, hem treballat amb \textit{GitHub}.
 \\
 
-\noindent \textit{GitHub} és una plataforma de desenvolupament col·labo-ratiu de programari per allotjar projectes utilitzant el sistema de control de versions \textit{Git} \footnote{Git és un programari de control de versions. El control de versions, resumint molt, és la gestió dels diversos canvis que es realitzen sobre un repositori (un repositori és el nom que rep el lloc on s'allotja el codi d'un projecte de desenvolupament en algun llenguatge de programació).}. El codi s'emmagatzema de forma pública, encara que també es pot fer de forma privada.
-%https://github.com/Hispano/Guia-sobre-Git-Github-y-Metodologia-de-Desarrollo-de-Software-usando-Git-y-Github
+\textit{GitHub} és una plataforma de desenvolupament col·la-boratiu de programari per allotjar projectes utilitzant el sistema de control de versions \textit{Git}.
+\\
 
+\textit{Git} és un programari de control de versions. El control de versions, resumint molt, és la gestió dels diversos canvis que es realitzen sobre un repositori (un repositori és el nom que rep el lloc on s'allotja el codi d'un projecte de desenvolupament en algun llenguatge de programació).
+
+\newpage
+El repositori on es troba tot el codi de l'aplicació el tenim al següent enlla\c{c}: \url{https://github.com/djangosee/TFGShinyApp/tree/UserInterface}.
+A l'enlla\c{c} trobem les instruccions necesaries per descarregar el repositori i obrir l'aplicació. El codi s'ha emmagatzemat de forma pública i qualsevol usuari de la plataforma pot obtenir-lo i treballar desenvolupant noves funcionalitats.
+%https://github.com/Hispano/Guia-sobre-Git-Github-y-Metodologia-de-Desarrollo-de-Software-usando-Git-y-Github
+\\
+
+D'aquesta forma tot el codi queda centralitzat, es pot accedir de manera ràpida i fer modificacions sense afectar el funcionament de l'aplicatiu. En els següents apartats es parlarà de l'aparen\c{c}a de l'aplicació, les seves funcionalitats i quins canvis es podrien aplicar en futures versions.
 \subsubsection{Estructura de l'aplicatiu}
+Un cop accedim a l'aplicació, trobem la següent interficie:
+\begin{center}
+\includegraphics[scale=0.3]{app1.png}
+\captionof{figure}{Imatge de l'aparen\c{c}a de l'aplicació i la seva estructura de pestanyes.}
+\end{center}
+
+La idea principal a l'hora de desenvolupar l'aplicatiu ha sigut la de crear un entorn atractiu i fàcil per a l'usuari. L'aplicació esta formada de 3 pestanyes:
+\begin{enumerate}
+    \item \textit{DataVisualitzation}: Pestanya on carreguem les dades i obtenim unes taules per poder fer consultes i visualitzar les dades.
+    \item \textit{Analize}: Aquesta pestanya conté la configuració dels paràmetres i el posterior protocol d'anàlisi.
+    \item \textit{Usage}: Per últim, trobem les especificacions necessaries per obrir la base de dades i un petit tutorial de l'aplicatiu.
+\end{enumerate}
+
+\textbf{Observació} Si existeixen problemes a l'hora d'obrir l'apliació, a l'annex \ref{annex:d} podem trobar l'output de la funció \texttt{sessionInfo} on ens mostra la versió d'R utilitada amb els corresponents paquets.
+\clearpage
 \subsection{Funcionalitats de l'aplicació}
+En aquest apartat es presenten les funcionalitats que té l'aplicació en forma d'imatges i comentaris.
+\\
+
+\textbf{Observació.} Les dades utilitzades en les següents imatges no corresponen a les dades utilitzades en el cas d'estudi.
+\subsubsection{Panell de configuració dels paràmetres}
+També anomenat \textit{SidebarPanel}, en aquest panell trobem els paràmetres i variables relacionats amb l'estudi:
+\begin{center}
+\includegraphics[scale=0.4]{app2.png}
+\captionof{figure}{Panell de configuració dels paràmetres}
+\end{center}
+La configuració abans de comen\c{c}ar l'anàlisi esta formada per:
+\begin{enumerate}
+    \item Selecció dels factors de la base de dades
+    \item Selecció de la variable tractament
+    \item Selecció de la variable id
+    \item Selecció de la variable teixit
+    \item Selecció de la categoria de la variable teixit
+    \item $\alpha$ per a l'ANOVA
+    \item $\alpha$ BenjaminiHochberg
+    \item $\alpha$ per a les comparacions 2 a 2 (Tukey)
+    \item Percentatge de dades faltants a eliminar per tractament per a cada gen (Per defecte al 50$\%$)
+\end{enumerate}
+\newpage
+\subsubsection{Taules}
+A l'aplicació podem trobar 2 taules de resultats, una corresponent a l'anàlisi de la variancia i l'altre corresponent a les comparacions 2 a 2 dels tractaments.
+\begin{center}
+\includegraphics[scale=0.3]{app3.png}
+\captionof{figure}{Taula de resultats de l'ANOVA}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.3]{app4.png}
+\captionof{figure}{Taula de les comparacions 2 a 2 amb Tukey}
+\end{center}
+Les cel·les en verd mostren els p-valors que han sigut significatius. El nivell de signifiació s'estableix amb anterioritat per l'usuari al panell de configuració.
+\clearpage
+\onecolumn
+\subsubsection{Gràfics}
+La versió actual de l'aplicació compta amb 3 gràfics; el \textit{Biplot}, un gràfic de línes i per últim un $Heatmap$ interactiu.
+\begin{center}
+\includegraphics[scale=0.5]{app5.png}
+\captionof{figure}{Biplot}
+\end{center}
+\clearpage
+\twocolumn
 \subsection{Desenvolupament i futures versions}
+A dia d'avui l'aplicació esta a la versió 1.0 i en funcionament. Encara que es poden realitzar nous canvis per millorar l'experiencia, com per exemple, mantenir l'aplicació en un servidor, d'aquesta manera no faria falta descarregar el codi, i directament l'aplicació estaria conectada a la xarxa. Un altre idea per a futures versions podría ser la creació automàtica d'un informe amb els resultats de l'anàlisi.
+\\
+
+Si mirem quins són els punts febles, podríem destacar el llarg temps de càrrega degut a les gràfiques interactives que ralentitzen la pàgina. També seria important millorar l'estructura del codi per modularitzar les tasques i no repetir codi. Per últim, comentar tot el codi utilitzant un manual d'estil, per facilitar l'entrada de nou codi a mans de futurs usuaris de l'aplicació.
 %Bibliografia
+\clearpage
 \begin{thebibliography}{9}
 \bibitem{caca8}
 Mark D. Robinson, Davis J. McCarthy, Gordon K. Smyth; edgeR: a Bioconductor package for differential expression analysis of digital gene expression data, Bioinformatics, Volume 26, Issue 1, 1 January 2010, Pages 139–140,
@@ -858,5 +943,8 @@ $E_{Gen_1}=0$ & $20.79$ & $20.79$ \\
 \clearpage
 \section{Anova unifactorial per a dissenys desbalancejats}
 \label{annex:c}
-
+\clearpage
+\section{Output sessionInfo()}
+\label{annex:d}
+\lstinputlisting[float=ht,frame=tb,caption=Output sessionInfo(),label=zebra]{output.txt}
 \end{document}
