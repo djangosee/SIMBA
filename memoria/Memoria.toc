@@ -26,9 +26,9 @@
 \contentsline {subsection}{\numberline {4.2}Funcionalitats de l'aplicaci\IeC {\'o}}{16}{subsection.4.2}
 \contentsline {subsubsection}{\numberline {4.2.1}Panell de configuraci\IeC {\'o} dels par\IeC {\`a}metres}{16}{subsubsection.4.2.1}
 \contentsline {subsubsection}{\numberline {4.2.2}Taules}{16}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Gr\IeC {\`a}fics}{17}{subsubsection.4.2.3}
-\contentsline {subsection}{\numberline {4.3}Desenvolupament i futures versions}{18}{subsection.4.3}
-\contentsline {section}{\numberline {A}M\IeC {\`e}tode de Ward: Exemple del m\IeC {\`e}tode amb gens}{20}{appendix.A}
-\contentsline {section}{\numberline {B}Gens diana utilitzats a l'estudi}{21}{appendix.B}
-\contentsline {section}{\numberline {C}Anova unifactorial per a dissenys desbalancejats}{22}{appendix.C}
-\contentsline {section}{\numberline {D}Output sessionInfo()}{23}{appendix.D}
+\contentsline {subsubsection}{\numberline {4.2.3}Gr\IeC {\`a}fics}{16}{subsubsection.4.2.3}
+\contentsline {subsection}{\numberline {4.3}Desenvolupament i futures versions}{19}{subsection.4.3}
+\contentsline {section}{\numberline {A}M\IeC {\`e}tode de Ward: Exemple del m\IeC {\`e}tode amb gens}{21}{appendix.A}
+\contentsline {section}{\numberline {B}Gens diana utilitzats a l'estudi}{22}{appendix.B}
+\contentsline {section}{\numberline {C}Anova unifactorial per a dissenys desbalancejats}{23}{appendix.C}
+\contentsline {section}{\numberline {D}Output sessionInfo()}{24}{appendix.D}
