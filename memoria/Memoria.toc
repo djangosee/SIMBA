@@ -17,18 +17,18 @@
 \contentsline {subsection}{\numberline {3.2}Resultats}{12}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}An\IeC {\`a}lisi de la vari\IeC {\`a}ncia (ANOVA)}{12}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Comparacions m\IeC {\'u}ltiples 2 a 2}{14}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}M\IeC {\`e}todes visuals}{14}{subsubsection.3.2.3}
-\contentsline {subsection}{\numberline {3.3}Conclusions}{14}{subsection.3.3}
-\contentsline {section}{\numberline {4}TL3P: Aplicatiu Web amb el paquet \texttt {Shiny} de R}{15}{section.4}
-\contentsline {subsection}{\numberline {4.1}Introducci\IeC {\'o} a Shiny}{15}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Gesti\IeC {\'o} i control de versions}{15}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Estructura de l'aplicatiu}{15}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Funcionalitats de l'aplicaci\IeC {\'o}}{16}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Panell de configuraci\IeC {\'o} dels par\IeC {\`a}metres}{16}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Taules}{16}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Gr\IeC {\`a}fics}{16}{subsubsection.4.2.3}
-\contentsline {subsection}{\numberline {4.3}Desenvolupament i futures versions}{19}{subsection.4.3}
-\contentsline {section}{\numberline {A}M\IeC {\`e}tode de Ward: Exemple del m\IeC {\`e}tode amb gens}{21}{appendix.A}
-\contentsline {section}{\numberline {B}Gens diana utilitzats a l'estudi}{22}{appendix.B}
-\contentsline {section}{\numberline {C}Anova unifactorial per a dissenys desbalancejats}{23}{appendix.C}
-\contentsline {section}{\numberline {D}Output sessionInfo()}{24}{appendix.D}
+\contentsline {subsubsection}{\numberline {3.2.3}M\IeC {\`e}todes visuals}{16}{subsubsection.3.2.3}
+\contentsline {subsection}{\numberline {3.3}Conclusions}{19}{subsection.3.3}
+\contentsline {section}{\numberline {4}TL3P: Aplicatiu Web amb el paquet \texttt {Shiny} de R}{20}{section.4}
+\contentsline {subsection}{\numberline {4.1}Introducci\IeC {\'o} a Shiny}{20}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Gesti\IeC {\'o} i control de versions}{20}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Estructura de l'aplicatiu}{20}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Funcionalitats de l'aplicaci\IeC {\'o}}{21}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Panell de configuraci\IeC {\'o} dels par\IeC {\`a}metres}{21}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Taules}{21}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Gr\IeC {\`a}fics}{21}{subsubsection.4.2.3}
+\contentsline {subsection}{\numberline {4.3}Desenvolupament i futures versions}{24}{subsection.4.3}
+\contentsline {section}{\numberline {A}M\IeC {\`e}tode de Ward: Exemple del m\IeC {\`e}tode amb gens}{26}{appendix.A}
+\contentsline {section}{\numberline {B}Gens diana utilitzats a l'estudi}{27}{appendix.B}
+\contentsline {section}{\numberline {C}Anova unifactorial per a dissenys desbalancejats}{28}{appendix.C}
+\contentsline {section}{\numberline {D}Output sessionInfo()}{29}{appendix.D}

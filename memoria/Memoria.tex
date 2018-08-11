@@ -37,17 +37,17 @@ basicstyle=\scriptsize\tt,
 \begin{center}\textbf{Abstract (versió en català)}\end{center}
 \begin{list}{}{\leftmargin=3em\rightmargin=\leftmargin}\item\relax
 \small
-L'anàlisi de dades d'expressió genètica és un dels grans reptes estadístics per a detectar expressions diferencials entre gens sota una condició donada. La idea principal d'aquest treball, és la creació d'un protocol d'anàlisi interactiu de matrius d'expressió genètica. Es presenten mètodes estadístics com l'anàlisi de la variància (ANOVA). Mètodes de correcció per multiplicitat de contrastos també queden descrits. S'utilitzen mètodes gràfics com els mapes de calor. Tot aquest protocol d'anàlisi s'implementa en una aplicació web desenvolupada amb Shiny.
+L'anàlisi de dades d'expressió genètica per a detectar expressions diferencials entre gens sota una condició donada és un dels grans reptes estadístics. La idea principal d'aquest treball, és la creació d'un protocol d'anàlisi interactiu de matrius d'expressió genètica. Es presenten mètodes estadístics com l'anàlisi de la variància (ANOVA) i eines de correcció per multiplicitat de contrastos (Tukey). També s'utilitzen mètodes gràfics com els mapes de calor, per visualitzar simultàniament clústers de casos i gens, i mètodes de components principals (PCA) per explorar correlacions entre tractaments en el conjunt dels gens. Tot aquest protocol d'anàlisi s'implementa en una aplicació web desenvolupada amb Shiny.
 \end{list}\par\vspace{6mm}%
 \begin{center}\textbf{Abstract (versión en castellano)}\end{center}
 \begin{list}{}{\leftmargin=3em\rightmargin=\leftmargin}\item\relax
 \small
-El análisis de datos de expresión genética es uno de los grandes retos estadísticos para detectar expresiones diferenciales entre genes mediante una condición establecida. La idea principal de este trabajo, es la creación de un protocolo de análisis interactivo de matrices de expresión genética. Se presentan métodos estadísticos como el análisis de la varianza (ANOVA). Métodos de corrección por multiplicidad de contrastes también quedan descritos. Se utilizan métodos gráficos como los mapas de calor. Todo este protocolo de análisis se implementa en una aplicación web desarrollada con Shiny.
+El análisis de datos de expresión genética para detectar expresiones diferenciales entre genes mediante una condición establecida es uno de los grandes retos estadísticos. La idea principal de este trabajo, es la creación de un protocolo de análisis interactivo de matrices de expresión genética. Se presentan métodos estadísticos como el análisis de la varianza (ANOVA) y herramientas de corrección por multiplicidad de contrastes (Tukey). También se utilizan métodos gráficos como los mapas de calor, para visualizar simultániamente clústers de casos i genes, i mètodos de components principales (PCA) para explorar correlaciones entre tatamientos en el conjunto de genes. Todo este protocolo de análisis se implementa en una aplicación web desarrollada con Shiny.
 \end{list}\par\vspace{6mm}%
 \begin{center}\textbf{Abstract (English version)}\end{center}
 \begin{list}{}{\leftmargin=3em\rightmargin=\leftmargin}\item\relax
 \small
- Data gene expression analysis is one of the major statistical challenges to detect differential expressions between genes under a given condition. The main idea is the creation of an interactive analysis protocol of gene expression matrix. Methods are presented for detecting differential expression using statistical hypothesis testing methods including analysis of variance (ANOVA). Methods for multiple testing correction and their application are described. Graphical methods such as heatmaps are used. This analysis protocol is implemented in a web application developed in Shiny.
+ Data gene expression analysis is one of the major statistical challenges to detect differential expressions between genes under a given condition. The main idea is the creation of an interactive analysis protocol of gene expression matrix. Methods are presented for detecting differential expression using statistical hypothesis testing methods including analysis of variance (ANOVA). Methods for multiple testing correction and their application are described (Tukey). Graphical methods such as heatmaps are used in the analysis to detect clústers between genes and also between cases. Principal component analysis is used as graphical method to explore correlations between treatments in the set of genes. This analysis protocol is implemented in a web application developed in Shiny.
 \end{list}\par\vspace{6mm}%
 }
 
@@ -677,9 +677,18 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
 \end{tabular}
 \caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Jejunum}. Els pvalors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
 \end{table}
+\noindent\textbf{Ileum}\\
+\\
+Un cop fet l'ANOVA i la corresponent correcció per multiplicitat de contrastos (FDR), s'han trobat 2 gens amb una expressió diferencial (p-valor < 0.05), \textit{MUC2} i \textit{GPX2}. Anomenarem quasi significatius aquells gens que es troben entre $0.5 <$ p-valor $\leq 0.1$. Els gens quasi significatius són 3; \textit{TFF3}, \textit{IFNGR1} i \textit{SLC30A1.ZnT}. Podem trobar aquests resultats a la \textit{Taula 2}.\\
+\\
+\noindent\textbf{Jejunum}\\
+\\
+Un cop fet l'ANOVA i la corresponent correcció per multiplicitat de contrastos (FDR), s'han trobat 2 gens amb una expressió diferencial (p-valor < 0.05), \textit{GCG} i \textit{SLC39A4.ZIP4} Els gens quasi significatius són 8; \textit{TFF3}, \textit{OCLN}, \textit{MUC2}, \textit{SI}, \textit{DAO1}, \textit{HNMT}, \textit{SLC5A1.SGLT1} i \textit{SLC13A1.NAS1}. Podem trobar aquests resultats a la \textit{Taula 3}.\\
+
 \clearpage
 \onecolumn
 \subsubsection{Comparacions múltiples 2 a 2}
+Un cop identificats els gens que han manifestat una expressió diferencial hem aplicat comparacions 2 a 2 amb l'objectiu de veure quins tractaments són diferents entre si. L'anàlisi esta fet per a cada teixit i el mètode utilitzat per corregir la multiplicitat de contrastos ha sigut el mètode de Tukey.
 \begin{table}[ht]
 \centering
 \scalebox{1}{
@@ -687,17 +696,25 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
   \toprule
  & {\textbf{2-1}} & {\textbf{3-1}} & {\textbf{4-1}} & {\textbf{3-2}} & {\textbf{4-2}} & {\textbf{4-3}} \\
   \midrule
-{\textcolor{gray}{TFF3}} & 0.3188 & 0.3478 & 0.0044 & 0.9990 & 0.1862 & 0.1238 \\
-  {\textcolor{gray}{MUC2}} & 0.0399 & 0.6594 & 0.0023 & 0.2903 & 0.5807 & 0.0243 \\
-  {\textcolor{gray}{GPX2}} & 0.0028 & 0.8767 & 0.0632 & 0.0006 & 0.5016 & 0.0147 \\
-  {\textcolor{gray}{IFNGR1}} & 0.6521 & 0.0625 & 0.0160 & 0.5062 & 0.1856 & 0.8559 \\
-  {\textcolor{gray}{IL8}} & 0.0203 & 0.7625 & 0.0329 & 0.1273 & 0.9959 & 0.1907 \\
-  {\textcolor{gray}{SLC30A1.ZnT1}} & 0.8488 & 0.0984 & 0.3940 & 0.0249 & 0.1293 & 0.8790 \\
+{\textcolor{gray}{TFF3}} &  &  & 0.0044 &  &  &  \\
+  {\textcolor{gray}{MUC2}} & 0.0399 &  & 0.0023 &  &  & 0.0243 \\
+  {\textcolor{gray}{GPX2}} & 0.0028 &  & 0.0632 & 0.0006 &  & 0.0147 \\
+  {\textcolor{gray}{IFNGR1}} &  & 0.0625 & 0.0160 &  &  &  \\
+  {\textcolor{gray}{IL8}} & 0.0203 &  & 0.0329 &  &  &  \\
+  {\textcolor{gray}{SLC30A1.ZnT1}} &  & 0.0984 &  & 0.0249 &  &  \\
    \bottomrule
 \end{tabular}
 }
-\caption{Dels gens significatius per al teixit \textbf{Ilenum}, s'apliquen comparacions per multiplicitat de contrastos Gene-Tractament}
+\caption{Dels gens significatius per al teixit \textbf{Ilenum}, s'apliquen comparacions 2 a 2 Gene-Tractament. A la taula només es mostren aquells pvalors quasi significatius o significatius.}
 \end{table}
+
+Podem destacar que gairebé tots els gens que surten signficatius presenten diferències estadísticament significatives entre el tractament 4 i el tractament 1. De la mateixa manera, observem que la comparació entre el tractament 4-2 no indica cap diferència significativa.
+\begin{center}
+\includegraphics[scale=0.8]{IleumTukey.png}
+\captionof{figure}{Intervals de confian\c{c}a del $95\%$ per a la diferència de mitjanes per a cada comparació i per a cada gen del teixit \textbf{Ilenum}. Els intervals que no contenen el 0, es mostren com comparacions estadísticament significatives.}
+\end{center}
+\clearpage
+En aquest teixit, podem veure que cap gen presenta diferencies significatives entre el tractament 4 i 3. Les comparacions que presenten més diferencies són 3-2 i 4-2, encara que no és presenta un patró tan clar com en el teixit Ilenum.
 \begin{table}[ht]
 \centering
 \scalebox{1}{
@@ -705,25 +722,71 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
   \toprule
  & {\textbf{2-1}} & {\textbf{3-1}} & {\textbf{4-1}} & {\textbf{3-2}} & {\textbf{4-2}} & {\textbf{4-3}} \\
   \midrule
-{\textcolor{gray}{TFF3}} & 0.3103 & 0.7306 & 0.2612 & 0.0512 & 0.0074 & 0.8416 \\
-  {\textcolor{gray}{OCLN}} & 0.7919 & 0.2620 & 0.3580 & 0.0510 & 0.0713 & 0.9903 \\
-  {\textcolor{gray}{MUC2}} & 0.2886 & 0.6525 & 0.3436 & 0.0357 & 0.0098 & 0.9583 \\
-  {\textcolor{gray}{SI}} & 0.8958 & 0.4620 & 0.0283 & 0.8557 & 0.1154 & 0.4220 \\
-  {\textcolor{gray}{DAO1}} & 0.9388 & 0.0422 & 0.0368 & 0.1245 & 0.1152 & 0.9999 \\
-  {\textcolor{gray}{HNMT}} & 0.4370 & 0.0211 & 0.0357 & 0.3378 & 0.5138 & 0.9766 \\
-  {\textcolor{gray}{GCG}} & 0.9985 & 0.0896 & 0.0142 & 0.0662 & 0.0100 & 0.8457 \\
-  {\textcolor{gray}{SLC5A1.SGLT1}} & 0.9227 & 0.2469 & 0.1394 & 0.0842 & 0.0410 & 0.9937 \\
-  {\textcolor{gray}{SLC13A1.NAS1}} & 0.1100 & 0.2227 & 0.0286 & 0.9754 & 0.9335 & 0.7387 \\
-  {\textcolor{gray}{SLC39A4.ZIP4}} & 0.0015 & 0.3812 & 0.1450 & 0.0001 & 0.0000 & 0.9453 \\
+{\textcolor{gray}{TFF3}} &  &  &  & 0.0512 & 0.0074 &  \\
+  {\textcolor{gray}{OCLN}} &  &  &  & 0.0510 & 0.0713 &  \\
+  {\textcolor{gray}{MUC2}} &  &  &  & 0.0357 & 0.0098 &  \\
+  {\textcolor{gray}{SI}} &  &  & 0.0283 &  &  &  \\
+  {\textcolor{gray}{DAO1}} &  & 0.0422 & 0.0368 &  &  &  \\
+  {\textcolor{gray}{HNMT}} &  & 0.0211 & 0.0357 &  &  &  \\
+  {\textcolor{gray}{GCG}} &  & 0.0896 & 0.0142 & 0.0662 & 0.0100 &  \\
+  {\textcolor{gray}{SLC5A1.SGLT1}} &  &  &  & 0.0842 & 0.0410 &  \\
+  {\textcolor{gray}{SLC13A1.NAS1}} &  &  & 0.0286 &  &  &  \\
+  {\textcolor{gray}{SLC39A4.ZIP4}} & 0.0015 &  &  & 0.0001 & 0.0000 &  \\
    \bottomrule
 \end{tabular}
 }
-\caption{Dels gens significatius per al teixit \textbf{Jejunum}, s'apliquen comparacions per multiplicitat de contrastos Gene-Tractament}
+\caption{Dels gens significatius per al teixit \textbf{Jejunum}, s'apliquen comparacions 2 a 2 Gene-Tractament. A la taula només es mostren aquells pvalors quasi significatius o significatius.}
 \end{table}
+
+\begin{center}
+\includegraphics[scale=0.9]{TukeyJeju.png}
+\captionof{figure}{Intervals de confian\c{c}a del $95\%$ per a la diferència de mitjanes per a cada comparació i per a cada gen del teixit \textbf{Jejunum}. Els intervals que no contenen el 0, es mostren com comparacions estadísticament significatives.}
+\end{center}
+\clearpage
 \subsubsection{Mètodes visuals}
-\subsection{Conclusions}
-%%Shiny
+Els següents gràfics del protocol ens poden ajudar a trobar relacions i agrupacions entre els tractaments i els gens. El primer mètode analitzat ha sigut el \textit{biplot} per a cada teixit:
+\begin{center}
+\includegraphics[scale=0.6]{biploti.png}
+\captionof{figure}{Biplot de les mitjanes per cada gene-tractament del teixit \textbf{Ilenum}.}
+\end{center}
+Amb aquest teixit podem observar una correlació alta entre la mitjana del tractament 4 i la mitjana del tractament 1. En canvi, trobem correlacions més febles entre el tractament 4 i els tractaments restants. L'angle entre el tractament 2 i el tractament 3, ens indica una correlació casi nul·la.
+
+\begin{center}
+\includegraphics[scale=0.6]{biplotj.png}
+\captionof{figure}{Biplot de les mitjanes per cada gene-tractament del teixit \textbf{Jejunum}.}
+\end{center}
+En aquest cas trobem correlacions altes entre els tractaments 1, 3 i 4. En canvi el tractament 2, sembla tenir una correlació més feble amb els altres tractaments. Recordem que per calcular el coeficient de correlació en aquest gràfic, només necesitem l'angle que formen els dos vectors, suposem que l'angle entre T4 i T2 és de 45 graus:
+\begin{equation*}
+r(T4,T2)= cos(angle_{(T4,T2)})= cos(\frac{\pi}{4})= 0.7071
+\end{equation*}
+
+\clearpage
+El següent gràfic mostra les mitjanes de cada gen per tractaments, d'aquesta manera es poden observar les diferències que observavem a l'ANOVA i a les comparacions 2 a 2.
+\begin{center}
+\includegraphics[scale=0.9]{lineploti.png}
+\captionof{figure}{Mitjana dels gens per tractament, teixit \textbf{Ilenum}. El gràfic esta ordenat per família gènica primer i dins de la familia per el tractament 1 de forma decreixent. El nom de cada gen esta acompanyat de la seva funció dins de l'organisme, com per exemple, \textit{BF.OCLN} = funció del gen: \textit{Barrer Function}, nom del gen: \textit{OCLN}}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.9]{lineplotj.png}
+\captionof{figure}{Mitjana dels gens per tractament, teixit \textbf{Jejunum}. El gràfic esta ordenat per família gènica primer i dins de la familia per el tractament 1 de forma decreixent.}
+\end{center}
+Un fet imporant a destacar en el gràfic del texit \textbf{Jejunum}, és el gran número de gens significatius que tenen una funció barrera o protectora (BT) dins del organisme.
+\clearpage
+Per últim, es presenten els \textit{heatmap} per a cada teixit. Les conclusions d'aquest apartat queden incloses en les conclusions finals del cas d'estudi.
+\begin{center}
+\includegraphics[scale=0.9]{heatmapi.png}
+\captionof{figure}{Heatmap del teixit\textbf{Ilenum}.}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.9]{heatmapj.png}
+\captionof{figure}{Heatmap del teixit \textbf{Jejunum}.}
+\end{center}
+\clearpage
 \twocolumn
+\subsection{Conclusions}
+MIRAR QUE CONCLUYE EN EL TFG DE GENES.
+%%Shiny
+\clearpage
 \section{TL3P: Aplicatiu Web amb el paquet \texttt{Shiny} de R}
 Implementar una eina capa\c{c} de realitzar el protocol d'anàlisi d'una manera interactiva i generalitzada ha sigut l'objectiu principal del treball. En els següents apartats s'introdueix el software i la metodologia utilitzada per crear l'eina.
 \subsection{Introducció a Shiny}
@@ -824,13 +887,16 @@ El primer gràfic que trobem correspon a les mitjanes per tractament i per gen. 
 \includegraphics[scale=0.4]{app8.png}
 \captionof{figure}{\textit{LinePlot}. Exemple on ordenem els gens (eix x) de forma decreixent pel valor del tractament 1 i escollim els colors per a cada tractament.}
 \end{center}
+\begin{center}
+\includegraphics[scale=0.4]{app9.png}
+\captionof{figure}{\textit{LinePlot}. Exemple on ordenem els gens (eix x) de forma decreixent pel valor del tractament 3 i agrupat per la funcionalitat del gen. A més escollim una escala de grisos.}
+\end{center}
+\clearpage
 El següent gràfic que trobem és el \textit{Biplot}, on podem comparar les correlacions entre les mitjanes dels tractaments:
 \begin{center}
 \includegraphics[scale=0.5]{app5.png}
 \captionof{figure}{\textit{Biplot}}
 \end{center}
-\clearpage
-\twocolumn
 El \textit{Heatmap} el trobem de forma interactiva i amb moltes components interessants per analitzar:
 \begin{itemize}
 \item La matriu d'expressió, podem trobar patrons en ella.
