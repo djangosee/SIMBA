@@ -7,15 +7,15 @@ server <- function(input, output,session) {
   provador=F
   if(provador){
     input <- list()
-    newData <-  read_xlsx("~/TFGShinyApp/www/data/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 1)
-    functions <- read_xlsx("~/TFGShinyApp/www/data/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 2)
-    input$factors <- c("ids","x1","PEN","trat","block","Teixit")
-    input$covariables <- c("trat")
-    input$Tissue <- c("Teixit")
-    input$tissuecat <- c("Ili")
+    newData <-  read_xlsx("~/Descargas/Database_AGL_H3 (1).xlsx",col_names = TRUE,sheet = 1)
+    functions <- read_xlsx("~/Descargas/Database_AGL_H3 (1).xlsx",col_names = TRUE,sheet = 2)
+    input$factors <- c("Sample ID","Group","Treatment","Tissue")
+    input$covariables <- c("Treatment")
+    input$Tissue <- c("Tissue")
+    input$tissuecat <- c("Jejunum")
     input$alphaTukey <- 0.1
     input$NAInput <- 0.5
-    input$id <- "ids"
+    input$id <- "Sample ID"
     }
 
   
@@ -116,7 +116,18 @@ server <- function(input, output,session) {
   ####
   newData <- eventReactive(input$Start,{
     dat <- dt()
-    if(provador==T){dat <- newData}    
+    if(provador==T){dat <- newData}  
+     rowbye <- list()
+     for(i in 1:nrow(dat)){
+       if(sum(is.na(dat[i,]))==(ncol(dat)-length(input$factors))){
+         rowbye[[i]] <- i
+       }else{
+         rowbye[[i]] <- NA
+       }
+     }
+    if(length(na.omit(unlist(rowbye)))>0){
+      dat <- dat[-na.omit(unlist(rowbye)),]
+    }
     bad.sample <- list()
     ##Bye bye NA's
     for(i in 1:length(levels(as.factor(unlist(dat[,input$covariables]))))){
@@ -149,33 +160,33 @@ server <- function(input, output,session) {
     Expression
     })
   
-  GetTukeyList <- eventReactive(input$Start,{
-    dat <- dt()
-    if(provador==T){dat <- newData}    
-    bad.sample <- list()
-    ##Bye bye NA's
-    for(i in 1:length(levels(as.factor(unlist(dat[,input$covariables]))))){
-      datCat <- subset(dat, dat[,input$covariables]==levels(as.factor(unlist(dat[,input$covariables])[i])))
-      bad.sample[[i]]<- colMeans(is.na(datCat)) > input$NAInput
-    }
-    newData <- as.data.frame(dat[,!colnames(dat) %in% unique(names(which(unlist(bad.sample)==T)))])
-    newData1 <- subset(newData, newData[,input$Tissue]==input$tissuecat)
-    tratnewData <- newData1[,input$covariables]
-    idx <- match(input$factors, names(newData1))
-    idx <- sort(c(idx-1, idx))
-    newData1 <- log10(newData1[,-idx])
-    newData1<- cbind(newData1,tratnewData)
-    colnames(newData1)[ncol(newData1)] <- input$covariables
-    newData2 <- subset(newData, newData[,input$Tissue]!=input$tissuecat)
-    tratnewData <- newData2[,input$covariables]
-    idx <- match(input$factors, names(newData2))
-    idx <- sort(c(idx-1, idx))
-    newData2 <- log10(newData2[,-idx])
-    newData2<- cbind(newData2,tratnewData)
-    colnames(newData2)[ncol(newData2)] <- input$covariables
-    llista <- list(newData1,newData2)
-    llista
-  })
+  # GetTukeyList <- eventReactive(input$Start,{
+  #   dat <- dt()
+  #   if(provador==T){dat <- newData}    
+  #   bad.sample <- list()
+  #   ##Bye bye NA's
+  #   for(i in 1:length(levels(as.factor(unlist(dat[,input$covariables]))))){
+  #     datCat <- subset(dat, dat[,input$covariables]==levels(as.factor(unlist(dat[,input$covariables])[i])))
+  #     bad.sample[[i]]<- colMeans(is.na(datCat)) > input$NAInput
+  #   }
+  #   newData <- as.data.frame(dat[,!colnames(dat) %in% unique(names(which(unlist(bad.sample)==T)))])
+  #   newData1 <- subset(newData, newData[,input$Tissue]==input$tissuecat)
+  #   tratnewData <- newData1[,input$covariables]
+  #   idx <- match(input$factors, names(newData1))
+  #   idx <- sort(c(idx-1, idx))
+  #   newData1 <- log10(newData1[,-idx])
+  #   newData1<- cbind(newData1,tratnewData)
+  #   colnames(newData1)[ncol(newData1)] <- input$covariables
+  #   newData2 <- subset(newData, newData[,input$Tissue]!=input$tissuecat)
+  #   tratnewData <- newData2[,input$covariables]
+  #   idx <- match(input$factors, names(newData2))
+  #   idx <- sort(c(idx-1, idx))
+  #   newData2 <- log10(newData2[,-idx])
+  #   newData2<- cbind(newData2,tratnewData)
+  #   colnames(newData2)[ncol(newData2)] <- input$covariables
+  #   llista <- list(newData1,newData2)
+  #   llista
+  # })
 
   #Load file function server
   output$table <-renderDataTable({dt()})
@@ -220,6 +231,8 @@ server <- function(input, output,session) {
     validate(need(input$factors,"Select all factors of dataset"))
     validate(need(input$covariables,"Select covariable"))
     tt <- significatius()
+    g <- which( tt[,3] <= input$alpha)
+    validate(need(g,"No hi ha cap valor significatiu"))
     tt <- na.omit(tt)
     tt$p.value <- format(tt$p.value,4)
     tt$p.BH <- format(tt$p.BH,4)
@@ -269,22 +282,22 @@ server <- function(input, output,session) {
   #
   #####
    
-   output$tukeyplot<- renderPlot({
-   newData <- dt()
-   l.dat.pre.data <- GetTukeyList() 
-   functions <- Functions()
-   # ff.plot(funcg=functions$Funcions,genes = functions$Funcions, l.dat.pre=l.dat.pre.data, 
-   #                         treat=input$covariables, grup=input$Tissue, alf=input$alphaTukey, 
-   #                         a=0.3,     # desplaçament de l'inici dels rectangles
-   #                         eps=0.2,   # y del plot a nivell x=0
-   #                         incy=0.4,  # alçada rectanglets
-   #                         nomsgrups=c("Il","Je"))
-   ff.plot(data=newData,funcg=functions$Funcions,genes = functions$Gens, l.dat.pre=l.dat.pre.data, 
-           treat=input$covariables, grup=input$Tissue, alf=input$alphaTukey, 
-           a=0.3,     # desplaçament de l'inici dels rectangles
-           eps=0.2,   # y del plot a nivell x=0
-           incy=0.4,  # alçada rectanglets
-           nomsgrups=c("Il","Je"), mida=1)
+   output$tukeyplot<- renderPlot({NULL
+   # newData <- dt()
+   # l.dat.pre.data <- GetTukeyList() 
+   # functions <- Functions()
+   # # ff.plot(funcg=functions$Funcions,genes = functions$Funcions, l.dat.pre=l.dat.pre.data, 
+   # #                         treat=input$covariables, grup=input$Tissue, alf=input$alphaTukey, 
+   # #                         a=0.3,     # desplaçament de l'inici dels rectangles
+   # #                         eps=0.2,   # y del plot a nivell x=0
+   # #                         incy=0.4,  # alçada rectanglets
+   # #                         nomsgrups=c("Il","Je"))
+   # ff.plot(data=newData,funcg=functions$Funcions,genes = functions$Gens, l.dat.pre=l.dat.pre.data, 
+   #         treat=input$covariables, grup=input$Tissue, alf=input$alphaTukey, 
+   #         a=0.3,     # desplaçament de l'inici dels rectangles
+   #         eps=0.2,   # y del plot a nivell x=0
+   #         incy=0.4,  # alçada rectanglets
+   #         nomsgrups=c("Il","Je"), mida=1)
    })
   
     
@@ -403,17 +416,21 @@ server <- function(input, output,session) {
       lines(mitjanes[,i],col=colorins[i],type="o",pch=19)
     }
     }
-    a<- significatius()
-    g <- which( a[,3] <= input$alpha)
-    validate(need(g,"No hi ha cap valor significatiu"))
+    
+    # a<- significatius()
+    # g <- which( a[,3] <= input$alpha)
+    # validate(need(g,"No hi ha cap valor significatiu"))
     sign<- significatius()
     if(provador==T){sign <- tt}
     sign <- na.omit(sign)
+    if(length(sign)>0){
     signAblines<- rownames(sign[sign$p.BH<=input$alpha,])
     signAblines<- which(nomsfinals %in% signAblines)
     for(i in 1:length(signAblines)) abline(v=signAblines[i],col="black",lty="dotted")
+    }
     legend("topright",paste0("T",1:length(levels(as.factor(newDat[,input$covariables])))), cex=0.8, col=colorins,lty=1, title=input$covariables)
-       })
+    
+    })
     # ####
     #
     # Heatmap
