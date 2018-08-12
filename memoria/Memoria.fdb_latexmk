@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1534018622 "Memoria.tex" "Memoria.pdf" "Memoria" 1534018627
+["pdflatex"] 1534090047 "Memoria.tex" "Memoria.pdf" "Memoria" 1534090052
   "/etc/texmf/web2c/texmf.cnf" 1515438884 1101 af7716885e081ab43982cab7b4672c1a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -164,10 +164,10 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1515439584 3857475 5138c87d02b1975942788b97338d8b3d ""
   "FalsPositiu.png" 1531480775 10440 54546be06ea211d647a233171deaa69a ""
   "IleumTukey.png" 1533920934 35040 1b7bff1463a225ee7f4adacca5f08caf ""
-  "Memoria.aux" 1534018626 13812 862dd29938ef333c57a734ab7201c2b9 ""
-  "Memoria.out" 1534018626 2642 4a0146dab30a5debd140e54a95994158 ""
-  "Memoria.tex" 1534018617 71389 26d7bf3d970d524df4d741c5dbda1b6a ""
-  "Memoria.toc" 1534018626 3399 8b4a1e669f4a50833ed2cd18e8e22d34 ""
+  "Memoria.aux" 1534090051 13812 862dd29938ef333c57a734ab7201c2b9 ""
+  "Memoria.out" 1534090051 2642 4a0146dab30a5debd140e54a95994158 ""
+  "Memoria.tex" 1534090046 71548 acc51a716365c600173fb322abe199e5 ""
+  "Memoria.toc" 1534090051 3399 8b4a1e669f4a50833ed2cd18e8e22d34 ""
   "TukeyJeju.png" 1533920508 41712 c522607c50e21ad0e77d44dea294a658 ""
   "app1.png" 1533401804 36751 282336f157c3a7aac4fcc64ea4248c19 ""
   "app2.png" 1533423393 27976 199a2bdb8aa2f4d2e5c2a01b965c3dee ""
@@ -191,8 +191,8 @@
   "logsdades.png" 1532787916 9586 e6f9848dd385bd06cb05c138febc6492 ""
   "output.txt" 1533400826 3115 3036d8f43a1b6c28559f26ce7e5c94fa ""
   (generated)
-  "Memoria.aux"
   "Memoria.out"
-  "Memoria.pdf"
+  "Memoria.aux"
   "Memoria.log"
   "Memoria.toc"
+  "Memoria.pdf"

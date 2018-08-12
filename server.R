@@ -7,15 +7,15 @@ server <- function(input, output,session) {
   provador=F
   if(provador){
     input <- list()
-    newData <-  read_xlsx("~/Escritorio/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 1)
-    functions <- read_xlsx("~/Escritorio/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 2)
-    input$factors <- c("X__1","ID","PEN","trat","block","Teixit")
+    newData <-  read_xlsx("~/TFGShinyApp/www/data/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 1)
+    functions <- read_xlsx("~/TFGShinyApp/www/data/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 2)
+    input$factors <- c("ids","x1","PEN","trat","block","Teixit")
     input$covariables <- c("trat")
     input$Tissue <- c("Teixit")
     input$tissuecat <- c("Ili")
     input$alphaTukey <- 0.1
     input$NAInput <- 0.5
-    input$id <- "X__1"
+    input$id <- "ids"
     }
 
   
@@ -209,8 +209,9 @@ server <- function(input, output,session) {
     tt=rowFtests(Express,as.factor(pData(Express)[,input$covariables]))
     p.BH = p.adjust(tt[,"p.value"], "BH" )
     tt <- cbind(tt,p.BH)
-    functions<- functions[functions$Gens %in% rownames(tt),]
-    rownames(tt) <- paste0(functions$Funcions,"_",functions$Gens)
+    tt <- na.omit(tt)
+    func<- functions[functions$Gens %in% rownames(tt),]
+    rownames(tt) <- paste0(func$Funcions,"_",func$Gens)
     tt
   })
   
@@ -327,12 +328,12 @@ server <- function(input, output,session) {
     validate(need(input$covariables,"Select covariable of dataset"))
     newDat <- newData()
     functions <- Functions()
-    if(provador==T){ newDat <- newData;input$defCol=1;input$orderLine=1}
+    if(provador==T){ newDat <- newData;    input$treatcat <- 1;input$defCol=1;input$orderLine=1}
     idx <- match(input$factors, names(newDat))
     idx <- sort(c(idx-1, idx))
     data.idx <- newDat[,-idx]
     data.idx2 <- apply(data.idx,2,function(x) as.numeric(x))
-    nw <- log10(data.idx2)
+    nw <- as.data.frame(log10(data.idx2))
     rownames(nw) <- rownames(data.idx)
     colnames(nw) <- colnames(data.idx)
     nw[[input$covariables]] <- newDat[,input$covariables]
@@ -392,7 +393,7 @@ server <- function(input, output,session) {
       mitjanes<-mitjanes[order(mitjanes[,"Funcions"],-mitjanes[,paste0(input$treatcat)]),]
       nomsfinals <- mitjanes[,1]
       mitjanes <- mitjanes[,-c(1:3)]
-      }
+    }
     par(mar=c(14, 3, 1, 1))
     for(i in 1:length(levels(as.factor(newDat[,input$covariables])))){
       if(i == 1){
@@ -419,34 +420,34 @@ server <- function(input, output,session) {
     #
     #### 
     
-    # output$heatmap <-renderPlotly({
-    #     validate(need(input$file1,"Insert File!"))
-    #     validate(need(input$factors,"Select factors of dataset"))
-    #     validate(need(input$covariables,"Select covariable of dataset"))
-    #     newDat <- newData()
-    #     if(provador==T){
-    #       newDat <- newData;
-    #       Covariable<- as.factor(pData(Expression)[,input$covariables])
-    #       nomscols <- functions[functions$Gens %in% rownames(Expression),"Funcions"]
-    #       Covariable <- as.data.frame(Covariable)
-    #     }
-    #     functions<- Functions()
-    #     nomscols <- data.frame("Funcions"=functions[functions$Gens %in% rownames(exprs(dataExpression())),"Funcions"])
-    #     rownames(nomscols) <- unlist(functions[functions$Gens %in% rownames(exprs(dataExpression())),"Gens"])
-    #     Covariable<- as.factor(pData(dataExpression())[,input$covariables])
-    #     Covariable <- as.data.frame(Covariable)
-    #     colnames(Covariable) <- input$covariables
-    #     rownames(Covariable) <- colnames(exprs(dataExpression()))
-    #     divergent_viridis_magma <- c(viridis(10, begin = 0.3), rev(magma(10, begin = 0.3)))
-    #     rwb <- colorRampPalette(colors = c("darkred", "white", "darkgreen"))
-    #     BrBG <- colorRampPalette(brewer.pal(11, "BrBG"))
-    #     Spectral <- colorRampPalette(rev(brewer.pal(40, "Spectral")))
-    #     heatmaply(exprs(dataExpression()),colors=Spectral,na.value = "grey50",na.rm=F,col_side_colors=Covariable,row_side_colors = nomscols,margins = c(120,120,20,120),seriate = "OLO") %>%
-    #       colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 1) %>%
-    #       colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 2)
-    # 
-    #   })
-    # 
+    output$heatmap <-renderPlotly({
+        validate(need(input$file1,"Insert File!"))
+        validate(need(input$factors,"Select factors of dataset"))
+        validate(need(input$covariables,"Select covariable of dataset"))
+        newDat <- newData()
+        if(provador==T){
+          newDat <- newData;
+          Covariable<- as.factor(pData(Expression)[,input$covariables])
+          nomscols <- functions[functions$Gens %in% rownames(Expression),"Funcions"]
+          Covariable <- as.data.frame(Covariable)
+        }
+        functions<- Functions()
+        nomscols <- data.frame("Funcions"=functions[functions$Gens %in% rownames(exprs(dataExpression())),"Funcions"])
+        rownames(nomscols) <- unlist(functions[functions$Gens %in% rownames(exprs(dataExpression())),"Gens"])
+        Covariable<- as.factor(pData(dataExpression())[,input$covariables])
+        Covariable <- as.data.frame(Covariable)
+        colnames(Covariable) <- input$covariables
+        rownames(Covariable) <- colnames(exprs(dataExpression()))
+        divergent_viridis_magma <- c(viridis(10, begin = 0.3), rev(magma(10, begin = 0.3)))
+        rwb <- colorRampPalette(colors = c("darkred", "white", "darkgreen"))
+        BrBG <- colorRampPalette(brewer.pal(11, "BrBG"))
+        Spectral <- colorRampPalette(rev(brewer.pal(40, "Spectral")))
+        heatmaply(exprs(dataExpression()),colors=Spectral,na.value = "grey50",na.rm=F,col_side_colors=Covariable,row_side_colors = nomscols,margins = c(120,120,20,120),seriate = "OLO") %>%
+          colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 1) %>%
+          colorbar(tickfont = list(size = 10), titlefont = list(size = 10), which = 2)
+
+      })
+
     ####
     #
     # Components principals
