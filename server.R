@@ -7,15 +7,15 @@ server <- function(input, output,session) {
   provador=F
   if(provador){
     input <- list()
-    newData <-  read_xlsx("~/Descargas/Database_AGL_H3 (1).xlsx",col_names = TRUE,sheet = 1)
-    functions <- read_xlsx("~/Descargas/Database_AGL_H3 (1).xlsx",col_names = TRUE,sheet = 2)
-    input$factors <- c("Sample ID","Group","Treatment","Tissue")
-    input$covariables <- c("Treatment")
-    input$Tissue <- c("Tissue")
-    input$tissuecat <- c("Jejunum")
+    newData <-  read_xlsx("~/Escritorio/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 1)
+    functions <- read_xlsx("~/Escritorio/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 2)
+    input$factors <- c("X__1","ID","PEN","trat","block","Teixit")
+    input$covariables <- c("trat")
+    input$Tissue <- c("Teixit")
+    input$tissuecat <- c("Jejú")
     input$alphaTukey <- 0.1
     input$NAInput <- 0.5
-    input$id <- "Sample ID"
+    input$id <- "X__1"
     }
 
   
@@ -265,11 +265,16 @@ server <- function(input, output,session) {
       }
       return(na.omit(Tuk))
       }
+    functions <- Functions()
     Tuk <- Tukey_test(dataExpression())
     tt <- significatius()
-    names(Tuk) <- rownames(tt)
+    func2<- functions[functions$Gens %in% names(Tuk),]
+    names(Tuk) <- paste0(func2$Funcions,"_",func2$Gens)
+    g <- which(tt[,3]<=input$alphaFDR)
+    noms <- as.numeric(names(Tuk) %in% rownames(tt[g,]))
+    cac <- as.numeric((t(noms)*(1:length(noms))))
+    Tuk <- Tuk[which(cac>0)]
     dataTuk <- as.data.frame(na.omit(t(sapply(Tuk,function(x) x$`as.factor(pData(dataExpression)[, 1])`[,4], USE.NAMES = F))))
-    dataTuk <- dataTuk[rowSums(dataTuk <= input$alphaTukey)>=1,]
     dataTuk <- datatable(dataTuk) %>%
       formatStyle(colnames(dataTuk),backgroundColor = styleInterval(c(input$alphaTukey),c("#b5f2b6","white"))) %>%
       formatRound(columns=colnames(dataTuk), digits=4)
@@ -573,6 +578,91 @@ server <- function(input, output,session) {
         write_xlsx(dat)
       }
     )
-      
+    
+    #THEORY
+    
+    observeEvent(input$show1, {
+      showModal(modalDialog(
+        title = "Theory of ANOVA (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    observeEvent(input$show2, {
+      showModal(modalDialog(
+        title = "Theory of FDR (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    observeEvent(input$show3, {
+      showModal(modalDialog(
+        title = "Theory of Tukey (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    observeEvent(input$show4, {
+      showModal(modalDialog(
+        title = "Theory of Biplot (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    observeEvent(input$show6, {
+      showModal(modalDialog(
+        title = "Theory of Heatmap (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    #HINTS
+    observeEvent(input$showi2, {
+      showModal(modalDialog(
+        title = "Theory of ANOVA (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    observeEvent(input$showi3, {
+      showModal(modalDialog(
+        title = "Theory of FDR (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    observeEvent(input$showi4, {
+      showModal(modalDialog(
+        title = "Theory of Tukey (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    observeEvent(input$showi5, {
+      showModal(modalDialog(
+        title = "Theory of Biplot (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    observeEvent(input$showi6, {
+      showModal(modalDialog(
+        title = "Theory of Heatmap (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    })
+    
+    
     
 }
