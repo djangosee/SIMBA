@@ -7,15 +7,16 @@ server <- function(input, output,session) {
   provador=F
   if(provador){
     input <- list()
-    newData <-  read_xlsx("~/Escritorio/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 1)
-    functions <- read_xlsx("~/Escritorio/Resultados_INT_44_2017.xlsx",col_names = TRUE,sheet = 2)
-    input$factors <- c("X__1","ID","PEN","trat","block","Teixit")
-    input$covariables <- c("trat")
-    input$Tissue <- c("Teixit")
-    input$tissuecat <- c("Jejú")
+    newData <-  read_xlsx("~/Descargas/Database_AGL_H3_d2.xlsx",col_names = TRUE,sheet = 1)
+    functions <- read_xlsx("~/Descargas/Database_AGL_H3_d2.xlsx",col_names = TRUE,sheet = 2)
+    functions <- functions[,1:2]
+    input$factors <- c("Sample ID","Group","Treatment","Tissue")
+    input$covariables <- c("Treatment")
+    input$Tissue <- c("Tissue")
+    input$tissuecat <- c("Jejunum")
     input$alphaTukey <- 0.1
     input$NAInput <- 0.5
-    input$id <- "X__1"
+    input$id <- "Sample ID"
     }
 
   
@@ -61,6 +62,7 @@ server <- function(input, output,session) {
           'xlsx'
         ), "Wrong File Format try again!"))
       table1 <- read_xlsx(inFile$datapath,col_names = TRUE,sheet = 2)
+      table1 <- table1[,1:2]
     }
   })
   
