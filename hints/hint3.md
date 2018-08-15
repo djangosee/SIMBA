@@ -1,0 +1,1 @@
+## Interpretació dels gràfics ACP

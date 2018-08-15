@@ -594,7 +594,7 @@ server <- function(input, output,session) {
     observeEvent(input$show2, {
       showModal(modalDialog(
         title = "Theory of FDR (Catalan version)",
-        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show2.md"))),
         easyClose = TRUE,
         footer = NULL
       ))
@@ -602,15 +602,15 @@ server <- function(input, output,session) {
     observeEvent(input$show3, {
       showModal(modalDialog(
         title = "Theory of Tukey (Catalan version)",
-        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show3.md"))),
         easyClose = TRUE,
         footer = NULL
       ))
     })
     observeEvent(input$show4, {
       showModal(modalDialog(
-        title = "Theory of Biplot (Catalan version)",
-        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        title = "Theory of PCA (Catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show4.md"))),
         easyClose = TRUE,
         footer = NULL
       ))
@@ -618,7 +618,7 @@ server <- function(input, output,session) {
     observeEvent(input$show6, {
       showModal(modalDialog(
         title = "Theory of Heatmap (Catalan version)",
-        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show1.md"))),
+        withMathJax(includeMarkdown(paste0(script.dirname,"shows/show5.md"))),
         easyClose = TRUE,
         footer = NULL
       ))
@@ -626,7 +626,7 @@ server <- function(input, output,session) {
     #HINTS
     observeEvent(input$showi2, {
       showModal(modalDialog(
-        title = "Theory of ANOVA (Catalan version)",
+        title = "Interpretation Hint (catalan version)",
         withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
         easyClose = TRUE,
         footer = NULL
@@ -634,32 +634,32 @@ server <- function(input, output,session) {
     })
     observeEvent(input$showi3, {
       showModal(modalDialog(
-        title = "Theory of FDR (Catalan version)",
-        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        title = "Interpretation Hint (catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint2.md"))),
         easyClose = TRUE,
         footer = NULL
       ))
     })
     observeEvent(input$showi4, {
       showModal(modalDialog(
-        title = "Theory of Tukey (Catalan version)",
-        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        title = "Interpretation Hint (catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint3.md"))),
         easyClose = TRUE,
         footer = NULL
       ))
     })
     observeEvent(input$showi5, {
       showModal(modalDialog(
-        title = "Theory of Biplot (Catalan version)",
-        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        title = "Interpretation Hint (catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint4.md"))),
         easyClose = TRUE,
         footer = NULL
       ))
     })
     observeEvent(input$showi6, {
       showModal(modalDialog(
-        title = "Theory of Heatmap (Catalan version)",
-        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint1.md"))),
+        title = "Interpretation Hint (catalan version)",
+        withMathJax(includeMarkdown(paste0(script.dirname,"hints/hint5.md"))),
         easyClose = TRUE,
         footer = NULL
       ))

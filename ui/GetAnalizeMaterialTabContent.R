@@ -27,7 +27,7 @@ GetMaterialAnalizeTabContent <- tabPanel("Analize", GetAnalysisAnalizeSidebar,
               p(HTML(paste("<b>","PCA: principal components analysis (Visual analysis)","</b>"))),
               withSpinner(plotOutput("pca"),color="#0b295b"),
               fluidRow(
-              actionButton("show4", "Theory of Biplot",icon=icon("glyphicon glyphicon-info-sign",lib = "glyphicon")),
+              actionButton("show4", "Theory of PCA",icon=icon("glyphicon glyphicon-info-sign",lib = "glyphicon")),
               actionButton("showi4","Interpretation Hint",icon=icon("glyphicon glyphicon-question-sign",lib = "glyphicon"),style="color: #fff; background-color: #337ab7; border-color: #2e6da4")),
               hr(),
               p(HTML(paste("<b>","LinePlot: Mean gene expression by covariable","</b>"))),

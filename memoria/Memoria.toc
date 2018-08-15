@@ -6,12 +6,13 @@
 \contentsline {subsection}{\numberline {2.1}An\IeC {\`a}lisi de la vari\IeC {\`a}ncia (ANOVA)}{5}{subsection.2.1}
 \contentsline {subsubsection}{\numberline {2.1.1}Anova per a dissenys desbalancejats}{5}{subsubsection.2.1.1}
 \contentsline {subsection}{\numberline {2.2}Correcci\IeC {\'o} per multiplicitat de contrastos}{6}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}False discovery Rate}{6}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.1}Ratio falsos positius (\emph {False discovery Rate (FDR)})}{6}{subsubsection.2.2.1}
 \contentsline {subsection}{\numberline {2.3}Comparacions m\IeC {\'u}ltiples}{7}{subsection.2.3}
-\contentsline {subsubsection}{\numberline {2.3.1}M\IeC {\'e}tode de Tukey (\textit {Honestly-significant-difference})}{7}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.1}M\IeC {\'e}tode de Tukey (\textit {honestly-significant-difference})}{7}{subsubsection.2.3.1}
 \contentsline {subsection}{\numberline {2.4}M\IeC {\`e}todes descriptius visuals}{8}{subsection.2.4}
 \contentsline {subsubsection}{\numberline {2.4.1}Heatmap}{8}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}An\IeC {\`a}lisi per mitj\IeC {\`a} del Biplot}{9}{subsubsection.2.4.2}
+\contentsline {subsubsection}{\numberline {2.4.2}An\IeC {\`a}lisi de components principals (ACP): gr\IeC {\`a}fiques}{9}{subsubsection.2.4.2}
+\contentsline {subsubsection}{\numberline {2.4.3}Gr\IeC {\`a}fica de les variables}{10}{subsubsection.2.4.3}
 \contentsline {section}{\numberline {3}Cas d'estudi}{11}{section.3}
 \contentsline {subsection}{\numberline {3.1}Descripci\IeC {\'o} de l'estudi}{11}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Resultats}{12}{subsection.3.2}

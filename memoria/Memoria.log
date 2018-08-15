@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.8)  12 AUG 2018 18:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.8)  15 AUG 2018 19:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -798,7 +798,8 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-Package hyperref Info: Option `colorlinks' set `true' on input line 26.
+\c@theorem=\count147
+Package hyperref Info: Option `colorlinks' set `true' on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
@@ -814,33 +815,33 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen164
 \caption@hangindent=\dimen165
 )
-\c@ContinuedFloat=\count147
+\c@ContinuedFloat=\count148
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 ) (./Memoria.aux)
 \openout1 = `Memoria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 36.
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \l on input line 35.
-LaTeX Info: Redefining \L on input line 35.
-LaTeX Info: Redefining \microtypecontext on input line 35.
+LaTeX Info: Redefining \l on input line 36.
+LaTeX Info: Redefining \L on input line 36.
+LaTeX Info: Redefining \microtypecontext on input line 36.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -857,16 +858,16 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count148
+\scratchcounter=\count149
 \scratchdimen=\dimen166
 \scratchbox=\box30
-\nofMPsegments=\count149
-\nofMParguments=\count150
+\nofMPsegments=\count150
+\nofMParguments=\count151
 \everyMPshowfont=\toks34
-\MPscratchCnt=\count151
+\MPscratchCnt=\count152
 \MPscratchDim=\dimen167
-\MPnumerator=\count152
-\makeMPintoPDFobject=\count153
+\MPnumerator=\count153
+\makeMPintoPDFobject=\count154
 \everyMPtoPDFconversion=\toks35
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -918,57 +919,57 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 35.
+Package hyperref Info: Link coloring ON on input line 36.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count154
+\c@section@level=\count155
 )
-LaTeX Info: Redefining \ref on input line 35.
-LaTeX Info: Redefining \pageref on input line 35.
-LaTeX Info: Redefining \nameref on input line 35.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
+LaTeX Info: Redefining \nameref on input line 36.
 
 (./Memoria.out) (./Memoria.out)
 \@outlinefile=\write3
 \openout3 = `Memoria.out'.
 
-\c@lstlisting=\count155
+\c@lstlisting=\count156
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/17.28'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 73.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 74.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 73.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 74.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 73.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 74.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 73.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 74.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 73.
+(Font)              <12> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 73.
+(Font)              <8> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 73.
-LaTeX Font Info:    Try loading font information for U+msa on input line 73.
+(Font)              <6> on input line 74.
+LaTeX Font Info:    Try loading font information for U+msa on input line 74.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -976,7 +977,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 73.
+LaTeX Font Info:    Try loading font information for U+msb on input line 74.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1001,17 +1002,17 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 3.
 
-Overfull \hbox (23.26094pt too wide) in paragraph at lines 11--11
- [][] [][][]\T1/lmr/m/n/10 (-20) Métode de Tukey (\T1/lmr/m/it/10 (-20) Honestl
+Overfull \hbox (20.98488pt too wide) in paragraph at lines 11--11
+ [][] [][][]\T1/lmr/m/n/10 (-20) Métode de Tukey (\T1/lmr/m/it/10 (-20) honestl
 y-significant- 
  []
 
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 22.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 23.
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 22.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 23.
 Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1024,132 +1025,126 @@ Package microtype Info: Loading generic settings for font family
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 82--84
+Underfull \hbox (badness 10000) in paragraph at lines 83--85
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--90
+Underfull \hbox (badness 10000) in paragraph at lines 89--91
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 96.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 97.
 (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 96.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 97.
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--98
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
+Underfull \hbox (badness 10000) in paragraph at lines 97--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--104
+Underfull \hbox (badness 10000) in paragraph at lines 100--102
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--107
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
 
  []
 
 
-Overfull \hbox (5.335pt too wide) in paragraph at lines 111--111
+Underfull \hbox (badness 10000) in paragraph at lines 106--108
+
+ []
+
+
+Overfull \hbox (5.335pt too wide) in paragraph at lines 112--112
 []\T1/lmr/bx/n/12 Cas d'es-tu-di: Pro-to-col d'aná-li-si d'un
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--114
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--117
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--120
+Underfull \hbox (badness 10000) in paragraph at lines 119--121
 
  []
 
 [4
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 127--129
+Underfull \hbox (badness 10000) in paragraph at lines 128--130
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--132
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--190
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--200
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 201--203
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
 
  []
 
-<FalsPositiu.png, id=222, 419.31656pt x 447.17062pt>
+<FalsPositiu.png, id=229, 419.31656pt x 447.17062pt>
 File: FalsPositiu.png Graphic file (type png)
  <use FalsPositiu.png>
-Package pdftex.def Info: FalsPositiu.png used on input line 239.
+Package pdftex.def Info: FalsPositiu.png used on input line 237.
 (pdftex.def)             Requested size: 209.65776pt x 223.58476pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 240.
+(caption)                particular \caption on input line 238.
 See the caption package documentation for explanation.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--249
+Underfull \hbox (badness 10000) in paragraph at lines 244--247
 
  []
 
 [6 <./FalsPositiu.png>]
-Underfull \hbox (badness 1168) in paragraph at lines 282--282
-[]\T1/lmr/bx/n/8 Taula 1: |\T1/lmr/m/n/8 (+20) A l'e-xem-ple de la tau-la hi ha
- una co-lum-na
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 288--290
+Underfull \hbox (badness 10000) in paragraph at lines 286--288
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--308
+Underfull \hbox (badness 10000) in paragraph at lines 302--306
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--317
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 328--330
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 346--348
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
 
  []
 
@@ -1158,21 +1153,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 349--351
 
  []
 
-<heatmap.png, id=240, 1163.34625pt x 744.7825pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
+
+ []
+
+<heatmap.png, id=250, 1163.34625pt x 744.7825pt>
 File: heatmap.png Graphic file (type png)
  <use heatmap.png>
-Package pdftex.def Info: heatmap.png used on input line 354.
+Package pdftex.def Info: heatmap.png used on input line 357.
 (pdftex.def)             Requested size: 232.66513pt x 148.95386pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 355.
+(caption)                particular \caption on input line 358.
 See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 358--360
-
- []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 361--363
@@ -1195,23 +1190,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 370--372
  []
 
 
-Overfull \hbox (0.2569pt too wide) in paragraph at lines 373--375
+Underfull \hbox (badness 10000) in paragraph at lines 373--375
+
+ []
+
+
+Overfull \hbox (0.2569pt too wide) in paragraph at lines 376--378
 []\T1/lmr/m/n/10 (-20) La im-ple-men-ta-ció \T1/lmtt/m/n/10 hclust \T1/lmr/m/n/
 10 (-20) (\T1/lmr/m/it/10 (-20) hie-rarc-hi-cal clus-ter analy-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--375
+Underfull \hbox (badness 10000) in paragraph at lines 376--378
 
  []
 
 [8 <./heatmap.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 376--379
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 380--382
+Underfull \hbox (badness 10000) in paragraph at lines 379--382
 
  []
 
@@ -1221,134 +1216,110 @@ Underfull \hbox (badness 10000) in paragraph at lines 383--385
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--405
+Underfull \hbox (badness 10000) in paragraph at lines 386--388
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--412
+Underfull \hbox (badness 10000) in paragraph at lines 411--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 425--428
-
+Overfull \hbox (6.4453pt too wide) detected at line 460
+[]\OML/lmm/m/it/10 VT\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 Z\OT1/lmr/m/n/10 ) := \O
+ML/lmm/m/it/10 ^^U[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 ^^U[] \OT1/lmr/m/n/10 +
+ [] + \OML/lmm/m/it/10 ^^U[] \OT1/lmr/m/n/10 = \OML/lmm/m/it/10 ^^[[] \OT1/lmr/
+m/n/10 + \OML/lmm/m/it/10 ^^[[] \OT1/lmr/m/n/10 + [] + \OML/lmm/m/it/10 ^^[[] \
+OT1/lmr/m/n/10 =: \OML/lmm/m/it/10 VT\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 X\OT1/lm
+r/m/n/10 ) 
  []
 
 [9
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 470--472
+Underfull \hbox (badness 10000) in paragraph at lines 502--506
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--475
-
- []
-
-<biplot.png, id=257, 459.96844pt x 494.59781pt>
-File: biplot.png Graphic file (type png)
- <use biplot.png>
-Package pdftex.def Info: biplot.png used on input line 478.
-(pdftex.def)             Requested size: 229.98366pt x 247.2983pt.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 479.
-See the caption package documentation for explanation.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 481--483
+Underfull \hbox (badness 10000) in paragraph at lines 507--511
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 484--486
+Underfull \hbox (badness 10000) in paragraph at lines 512--514
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--499
+Underfull \hbox (badness 10000) in paragraph at lines 515--519
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 500--502
+Underfull \hbox (badness 10000) in paragraph at lines 520--523
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 503--507
+Underfull \hbox (badness 10000) in paragraph at lines 524--528
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 508--511
+Underfull \hbox (badness 10000) in paragraph at lines 529--531
+
+ []
+
+[10
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 512--516
+Underfull \hbox (badness 10000) in paragraph at lines 582--585
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--519
-
- []
-
-[10 <./biplot.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 531--532
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 570--573
-
- []
-
-
-Overfull \hbox (1.84447pt too wide) in paragraph at lines 574--576
+Overfull \hbox (1.84447pt too wide) in paragraph at lines 586--588
 \T1/lmr/m/n/10 (-20) ons per mul-ti-pli-ci-tat de con-tras-tos; \T1/lmr/m/it/10
  (-20) Benjamini$\OT1/lmr/m/n/10 (-20) &$\T1/lmr/m/it/10 (-20) Hochberg
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 574--576
+Underfull \hbox (badness 10000) in paragraph at lines 586--588
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 577--581
+Underfull \hbox (badness 10000) in paragraph at lines 589--593
 
  []
 
-<logsdades.png, id=265, 599.23875pt x 479.54156pt>
+<logsdades.png, id=281, 599.23875pt x 479.54156pt>
 File: logsdades.png Graphic file (type png)
  <use logsdades.png>
-Package pdftex.def Info: logsdades.png used on input line 584.
+Package pdftex.def Info: logsdades.png used on input line 596.
 (pdftex.def)             Requested size: 269.65494pt x 215.7917pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 585.
+(caption)                particular \caption on input line 597.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (32.80652pt too wide) in paragraph at lines 584--585
+Overfull \hbox (32.80652pt too wide) in paragraph at lines 596--597
  [] 
  []
 
 [11
 
  <./logsdades.png>]
-Overfull \hbox (238.42874pt too wide) in paragraph at lines 594--631
+Overfull \hbox (238.42874pt too wide) in paragraph at lines 606--643
  [][] 
  []
 
@@ -1356,132 +1327,132 @@ Overfull \hbox (238.42874pt too wide) in paragraph at lines 594--631
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 680--687
+Underfull \hbox (badness 10000) in paragraph at lines 692--699
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 680--687
+Underfull \hbox (badness 10000) in paragraph at lines 692--699
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 680--687
+Underfull \hbox (badness 10000) in paragraph at lines 692--699
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 680--687
+Underfull \hbox (badness 10000) in paragraph at lines 692--699
 
  []
 
 [13
 
-] <IleumTukey.png, id=288, 505.89pt x 364.36125pt>
+] <IleumTukey.png, id=305, 505.89pt x 364.36125pt>
 File: IleumTukey.png Graphic file (type png)
  <use IleumTukey.png>
-Package pdftex.def Info: IleumTukey.png used on input line 713.
+Package pdftex.def Info: IleumTukey.png used on input line 725.
 (pdftex.def)             Requested size: 404.71254pt x 291.48938pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 714.
+(caption)                particular \caption on input line 726.
 See the caption package documentation for explanation.
 
 [14
 
 
  <./IleumTukey.png (PNG copy)>]
-<TukeyJeju.png, id=295, 417.05812pt x 364.36125pt>
+<TukeyJeju.png, id=312, 417.05812pt x 364.36125pt>
 File: TukeyJeju.png Graphic file (type png)
  <use TukeyJeju.png>
-Package pdftex.def Info: TukeyJeju.png used on input line 742.
+Package pdftex.def Info: TukeyJeju.png used on input line 754.
 (pdftex.def)             Requested size: 375.34883pt x 327.92209pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 743.
+(caption)                particular \caption on input line 755.
 See the caption package documentation for explanation.
 
 [15
 
  <./TukeyJeju.png (PNG copy)>]
-<biploti.png, id=302, 324.21124pt x 335.2525pt>
+<biploti.png, id=319, 324.21124pt x 335.2525pt>
 File: biploti.png Graphic file (type png)
  <use biploti.png>
-Package pdftex.def Info: biploti.png used on input line 749.
+Package pdftex.def Info: biploti.png used on input line 761.
 (pdftex.def)             Requested size: 194.52824pt x 201.15305pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 750.
+(caption)                particular \caption on input line 762.
 See the caption package documentation for explanation.
 
-<biplotj.png, id=303, 306.14375pt x 334.24875pt>
+<biplotj.png, id=320, 306.14375pt x 334.24875pt>
 File: biplotj.png Graphic file (type png)
  <use biplotj.png>
-Package pdftex.def Info: biplotj.png used on input line 755.
+Package pdftex.def Info: biplotj.png used on input line 767.
 (pdftex.def)             Requested size: 183.68765pt x 200.55078pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 756.
+(caption)                particular \caption on input line 768.
 See the caption package documentation for explanation.
 
 [16
 
  <./biploti.png> <./biplotj.png>]
-<lineploti.png, id=311, 409.53pt x 330.48468pt>
+<lineploti.png, id=327, 409.53pt x 330.48468pt>
 File: lineploti.png Graphic file (type png)
  <use lineploti.png>
-Package pdftex.def Info: lineploti.png used on input line 766.
+Package pdftex.def Info: lineploti.png used on input line 778.
 (pdftex.def)             Requested size: 368.57358pt x 297.43346pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 767.
+(caption)                particular \caption on input line 779.
 See the caption package documentation for explanation.
 
-<lineplotj.png, id=312, 409.53pt x 330.48468pt>
+<lineplotj.png, id=328, 409.53pt x 330.48468pt>
 File: lineplotj.png Graphic file (type png)
  <use lineplotj.png>
-Package pdftex.def Info: lineplotj.png used on input line 770.
+Package pdftex.def Info: lineplotj.png used on input line 782.
 (pdftex.def)             Requested size: 368.57358pt x 297.43346pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 771.
+(caption)                particular \caption on input line 783.
 See the caption package documentation for explanation.
 
 [17
 
  <./lineploti.png (PNG copy)> <./lineplotj.png (PNG copy)>]
-<heatmapi.png, id=319, 409.53pt x 330.48468pt>
+<heatmapi.png, id=335, 409.53pt x 330.48468pt>
 File: heatmapi.png Graphic file (type png)
  <use heatmapi.png>
-Package pdftex.def Info: heatmapi.png used on input line 777.
+Package pdftex.def Info: heatmapi.png used on input line 789.
 (pdftex.def)             Requested size: 368.57358pt x 297.43346pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 778.
+(caption)                particular \caption on input line 790.
 See the caption package documentation for explanation.
 
-<heatmapj.png, id=320, 409.53pt x 330.48468pt>
+<heatmapj.png, id=336, 409.53pt x 330.48468pt>
 File: heatmapj.png Graphic file (type png)
  <use heatmapj.png>
-Package pdftex.def Info: heatmapj.png used on input line 781.
+Package pdftex.def Info: heatmapj.png used on input line 793.
 (pdftex.def)             Requested size: 368.57358pt x 297.43346pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 782.
+(caption)                particular \caption on input line 794.
 See the caption package documentation for explanation.
 
 [18
 
  <./heatmapi.png (PNG copy)> <./heatmapj.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 787--794
+Underfull \hbox (badness 10000) in paragraph at lines 799--806
 
  []
 
@@ -1491,175 +1462,175 @@ Underfull \hbox (badness 10000) in paragraph at lines 787--794
 
 ]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 795.
-
-Underfull \hbox (badness 10000) in paragraph at lines 798--800
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 801--803
-
- []
-
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 807.
 
 Underfull \hbox (badness 10000) in paragraph at lines 810--812
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 817--819
+Underfull \hbox (badness 10000) in paragraph at lines 813--815
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 820--822
+Underfull \hbox (badness 10000) in paragraph at lines 822--824
 
  []
 
 
-Overfull \hbox (6.35944pt too wide) in paragraph at lines 826--830
+Underfull \hbox (badness 10000) in paragraph at lines 829--831
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 832--834
+
+ []
+
+
+Overfull \hbox (6.35944pt too wide) in paragraph at lines 838--842
 \T1/lmtt/m/n/10 djangosee / TFGShinyApp / tree / UserInterface$[][]\T1/lmr/m/n/
 10 (-20) . A l'en-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 826--830
+Underfull \hbox (badness 10000) in paragraph at lines 838--842
 
  []
 
-<app1.png, id=334, 716.6775pt x 426.59375pt>
+<app1.png, id=350, 716.6775pt x 426.59375pt>
 File: app1.png Graphic file (type png)
  <use app1.png>
-Package pdftex.def Info: app1.png used on input line 835.
+Package pdftex.def Info: app1.png used on input line 847.
 (pdftex.def)             Requested size: 215.00491pt x 127.97911pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 836.
+(caption)                particular \caption on input line 848.
 See the caption package documentation for explanation.
 
 [20
 
  <./app1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 849--851
+Underfull \hbox (badness 10000) in paragraph at lines 861--863
 
  []
 
-<app2.png, id=346, 392.46625pt x 594.22pt>
+<app2.png, id=362, 392.46625pt x 594.22pt>
 File: app2.png Graphic file (type png)
  <use app2.png>
-Package pdftex.def Info: app2.png used on input line 856.
+Package pdftex.def Info: app2.png used on input line 868.
 (pdftex.def)             Requested size: 156.9837pt x 237.68379pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 857.
+(caption)                particular \caption on input line 869.
 See the caption package documentation for explanation.
 
-<app3.png, id=347, 843.15pt x 360.34625pt>
+<app3.png, id=363, 843.15pt x 360.34625pt>
 File: app3.png Graphic file (type png)
  <use app3.png>
-Package pdftex.def Info: app3.png used on input line 875.
+Package pdftex.def Info: app3.png used on input line 887.
 (pdftex.def)             Requested size: 252.94695pt x 108.1047pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 876.
+(caption)                particular \caption on input line 888.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (16.09853pt too wide) in paragraph at lines 875--876
+Overfull \hbox (16.09853pt too wide) in paragraph at lines 887--888
  [] 
  []
 
-<app4.png, id=348, 833.1125pt x 354.32375pt>
+<app4.png, id=364, 833.1125pt x 354.32375pt>
 File: app4.png Graphic file (type png)
  <use app4.png>
-Package pdftex.def Info: app4.png used on input line 879.
+Package pdftex.def Info: app4.png used on input line 891.
 (pdftex.def)             Requested size: 249.93568pt x 106.29794pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 880.
+(caption)                particular \caption on input line 892.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (13.08727pt too wide) in paragraph at lines 879--880
+Overfull \hbox (13.08727pt too wide) in paragraph at lines 891--892
  [] 
  []
 
-<app7.png, id=349, 282.05376pt x 389.455pt>
+<app7.png, id=365, 282.05376pt x 389.455pt>
 File: app7.png Graphic file (type png)
  <use app7.png>
-Package pdftex.def Info: app7.png used on input line 886.
+Package pdftex.def Info: app7.png used on input line 898.
 (pdftex.def)             Requested size: 141.02652pt x 194.72702pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 887.
+(caption)                particular \caption on input line 899.
 See the caption package documentation for explanation.
 
 [21
 
  <./app2.png> <./app3.png> <./app4.png> <./app7.png>]
-<app8.png, id=367, 802.49812pt x 802.49812pt>
+<app8.png, id=383, 802.49812pt x 802.49812pt>
 File: app8.png Graphic file (type png)
  <use app8.png>
-Package pdftex.def Info: app8.png used on input line 892.
+Package pdftex.def Info: app8.png used on input line 904.
 (pdftex.def)             Requested size: 320.99356pt x 320.99356pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 893.
+(caption)                particular \caption on input line 905.
 See the caption package documentation for explanation.
 
-<app9.png, id=368, 802.49812pt x 802.49812pt>
+<app9.png, id=384, 802.49812pt x 802.49812pt>
 File: app9.png Graphic file (type png)
  <use app9.png>
-Package pdftex.def Info: app9.png used on input line 896.
+Package pdftex.def Info: app9.png used on input line 908.
 (pdftex.def)             Requested size: 320.99356pt x 320.99356pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 897.
+(caption)                particular \caption on input line 909.
 See the caption package documentation for explanation.
 
 [22
 
 
  <./app8.png (PNG copy)> <./app9.png (PNG copy)>]
-<app5.png, id=375, 797.98125pt x 305.14pt>
+<app5.png, id=391, 797.98125pt x 305.14pt>
 File: app5.png Graphic file (type png)
  <use app5.png>
-Package pdftex.def Info: app5.png used on input line 902.
+Package pdftex.def Info: app5.png used on input line 914.
 (pdftex.def)             Requested size: 398.98964pt x 152.56961pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 903.
+(caption)                particular \caption on input line 915.
 See the caption package documentation for explanation.
 
-<app6.png, id=376, 847.165pt x 573.14125pt>
+<app6.png, id=392, 847.165pt x 573.14125pt>
 File: app6.png Graphic file (type png)
  <use app6.png>
-Package pdftex.def Info: app6.png used on input line 912.
+Package pdftex.def Info: app6.png used on input line 924.
 (pdftex.def)             Requested size: 508.30292pt x 343.8874pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 913.
+(caption)                particular \caption on input line 925.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (24.60608pt too wide) in paragraph at lines 912--913
+Overfull \hbox (24.60608pt too wide) in paragraph at lines 924--925
  [] 
  []
 
 [23
 
  <./app5.png> <./app6.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 918--920
+Underfull \hbox (badness 10000) in paragraph at lines 930--932
 
  []
 
@@ -1668,34 +1639,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 918--920
 
 
 ]
-Underfull \hbox (badness 1354) in paragraph at lines 926--928
+Underfull \hbox (badness 3386) in paragraph at lines 938--940
+\T1/lmr/m/n/10 (+20) and Power-ful Ap-pro-ach to Mul-ti-ple Tes-ting
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 938--940
+
+ []
+
+
+Underfull \hbox (badness 1354) in paragraph at lines 941--943
 \T1/lmr/m/n/10 (+20) dif-fe-ren-ti-al ex-pres-si-on analy-sis of di-gi-tal ge-n
 e
  []
 
 
-Overfull \hbox (14.9564pt too wide) in paragraph at lines 926--928
+Overfull \hbox (14.9564pt too wide) in paragraph at lines 941--943
 \T1/lmtt/m/n/10 https://doi.org/10.1093/bioinformatics/btp616 
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 939--941
+Underfull \hbox (badness 2119) in paragraph at lines 951--953
 \T1/lmr/m/n/10 (+20) Ri-barsky and Rem-co Chang: Un-ders-tan-ding
  []
 
 
-Overfull \hbox (4.45644pt too wide) in paragraph at lines 939--941
+Overfull \hbox (4.45644pt too wide) in paragraph at lines 951--953
 \T1/lmtt/m/n/10 http://www.knowledgeviz.com/pdf/UKC2009.pdf 
  []
 
 
-Overfull \hbox (27.7217pt too wide) in paragraph at lines 943--945
+Overfull \hbox (27.7217pt too wide) in paragraph at lines 955--957
 \T1/lmtt/m/n/10 http://wpd.ugr.es/$\OMS/lmsy/m/n/10 ^^X$\T1/lmtt/m/n/10 bioesta
 d/guia-spss/practica7 
  []
 
 
-Overfull \hbox (17.48422pt too wide) in paragraph at lines 951--953
+Overfull \hbox (17.48422pt too wide) in paragraph at lines 963--965
 \T1/lmtt/m/n/10 http://www.ugr.es/$\OMS/lmsy/m/n/10 ^^X$\T1/lmtt/m/n/10 gallard
 o/pdf/cluster-3.pdf 
  []
@@ -1704,39 +1685,39 @@ o/pdf/cluster-3.pdf
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 987--1005
+Underfull \hbox (badness 10000) in paragraph at lines 999--1017
 
  []
 
 
-Overfull \hbox (8.15161pt too wide) in alignment at lines 1020--1020
+Overfull \hbox (18.15161pt too wide) in alignment at lines 1032--1032
 [][][][][][] 
  []
 
-<dendrograma.png, id=402, 459.96844pt x 495.35063pt>
+<dendrograma.png, id=417, 459.96844pt x 495.35063pt>
 File: dendrograma.png Graphic file (type png)
  <use dendrograma.png>
-Package pdftex.def Info: dendrograma.png used on input line 1026.
+Package pdftex.def Info: dendrograma.png used on input line 1038.
 (pdftex.def)             Requested size: 183.98412pt x 198.13673pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1027.
+(caption)                particular \caption on input line 1039.
 See the caption package documentation for explanation.
 
-<genes.png, id=403, 699.61375pt x 732.7375pt>
+<genes.png, id=418, 699.61375pt x 732.7375pt>
 File: genes.png Graphic file (type png)
  <use genes.png>
-Package pdftex.def Info: genes.png used on input line 1032.
+Package pdftex.def Info: genes.png used on input line 1044.
 (pdftex.def)             Requested size: 489.72629pt x 512.91277pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1033.
+(caption)                particular \caption on input line 1045.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (6.02945pt too wide) in paragraph at lines 1032--1033
+Overfull \hbox (6.02945pt too wide) in paragraph at lines 1044--1045
  [] 
  []
 
@@ -1748,7 +1729,7 @@ Overfull \hbox (6.02945pt too wide) in paragraph at lines 1032--1033
 
 ]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 1041.
+nput line 1053.
  (./output.txt
 Underfull \hbox (badness 10000) in paragraph at lines 10--11
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
@@ -1850,30 +1831,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--39
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1042.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1054.
  [29
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1042.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1054.
  (./Memoria.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1042.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1042.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1054.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1054.
 
 Package rerunfilecheck Info: File `Memoria.out' has not changed.
-(rerunfilecheck)             Checksum: 4A0146DAB30A5DEBD140E54A95994158;2642.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1042.
+(rerunfilecheck)             Checksum: C5EA8B6E931710501B599EE85E32A295;2786.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1054.
  ) 
 Here is how much of TeX's memory you used:
- 13091 strings out of 493029
- 191104 string characters out of 6136235
- 385873 words of memory out of 5000000
- 15978 multiletter control sequences out of 15000+600000
- 101257 words of font info for 183 fonts, out of 8000000 for 9000
+ 13097 strings out of 493029
+ 191163 string characters out of 6136235
+ 387039 words of memory out of 5000000
+ 15985 multiletter control sequences out of 15000+600000
+ 101137 words of font info for 181 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,12n,44p,1218b,1146s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+ 40i,12n,47p,1217b,1146s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
 -mathex.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
 f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
 8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fon
@@ -1889,13 +1870,13 @@ sr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share
 /texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm
 /lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/
-type1/public/lm/lmtti10.pfb>
-Output written on Memoria.pdf (29 pages, 1428065 bytes).
+fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb>
+Output written on Memoria.pdf (29 pages, 1386347 bytes).
 PDF statistics:
- 601 PDF objects out of 1000 (max. 8388607)
- 511 compressed objects within 6 object streams
- 168 named destinations out of 1000 (max. 500000)
- 31612 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 621 PDF objects out of 1000 (max. 8388607)
+ 531 compressed objects within 6 object streams
+ 172 named destinations out of 1000 (max. 500000)
+ 31615 words of extra memory for PDF output out of 35830 (max. 10000000)
 
