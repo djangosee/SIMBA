@@ -18,5 +18,8 @@ git clone https://github.com/djangosee/TFGShinyApp.git
 3. Cambiar la variable "script.dirname" i poner la ruta de la carpeta local donde hemos extraído el ".ZIP".
 4. Ejecutar todas las lineas de código que encontramos en App.r; La aplicación se abrirá automáticamente.
 
+## GIF **ExampleFile.xlsx**
+
+<img src="GifReactionj.gif" width="700" height="400" />
 
 Autor: Antonio Rodríguez Gómez
