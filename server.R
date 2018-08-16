@@ -665,6 +665,13 @@ server <- function(input, output,session) {
       ))
     })
     
-    
+    output$downloadData <- downloadHandler(
+      filename = function() {
+        paste("Examplefile", ".xlsx", sep = "")
+      },
+      content = function(file) {
+        file.copy(paste0(script.dirname,"www/data/Resultados_INT_44_2017.xlsx"), file)
+      }
+    )
     
 }
