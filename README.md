@@ -11,7 +11,7 @@ Para clonar el repositorio localmente, es necesario ejecutar la siguiente linea 
 ```
 git clone https://github.com/djangosee/TFGShinyApp.git
 ```
-### Cómo abrir la aplicación
+### Cómo abrir la aplicación con Rstudio
 
 1. Extraer el ".ZIP" en una carpeta local.
 2. Abrir el script App.R
