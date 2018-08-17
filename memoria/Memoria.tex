@@ -263,7 +263,7 @@ El mètode proposat per Benjamini $\&$ Hochberg assumeix a l'hora d'estimar el n
 \centering
 \begin{tabular}{rrrr}
 \hline
-& Pvalor & Bonferroni & Benjamini$\&$Hochberg \\
+& P-valor & Bonferroni & Benjamini$\&$Hochberg \\
 \hline
 1 & 0.0010 & 0.0550 & 0.0037 \\
 2 & 0.0020 & 0.11 & 0.0069 \\
@@ -342,7 +342,7 @@ IC(\mu_j - \mu_k)_{(1-\alpha)}= (\bar{X}_j - \bar{X}_k) \pm q_{I,n-I,1-\alpha}\s
 Si l'interval de la diferència inclou el 0, no rebutjem la hipòtesi nul·la del test i per tant, no hi ha diferències entre $\mu_j$ i $\mu_k$.
 \subsection{Mètodes descriptius visuals}
 %http://mural.uv.es/rata3/PECS/Genomica%20Funcional%20y%20Analisis%20de%20Microarrays%20PEC2.pdf
-A l'hora de crear el protocol d'anàlisi teníem la necessitat de descriure el comportament de l'expressió dels gens segons unes covariables. Una manera de veure aquests patrons era amb l'ús de tècniques visuals, que tenen una base matemàtica que explicarem en els següents apartats.
+A l'hora de crear el protocol d'anàlisi teníem la necessitat de descriure el comportament de l'expressió dels gens segons el tractament i tenint en compte la funcionalitat de la família del gen. Una manera de veure aquests patrons era amb l'ús de tècniques visuals, que tenen una base matemàtica que explicarem en els següents apartats.
 \subsubsection{Heatmap}
 %http://wpd.ugr.es/~bioestad/guia-spss/practica-8/#8
 %http://www.opiniomics.org/you-probably-dont-understand-heatmaps/
@@ -548,7 +548,7 @@ L'estudi es defineix breument en els següents punts\\
   \item Trobar relacions entre la funcionalitat del gen i la seva expressió sota diferents tractaments.
 \end{itemize}
 \noindent\textbf{Disseny de l'estudi}\\
-Estudi experimental amb una mostra total de 46 casos.
+Estudi experimental amb una mostra total de 46 casos. És un un dels primers experiments realitzats pel \textit{SNiBA}, per tant, l'experiment es totalment exploratori i es podría definir com una prova per a futurs dissenys.
 \noindent\textbf{Tractaments}
 \begin{itemize}
   \item \textbf{T1}: Inclusió d'aliments de soja a la dieta.
@@ -641,10 +641,10 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
    \bottomrule
 \end{tabular}
 \onecolumn
-\caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Ileum}. Els pvalors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
+\caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Ileum}. Els p-valors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
 \end{table}
 
-\noindent El nivell de significació és $\alpha$=0.05, però degut al conjunt de tests realitzats s'aplica una correcció (\textit{Benjamini $\&$ Hochberg}). Per tant, només s'haurien de considerar significatius del conjunt experimental aquells tests en els que el p-valor de \textit{Benjamini $\&$ Hochberg} estigui per sota de determinat llindar, en aquest cas hem fixat un nivell de significació del 5$\%$, encara que en aquests tipus d'experiments poden arrbiar al $10\%$. Observem que hi ha gens sense cap pvalor, això es degut a que després de fer el tractament de dades faltants (descrit a l'apartat anterior) encara hi ha NA's, per tant, l'anàlisi de la variància no contempla aquests gens.
+\noindent El nivell de significació és $\alpha$=0.05, però degut al conjunt de tests realitzats s'aplica una correcció (\textit{Benjamini $\&$ Hochberg}). Per tant, només s'haurien de considerar significatius del conjunt experimental aquells tests en els que el p-valor de \textit{Benjamini $\&$ Hochberg} estigui per sota de determinat llindar, en aquest cas hem fixat un nivell de significació del 5$\%$, encara que en aquests tipus d'experiments poden arrbiar al $10\%$. Observem que hi ha gens sense cap p-valor, això es degut a que després de fer el tractament de dades faltants (descrit a l'apartat anterior) encara hi ha NA's, per tant, l'anàlisi de la variància no contempla aquests gens.
 %Jejunum
 \onecolumn
 \begin{table}[ht]
@@ -687,7 +687,7 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
   {\textcolor{gray}{NR3C1.Gr$\alpha$}} & Stress & 1.4606 & 0.2606 & 0.3526 \\
    \bottomrule
 \end{tabular}
-\caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Jejunum}. Els pvalors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
+\caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Jejunum}. Els p-valors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
 \end{table}
 \noindent\textbf{Ileum}\\
 \\
@@ -717,7 +717,7 @@ Un cop identificats els gens que han manifestat una expressió diferencial hem a
    \bottomrule
 \end{tabular}
 }
-\caption{Dels gens significatius per al teixit \textbf{Ilenum}, s'apliquen comparacions 2 a 2 Gene-Tractament. A la taula només es mostren aquells pvalors quasi significatius o significatius.}
+\caption{Dels gens significatius per al teixit \textbf{Ilenum}, s'apliquen comparacions 2 a 2 Gene-Tractament. A la taula només es mostren aquells p-valors quasi significatius o significatius.}
 \end{table}
 
 Podem destacar que gairebé tots els gens que surten signficatius presenten diferències estadísticament significatives entre el tractament 4 i el tractament 1. De la mateixa manera, observem que la comparació entre el tractament 4-2 no indica cap diferència significativa.
@@ -747,7 +747,7 @@ En aquest teixit, podem veure que cap gen presenta diferencies significatives en
    \bottomrule
 \end{tabular}
 }
-\caption{Dels gens significatius per al teixit \textbf{Jejunum}, s'apliquen comparacions 2 a 2 Gene-Tractament. A la taula només es mostren aquells pvalors quasi significatius o significatius.}
+\caption{Dels gens significatius per al teixit \textbf{Jejunum}, s'apliquen comparacions 2 a 2 Gene-Tractament. A la taula només es mostren aquells p-valors quasi significatius o significatius.}
 \end{table}
 
 \begin{center}
@@ -756,16 +756,16 @@ En aquest teixit, podem veure que cap gen presenta diferencies significatives en
 \end{center}
 \clearpage
 \subsubsection{Mètodes visuals}
-Els següents gràfics del protocol ens poden ajudar a trobar relacions i agrupacions entre els tractaments i els gens. El primer mètode analitzat ha sigut el \textit{biplot} per a cada teixit:
+Els següents gràfics del protocol ens poden ajudar a trobar relacions i agrupacions entre els tractaments i els gens. El primer mètode analitzat ha sigut el ACP per a cada teixit:
 \begin{center}
 \includegraphics[scale=0.6]{biploti.png}
-\captionof{figure}{Biplot de les mitjanes per cada gene-tractament del teixit \textbf{Ilenum}.}
+\captionof{figure}{Representació gràfica de l'ACP de les mitjanes per cada gene-tractament del teixit \textbf{Ilenum}.}
 \end{center}
 Amb aquest teixit podem observar una correlació alta entre la mitjana del tractament 4 i la mitjana del tractament 1. En canvi, trobem correlacions més febles entre el tractament 4 i els tractaments restants. L'angle entre el tractament 2 i el tractament 3, ens indica una correlació casi nul·la.
 
 \begin{center}
 \includegraphics[scale=0.6]{biplotj.png}
-\captionof{figure}{Biplot de les mitjanes per cada gene-tractament del teixit \textbf{Jejunum}.}
+\captionof{figure}{Representació gràfica de l'ACP de les mitjanes per cada gene-tractament del teixit \textbf{Jejunum}.}
 \end{center}
 En aquest cas trobem correlacions altes entre els tractaments 1, 3 i 4. En canvi el tractament 2, sembla tenir una correlació més feble amb els altres tractaments. Recordem que per calcular el coeficient de correlació en aquest gràfic, només necesitem l'angle que formen els dos vectors, suposem que l'angle entre T4 i T2 és de 45 graus:
 \begin{equation*}
@@ -795,14 +795,35 @@ Per últim, es presenten els \textit{heatmap} per a cada teixit. Les conclusions
 \end{center}
 \clearpage
 \twocolumn
-\subsection{Conclusions}
--Quines hipotesis es definiexien?\\
--Quins gens son significatius?\\
--Que ens diu l'analisi descriptiu?\\
--Quines hipotesis es cumpleixen?\\
--Millores del disseny experimental\\
--Opinió personal\\
+\subsection{Conclusions (Cas d'estudi)}
+
+Un cop realitzat l'anàlisi per mitjà del protocol que hem desenvolupat, es l'hora de les conclusions. Recordem que estem analitzant un estudi bastant exploratori, per tant, nosaltres mateixos hem definit les hipotesis i criteris estadístics que creiem més importants. Aquests criteris poden ajudar a que els investigadors interpretin resultats presents o futurs.
+\\
+
+Fixat cada gen, la primera hipòtesi de recerca que ens plantegem és:
+\\
+
+\textit{En algun gen (i quin o quins) hi ha diferències significatives en els nivells d'expressió entre tractaments?}
+\\
+
+Per al teixit \textit{Ilenum}, d'un total de 31 gens, s'han trobat 2 gens amb una expressió diferencial (p-valor(Benjamini $\&$ Hochberg) < 0.05), \textit{MUC2} i \textit{GPX2}. Anomenarem quasi significatius aquells gens que es troben entre $0.5 <$ p-valor $\leq 0.1$. Els gens quasi significatius són 3; \textit{TFF3}, \textit{IFNGR1} i \textit{SLC30A1.ZnT}. Podem trobar aquests resultats a la \textit{Taula 2}.
+\\
+
+Per al teixit \textit{Jejunum}, d'un total de 32 gens, s'han trobat 2 gens amb una expressió diferencial (p-valor(Benjamini $\&$ Hochberg) < 0.05), \textit{SLC39A4.ZIP4} i \textit{GCG}. Els gens quasi significatius són 8; \textit{TFF3}, \textit{OCLN}, \textit{MUC2}, \textit{SI}, \textit{DAO1}, \textit{SLC13A1.NAS1}, \textit{SLC5A1.SGLT1} i \textit{HNMT}. Podem trobar aquests resultats a la \textit{Taula 3}.\\
+
+Fixat cada gen, i mirant els gens significatius, la segona pregunta que ens plantegem és:
+\\
+
+\textit{Entre quins tractaments (parelles) hi ha diferències significatives?}
+\\
+
+Com hem vist en l'apartat anterior, per al teixit \textit{Ilenum}, es podría destacar que gairebé en tots els gens s'han trobat diferències significatives entre el tractament 4 i el tractament 1. A la \emph{Taula 4} es poden trobar totes les comparacions significatives, i es podría fer un anàlisi més detallat per a cada gen (segons l'interès de l'investigador). En el cas del teixit \textit{Jejunum}, podem veure que cap gen presenta diferencies significatives entre el tractament 4 i 3. Els resultats els podem trobar a la \textit{Taula 5}, i segons l'interès de l'investigador es podría veure de manera més detallada quines són les comparacions significatives entre tractaments per a cada gen.
+\\
+
+La següent part de l'anàlisi consistia en fer una exploració gràfica del conjunt total de gens.
+
 %%Shiny
+
 \clearpage
 \section{TL3P: Aplicatiu Web amb el paquet \texttt{Shiny} de R}
 Implementar una eina capa\c{c} de realitzar el protocol d'anàlisi d'una manera interactiva i generalitzada ha sigut l'objectiu principal del treball. En els següents apartats s'introdueix el software i la metodologia utilitzada per crear l'eina.
@@ -835,7 +856,7 @@ Abans de parlar sobre l'aplicació que hem desenvolupat, caldria destacar quina 
 \textit{Git} és un programari de control de versions. El control de versions, resumint molt, és la gestió dels diversos canvis que es realitzen sobre un repositori (un repositori és el nom que rep el lloc on s'allotja el codi d'un projecte de desenvolupament en algun llenguatge de programació).
 
 \newpage
-El repositori on es troba tot el codi de l'aplicació el tenim al següent enlla\c{c}: \url{https://github.com/djangosee/TFGShinyApp/tree/UserInterface}.
+El repositori on es troba tot el codi de l'aplicació el tenim al següent enlla\c{c}: \url{https://github.com/djangosee/TFGShinyApp/}.
 A l'enlla\c{c} trobem les instruccions necessàries per descarregar el repositori i obrir l'aplicació. El codi s'ha emmagatzemat de forma pública i qualsevol usuari de la plataforma pot obtenir-lo i treballar desenvolupant noves funcionalitats.
 %https://github.com/Hispano/Guia-sobre-Git-Github-y-Metodologia-de-Desarrollo-de-Software-usando-Git-y-Github
 \\
@@ -909,10 +930,10 @@ El primer gràfic que trobem correspon a les mitjanes per tractament i per gen. 
 \captionof{figure}{\textit{LinePlot}. Exemple on ordenem els gens (eix x) de forma decreixent pel valor del tractament 3 i agrupat per la funcionalitat del gen. A més escollim una escala de grisos.}
 \end{center}
 \clearpage
-El següent gràfic que trobem és el \textit{Biplot}, on podem comparar les correlacions entre les mitjanes dels tractaments:
+El següent gràfic que trobem és la representació gràfica de l'ACP, on podem comparar les correlacions entre les mitjanes dels tractaments:
 \begin{center}
 \includegraphics[scale=0.5]{app5.png}
-\captionof{figure}{\textit{Biplot}}
+\captionof{figure}{Representació gràfica de l'ACP}
 \end{center}
 El \textit{Heatmap} el trobem de forma interactiva i amb moltes components interessants per analitzar:
 \begin{itemize}

@@ -19,7 +19,7 @@
 \contentsline {subsubsection}{\numberline {3.2.1}An\IeC {\`a}lisi de la vari\IeC {\`a}ncia (ANOVA)}{12}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Comparacions m\IeC {\'u}ltiples 2 a 2}{14}{subsubsection.3.2.2}
 \contentsline {subsubsection}{\numberline {3.2.3}M\IeC {\`e}todes visuals}{16}{subsubsection.3.2.3}
-\contentsline {subsection}{\numberline {3.3}Conclusions}{19}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Conclusions (Cas d'estudi)}{19}{subsection.3.3}
 \contentsline {section}{\numberline {4}TL3P: Aplicatiu Web amb el paquet \texttt {Shiny} de R}{20}{section.4}
 \contentsline {subsection}{\numberline {4.1}Introducci\IeC {\'o} a Shiny}{20}{subsection.4.1}
 \contentsline {subsubsection}{\numberline {4.1.1}Gesti\IeC {\'o} i control de versions}{20}{subsubsection.4.1.1}
