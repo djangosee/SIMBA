@@ -34,6 +34,7 @@ basicstyle=\scriptsize\tt,
  }
 
 \begin{document}
+\renewcommand{\refname}{Bibliografia}
 \newcommand\makeAbstract{%
 \begin{center}\textbf{Abstract (versió en català)}\end{center}
 \begin{list}{}{\leftmargin=3em\rightmargin=\leftmargin}\item\relax
@@ -188,8 +189,7 @@ L'estadístic $F$ segueix una distribució F de Snedecor amb $k-1$ i $N-k$ graus
 
 \subsubsection{Anova per a dissenys desbalancejats}
 Si la mida d'una mostra és diferent per a cada grup o tractament, es reduirà la potència estadística en comparació amb un disseny balancejat. La potència estadística no és més que la probabilitat que l'estudi detecti un efecte si realment hi ha un efecte. És invers a l'error Tipus II, això significa que la probabilitat de cometre un error de tipus II serà petita. En altres paraules, ens constarà més trobar diferencies signficatives i els nostres resultats estaran esbiaixats.
-\\
-A l'annex \ref{annex:c} s'expliquen mètodes per tractar un disseny desbalancejat.
+\clearpage
 \subsection{Correcció per multiplicitat de contrastos}
 %http://www.stat.cmu.edu/~genovese/talks/hannover1-04.pdf
 %Limma
@@ -782,7 +782,7 @@ El següent gràfic mostra les mitjanes de cada gen per tractaments, d'aquesta m
 \includegraphics[scale=0.9]{lineplotj.png}
 \captionof{figure}{Mitjana dels gens per tractament, teixit \textbf{Jejunum}. El gràfic esta ordenat per família gènica primer i dins de la familia per el tractament 1 de forma decreixent.}
 \end{center}
-Un fet imporant a destacar en el gràfic del texit \textbf{Jejunum}, és el gran número de gens significatius que tenen una funció barrera o protectora (BT) dins del organisme.
+Un fet imporant a destacar en el gràfic del texit \textbf{Jejunum}, és el gran número de gens significatius que tenen una funció barrera o protectora (BF) dins del organisme.
 \clearpage
 Per últim, es presenten els \textit{heatmap} per a cada teixit. Les conclusions d'aquest apartat queden incloses en les conclusions finals del cas d'estudi.
 \begin{center}
@@ -820,10 +820,31 @@ Fixat cada gen, i mirant els gens significatius, la segona pregunta que ens plan
 Com hem vist en l'apartat anterior, per al teixit \textit{Ilenum}, es podría destacar que gairebé en tots els gens s'han trobat diferències significatives entre el tractament 4 i el tractament 1. A la \emph{Taula 4} es poden trobar totes les comparacions significatives, i es podría fer un anàlisi més detallat per a cada gen (segons l'interès de l'investigador). En el cas del teixit \textit{Jejunum}, podem veure que cap gen presenta diferencies significatives entre el tractament 4 i 3. Els resultats els podem trobar a la \textit{Taula 5}, i segons l'interès de l'investigador es podría veure de manera més detallada quines són les comparacions significatives entre tractaments per a cada gen.
 \\
 
-La següent part de l'anàlisi consistia en fer una exploració gràfica del conjunt total de gens.
+La següent part de l'anàlisi consistia en fer una exploració gràfica del conjunt total de gens. L'exploració gràfica esta dividida en tres tipus de gràfics:
+\\
 
+\textit{ Amb el heatmap, explorem el doble agrupament (clustering) de gens i mostres.}
+\\
+
+Al teixit \textit{Ilenum}, el dendrograma vertical no mostra cap agrupació clara per funcionalitat del gen, encara que si s'observen dos gens, \textit{FAXDC2} i \textit{SLC15A1.PEPT1}, que tenen una expressió alta i estan agrupats en un sol clúster (probablement siguin \textit{outliers}). El clúster horitzontal, mostra un conjunt de casos amb una expressió baixa sota els tractaments 3 i 4, els quals en aquesta zona s'agrupen en un clúster. A l'altre part del dendograma hi ha una separació poc nítida entre tractaments.
+
+Per al teixit \textit{Jejunum}, al dendrograma vertical no es veu cap agrupació clara per funcionalitat (els colors del dendrograma estan força barrejats). S’hi veu (al mig) un clúster amb dos gens, \textit{FAXDC2} i \textit{SLC15A1.PEPT1}, amb uns nivells d’expressió alts en la majoria de mostres. Aquests gens tenen un comportament outlier comparat amb els altres i convindria analitzar-lo amb més detall: revisar dades, fer noves proves per veure si es mantenen els nivells d’expressió alts, etc. El dendrograma horitzontal, corresponent a l'agrupació de mostres, observem que les mostres del tractament 2 i el tractament 4 queden bastant agrupades. Els tractaments 3 i 4 tenen nivells d'expressió més elevats sobretot en els gens que conformen el clúster superior.
+\\
+
+\textit{ Amb la representació gràfica de l'ACP, explorem les correlacions entre mitjanes de tractaments al llarg dels gens.}
+\\
+
+En el cas del teixit \textit{Ilenum} destaquem una correlació alta entre la mitjana del tractament 4 i la mitjana del tractament 1. Per al cas del teixit \textit{Jejunum}, trobem correlacions altes entre els tractaments 1, 3 i 4.
+\\
+
+\textit{ Explorem l'evolució de les línies de mitjanes al llarg dels gens, per a cada tractament.}
+\\
+
+Aquests gràfics que trobem a les \textit{Figures 8 i 9}, realment són una representació gràfica de l'ANOVA, i ens pot ajudar a veure els resultats obtinguts a les taules. El fet més remarcable el trobem al teixit \textit{Jejunum}, on els gens que han sortit significatius principalment són aquells que desenvolupen una funció barrera o protectora, \emph{Barrer Function (BT)}.
+\\
+
+Amb les conclusions anteriors els investigadors poden veure els efectes dels tractaments en l'expressió dels gens i complementar aquest anàlisi amb el seus criteris com especialistes en el seu àmbit. Finalment amb l'interacció entre la part estadística (l'eina estadística desenvolupada en \texttt{R}) i la part biològica (criteri dels investigadors), es completa l'anàlisi de les matrius d'expressió gènica.
 %%Shiny
-
 \clearpage
 \section{TL3P: Aplicatiu Web amb el paquet \texttt{Shiny} de R}
 Implementar una eina capa\c{c} de realitzar el protocol d'anàlisi d'una manera interactiva i generalitzada ha sigut l'objectiu principal del treball. En els següents apartats s'introdueix el software i la metodologia utilitzada per crear l'eina.
@@ -856,7 +877,7 @@ Abans de parlar sobre l'aplicació que hem desenvolupat, caldria destacar quina 
 \textit{Git} és un programari de control de versions. El control de versions, resumint molt, és la gestió dels diversos canvis que es realitzen sobre un repositori (un repositori és el nom que rep el lloc on s'allotja el codi d'un projecte de desenvolupament en algun llenguatge de programació).
 
 \newpage
-El repositori on es troba tot el codi de l'aplicació el tenim al següent enlla\c{c}: \url{https://github.com/djangosee/TFGShinyApp/}.
+El repositori on es troba tot el codi de l'aplicació el tenim al següent enlla\c{c}: \url{https://github.com/djangosee/TFGShinyApp}.
 A l'enlla\c{c} trobem les instruccions necessàries per descarregar el repositori i obrir l'aplicació. El codi s'ha emmagatzemat de forma pública i qualsevol usuari de la plataforma pot obtenir-lo i treballar desenvolupant noves funcionalitats.
 %https://github.com/Hispano/Guia-sobre-Git-Github-y-Metodologia-de-Desarrollo-de-Software-usando-Git-y-Github
 \\
@@ -876,7 +897,7 @@ La idea principal a l'hora de desenvolupar l'aplicatiu ha sigut la de crear un e
 \item \textit{Usage}: Per últim, trobem les especificacions necessàries per obrir la base de dades i un petit tutorial de l'aplicatiu.
 \end{enumerate}
 
-\textbf{Observació} Si existeixen problemes a l'hora d'obrir l'aplicació, a l'annex \ref{annex:d} podem trobar l'output de la funció \texttt{sessionInfo} on ens mostra la versió d'R utilitzada amb els corresponents paquets.
+\textbf{Observació}  Si existeixen problemes a l'hora d'obrir l'aplicació, a l'annex \ref{annex:d} podem trobar l'output de la funció \texttt{sessionInfo} on ens mostra la versió d'R utilitzada amb els corresponents paquets.
 \clearpage
 \subsection{Funcionalitats de l'aplicació}
 En aquest apartat es presenten les funcionalitats que té l'aplicació en forma d'imatges i comentaris.
@@ -947,17 +968,37 @@ El \textit{Heatmap} el trobem de forma interactiva i amb moltes components inter
 \end{center}
 \clearpage
 \twocolumn
-\subsection{Desenvolupament i futures versions}
-A dia d'avui l'aplicació està a la versió 1.0 i en funcionament. Encara que es poden realitzar nous canvis per millorar l'experiència, com per exemple, mantenir l'aplicació en un servidor, d'aquesta manera no faria falta descarregar el codi, i directament l'aplicació estaria connectada a la xarxa. Un altre idea per a futures versions podria ser la creació automàtica d'un informe amb els resultats de l'anàlisi.
+\subsection{Futures versions de l'aplicació}
+
+A dia d'avui l'aplicació està a la versió 1.0.0. En aquest apartat es plantegen noves funcionalitats per a futures versions:
+\begin{enumerate}
+\item Utilitzar un servidor per tenir l'aplicatiu disponible en forma de pàgina web. D'aquesta manera es desvincula la necessitat que cada usuari compili l'aplicatiu des de el seu dispositiu. És una manera de facilitar als investigadors la feina, ja que no seria necessari tenir coneixement d'\texttt{R} per obrir l'aplicació.
+\item La possibilitat de descarregar un informe, fet en \texttt{LateX}, dels resultats obtinguts.
+\item Implementar nous mètodes per a dissenys desbalancejats.
+\item Implementar les gràfiques utilitzades per a les comparacions 2 a 2 (Tukey).
+\item Fer encara més interactiva l'aplicació, amb nous gràfics de línies. Això podria anar en contra del temps d'execució de l'anàlisi.
+\end{enumerate}
+Aquestes idees i altres que es puguin tenir, es poden implementar en un futur. El codi de l'aplicació és públic, i queda obert per a usuaris que vulguin col·laborar amb el projecte. L'únic necessari és registrar-se en la plataforma de \textit{GitHub} i sol·licitar una col·laboració a l'administrador del projecte.
+\newpage
+\section{Conclusions}
+En aquest treball s'ha descrit un protocol d'anàlisi capa\c{c} de donar resultats fiables a experiments relacionats amb el camp de la genètica. Amb l'aplicació, és possible analitzar com s'expressen els gens sota diferents tractaments, dietes, medicacions, situacions experimentals, etc. A més, es poden analitzar les dades d'expressió gènica provinents de la tecnologia \textit{OpenArray} d'una manera senzilla i còmode per a l'usuari.
 \\
 
-Si mirem quins són els punts febles, podríem destacar el llarg temps de càrrega a causa de les gràfiques interactives que fan la pàgina més lenta. També seria important millorar l'estructura del codi per modularitzar les tasques i no repetir codi. Per últim, comentar tot el codi utilitzant un manual d'estil, per facilitar l'entrada de nou codi en mans de futurs usuaris de l'aplicació.
+La possibilitat d'utilitzar una pròpia eina que ha sigut generalitzada i automatitzada, obre un ventall de possibilitats als investigadors. La replicació de l'anàlisi amb futures dades és una realitat amb l'aplicatiu. A més la seva estructura interna facilita la introducció de nous mètodes estadístics dins del codi. D'aquesta manera l'eina podria anar evolucionant al llarg del temps amb la finalitat de fer una anàlisi més complet i que contingui diferents tipus de dissenys.
+\\
+
+El caràcter exploratori en les dades i en el conjunt del treball deixa oberta la porta a futurs canvis per millorar el protocol d'anàlisi i l'aplicatiu.
+\section{Agraïments}
+Per portar endavant aquest projecte he necessitat l'ajuda d'algunes persones a les quals volia agrair la seva col·laboració i esfor\c{c}.\\
+
+Agrair la col·laboració de l'estudiant de veterinària Francesc Gonzàlez i el Dr. David Solà.\\
+
+També voldria donar les gràcies a la tutora del treball, la Dr. Mercè Farré, per guiar-me durant el projecte i posar la seva confian\c{c}a en mi.
 %Bibliografia
 \clearpage
-\begin{thebibliography}{9}
+\begin{thebibliography}{aaaa}
 \bibitem{fdr}
-Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing Journal of the Royal Statistical Society. Series B (Methodological), Vol. 57, No. 1. (1995), pp. 289-300, doi:10.2307/2346101 by Yoav Benjamini, Yosef Hochberg
-\\
+Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing Journal of the Royal Statistical Society. Series B (Methodological), Vol. 57, No. 1. (1995), pp. 289-300, doi:10.2307/2346101 by Yoav Benjamini, Yosef Hochberg\\
 \bibitem{caca8}
 Mark D. Robinson, Davis J. McCarthy, Gordon K. Smyth; edgeR: a Bioconductor package for differential expression analysis of digital gene expression data, Bioinformatics, Volume 26, Issue 1, 1 January 2010, Pages 139–140,
 \\\texttt{https://doi.org/10.1093/bioinformatics/btp616}
@@ -1065,9 +1106,6 @@ $E_{Gen_1}=0$ & $41.5850$ & $41.58$ \\
 \includegraphics[scale=0.7]{genes.png}
 \captionof{figure}{Gens \textit{diana} i la seva funció dins de l'organisme.}
 \end{center}
-\clearpage
-\section{Anova unifactorial per a dissenys desbalancejats}
-\label{annex:c}
 \clearpage
 \section{Output sessionInfo()}
 \label{annex:d}
