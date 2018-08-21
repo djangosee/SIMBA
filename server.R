@@ -431,7 +431,7 @@ server <- function(input, output,session) {
     if(provador==T){sign <- tt}
     sign <- na.omit(sign)
     if(length(sign)>0){
-    signAblines<- rownames(sign[sign$p.BH<=input$alpha,])
+    signAblines<- rownames(sign[sign$p.BH<=input$alphaFDR,])
     signAblines<- which(nomsfinals %in% signAblines)
     for(i in 1:length(signAblines)) abline(v=signAblines[i],col="black",lty="dotted")
     }

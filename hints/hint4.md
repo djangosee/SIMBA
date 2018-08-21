@@ -2,9 +2,12 @@
 
 En el gràfic trobem 4 elements importants:
 
-- L'Eix de les Y, ens indica la mitjana de l'expressió gènica per a cada gen (les X).
 - Hi ha una línia per a cada tractament de l'estudi.
-- L'ordre de representació de les dades. (Per tractament decreixent, per funció, o ambdues)
-- Si hi ha gens que s'expressen de manera diferencial, és veuran línies verticals discontínues en les posicions on es troben aquests gens.
+- L'Eix de les Y, ens indica la mitjana d'expressió gènica per a cada gen (a l'eix X).
+- Es pot escollir l'ordre dels gens a l'eix X: Decreixent per tractament, alfabètic per funcinalitat gènica, o ambdós criteris.
+- Si hi ha gens en els quals *l'expressió mitjana presenta diferències significatives entre tractaments*, és veuran línies verticals discontínues en les posicions on es troben aquests gens.
 
-Amb aquest gràfic podem veure les diferències entre les mitjanes, les agrupacions entre els gens significatius... Realment és una bona representació de la taula ANOVA i de les comparacions 2 a 2.
+Amb aquest gràfic podem visualitzar: les diferències de mitjanes entre tractaments, quins gens presenten diferències significatives en mitjana (taula ANOVA i Tukey),  eventuals agrupacions per funcionalitat dels gens significatius (si les linies discontínues són més d'ùna'unes funcionalitats que d'altres), tractaments *positivament correlacionats* al llarg dels gens (les dues línies pugen i baixen simultàniament en la majoria de gens), tractaments *negativament correlacionats* al llarg dels gens (quan una línia baixa, l'altra puja), i tractaments  
+*incorrelacionats* (cap patró de pujades i baixades). [Les correlacions que veiem en aquesta gràfica han de ser coherents amb les que es veuen en la gràfica de components principals]. 
+
+**Obs**: La significació - tant ANOVA com Tukey - depén de les distàncies verticals entre línies però també de la variància, que no es visualitza a la gràfica.
