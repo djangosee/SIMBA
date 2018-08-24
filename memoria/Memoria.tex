@@ -93,6 +93,7 @@ Aquest treball s'ha centrat en l'anàlisis de bases de dades d'expressió genèt
 Amb aquesta premissa, el treball també s'ha enfocat en crear un aplicatiu web capaç de fer una anàlisi estadística de les matrius d'expressió gènica. L'aplicatiu ha sigut programat amb R, per mitjà del paquet Shiny. Aquest paquet és capa\c{c} d'implementar el codi R de manera interactiva. No només implementa el codi R, sinó també és capaç d'interactuar amb diferents llenguatges com html, css o java. L'aplicació, en el seu conjunt, s'ha organitzat i compartit per mitjà d'un repositori creat en la plataforma GitHub. D'aquesta manera el codi queda a disposició de qualsevol usuari que vulgui utilitzar-lo o consultar els métodes emprats.
 
 \subsection{Introducció als conceptes bàsics de la bioinformàtica}
+\label{1.1}
 %(PDF de bioinformatica)(ttp://masteres.ugr.es/moea/pages/curso201314/tfm1314/tfm-septiembre1314/memoriamasterdanielparrasburgos/!)
 
 Cada organisme es defineix pel seu material genètic, el genoma. La informació genètica la trobem emmagatzemada en una macromolècula anomenada DNA, que es troba al nucli de cada cèl·lula.
@@ -193,6 +194,7 @@ Si la mida d'una mostra és diferent per a cada grup o tractament, es reduirà l
 \subsection{Correcció per multiplicitat de contrastos}
 %http://www.stat.cmu.edu/~genovese/talks/hannover1-04.pdf
 %Limma
+\label{2.2}
 Un problema comú què ens podem trobar a qualsevol investigació és voler comparar més de dos grups de dades per detectar possibles diferències entre ells. La utilització de models d'ANOVA ens pot permetre detectar diferències, a escala global, entre les mitjanes involucrades, però en moltes ocasions volem detectar les diferències entre grups concrets. Aquest cas només és possible mitjançant l'ús dels Procediments de Comparacions múltiples (PCM).
 \\
 
@@ -239,6 +241,7 @@ Aquí recau el gran problema de la multiplicitat de contrastos, podem observar q
 \end{center}
 En el nostre estudi es important tenir clar aquest problema, ja que si tenim molts gens, i no apliquem una correcció, podem caure en l'error d'afirmar que un gen s'expressa diferencialment quan realment no ho fa.
 \subsubsection{Ratio falsos positius (\emph{False discovery Rate (FDR)})}
+\label{2.2.1}
 %http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture10.pdf
 %https://rpubs.com/Joaquin_AR/236898
 Existeixen molts mètodes per corregir el problema de la multiplicitat de contrastos. El més simple és el mètode de Bonferroni, on cada p-valor es multiplica pel nombre de tests realitzats (acotant la probabilitat màxima a 1). És un mètode molt conservador i no és el més indicat per al nostre cas d'estudi.
@@ -341,9 +344,11 @@ IC(\mu_j - \mu_k)_{(1-\alpha)}= (\bar{X}_j - \bar{X}_k) \pm q_{I,n-I,1-\alpha}\s
 \end{equation*}
 Si l'interval de la diferència inclou el 0, no rebutjem la hipòtesi nul·la del test i per tant, no hi ha diferències entre $\mu_j$ i $\mu_k$.
 \subsection{Mètodes descriptius visuals}
+\label{2.4}
 %http://mural.uv.es/rata3/PECS/Genomica%20Funcional%20y%20Analisis%20de%20Microarrays%20PEC2.pdf
 A l'hora de crear el protocol d'anàlisi teníem la necessitat de descriure el comportament de l'expressió dels gens segons el tractament i tenint en compte la funcionalitat de la família del gen. Una manera de veure aquests patrons era amb l'ús de tècniques visuals, que tenen una base matemàtica que explicarem en els següents apartats.
 \subsubsection{Heatmap}
+\label{2.4.1}
 %http://wpd.ugr.es/~bioestad/guia-spss/practica-8/#8
 %http://www.opiniomics.org/you-probably-dont-understand-heatmaps/
 Un \textit{heatmap} (o mapa de calor) és una representació gràfica de dades on els valors individuals continguts en una matriu es representen com a colors.
@@ -480,7 +485,7 @@ $$
 
 
 \subsubsection{Gràfica de les variables}
-
+\label{2.4.3}
  Suposem variables centrades i escalades. La matriu $W=V\Lambda^{1/2}$
 s'anomena matriu de pesos (\emph{loadings})  i dóna les coordenades
 per expressar  les variables com a combinació lineal (o mitjana
@@ -548,7 +553,7 @@ L'estudi es defineix breument en els següents punts\\
   \item Trobar relacions entre la funcionalitat del gen i la seva expressió sota diferents tractaments.
 \end{itemize}
 \noindent\textbf{Disseny de l'estudi}\\
-Estudi experimental amb una mostra total de 46 casos. És un un dels primers experiments realitzats pel \textit{SNiBA}, per tant, l'experiment es totalment exploratori i es podría definir com una prova per a futurs dissenys.
+Estudi experimental amb una mostra total de 48 casos. És un un dels primers experiments realitzats pel \textit{SNiBA}, per tant, l'experiment es totalment exploratori i es podría definir com una prova per a futurs dissenys.
 \noindent\textbf{Tractaments}
 \begin{itemize}
   \item \textbf{T1}: Inclusió d'aliments de soja a la dieta.
@@ -564,7 +569,7 @@ La principal variable explicativa és:
 Les variables secundàries que també trobem a l'estudi:
 \begin{enumerate}
   \item ID: nom del cas.
-  \item Teixit: l'estudi es fa paral·lelament amb 2 tipus de teixits diferents, per tant, es farà un estudi amb cada teixit. (Dels 46 casos, queden 23 casos per teixit)
+  \item Teixit: l'estudi es fa paral·lelament amb 2 tipus de teixits diferents, per tant, es farà un estudi amb cada teixit. (Dels 48 casos, queden 24 casos per teixit)
   \begin{itemize}
     \item Jejunum
     \item Ileum
@@ -640,13 +645,12 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
   {\textcolor{gray}{NR3C1.Gr$\alpha$}} & Stress & 0.0308 & 0.9925 & 0.9925 \\
    \bottomrule
 \end{tabular}
-\onecolumn
 \caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Ileum}. Els p-valors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
 \end{table}
 
 \noindent El nivell de significació és $\alpha$=0.05, però degut al conjunt de tests realitzats s'aplica una correcció (\textit{Benjamini $\&$ Hochberg}). Per tant, només s'haurien de considerar significatius del conjunt experimental aquells tests en els que el p-valor de \textit{Benjamini $\&$ Hochberg} estigui per sota de determinat llindar, en aquest cas hem fixat un nivell de significació del 5$\%$, encara que en aquests tipus d'experiments poden arrbiar al $10\%$. Observem que hi ha gens sense cap p-valor, això es degut a que després de fer el tractament de dades faltants (descrit a l'apartat anterior) encara hi ha NA's, per tant, l'anàlisi de la variància no contempla aquests gens.
+\clearpage
 %Jejunum
-\onecolumn
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlrrc}
@@ -698,12 +702,11 @@ Un cop fet l'ANOVA i la corresponent correcció per multiplicitat de contrastos 
 Un cop fet l'ANOVA i la corresponent correcció per multiplicitat de contrastos (FDR), s'han trobat 2 gens amb una expressió diferencial (p-valor < 0.05), \textit{GCG} i \textit{SLC39A4.ZIP4} Els gens quasi significatius són 8; \textit{TFF3}, \textit{OCLN}, \textit{MUC2}, \textit{SI}, \textit{DAO1}, \textit{HNMT}, \textit{SLC5A1.SGLT1} i \textit{SLC13A1.NAS1}. Podem trobar aquests resultats a la \textit{Taula 3}.\\
 
 \clearpage
-\onecolumn
 \subsubsection{Comparacions múltiples 2 a 2}
 Un cop identificats els gens que han manifestat una expressió diferencial hem aplicat comparacions 2 a 2 amb l'objectiu de veure quins tractaments són diferents entre si. L'anàlisi esta fet per a cada teixit i el mètode utilitzat per corregir la multiplicitat de contrastos ha sigut el mètode de Tukey.
 \begin{table}[ht]
 \centering
-\scalebox{1}{
+\scalebox{0.75}{
 \begin{tabular}{rrrrrrr}
   \toprule
  & {\textbf{2-1}} & {\textbf{3-1}} & {\textbf{4-1}} & {\textbf{3-2}} & {\textbf{4-2}} & {\textbf{4-3}} \\
@@ -722,14 +725,13 @@ Un cop identificats els gens que han manifestat una expressió diferencial hem a
 
 Podem destacar que gairebé tots els gens que surten signficatius presenten diferències estadísticament significatives entre el tractament 4 i el tractament 1. De la mateixa manera, observem que la comparació entre el tractament 4-2 no indica cap diferència significativa.
 \begin{center}
-\includegraphics[scale=0.8]{IleumTukey.png}
+\includegraphics[scale=0.45]{IleumTukey.png}
 \captionof{figure}{Intervals de confian\c{c}a del $95\%$ per a la diferència de mitjanes per a cada comparació i per a cada gen del teixit \textbf{Ilenum}. Els intervals que no contenen el 0, es mostren com comparacions estadísticament significatives.}
 \end{center}
-\clearpage
-En aquest teixit, podem veure que cap gen presenta diferencies significatives entre el tractament 4 i 3. Les comparacions que presenten més diferencies són 3-2 i 4-2, encara que no és presenta un patró tan clar com en el teixit Ilenum.
+En el teixit \textit{Jejunum}, podem veure que cap gen presenta diferencies significatives entre el tractament 4 i 3. Les comparacions que presenten més diferencies són 3-2 i 4-2, encara que no és presenta un patró tan clar com en el teixit Ilenum.
 \begin{table}[ht]
 \centering
-\scalebox{1}{
+\scalebox{0.75}{
 \begin{tabular}{rrrrrrr}
   \toprule
  & {\textbf{2-1}} & {\textbf{3-1}} & {\textbf{4-1}} & {\textbf{3-2}} & {\textbf{4-2}} & {\textbf{4-3}} \\
@@ -751,50 +753,47 @@ En aquest teixit, podem veure que cap gen presenta diferencies significatives en
 \end{table}
 
 \begin{center}
-\includegraphics[scale=0.9]{TukeyJeju.png}
+\includegraphics[scale=0.5]{TukeyJeju.png}
 \captionof{figure}{Intervals de confian\c{c}a del $95\%$ per a la diferència de mitjanes per a cada comparació i per a cada gen del teixit \textbf{Jejunum}. Els intervals que no contenen el 0, es mostren com comparacions estadísticament significatives.}
 \end{center}
-\clearpage
 \subsubsection{Mètodes visuals}
 Els següents gràfics del protocol ens poden ajudar a trobar relacions i agrupacions entre els tractaments i els gens. El primer mètode analitzat ha sigut el ACP per a cada teixit:
 \begin{center}
-\includegraphics[scale=0.6]{biploti.png}
+\includegraphics[scale=0.4]{biploti.png}
 \captionof{figure}{Representació gràfica de l'ACP de les mitjanes per cada gene-tractament del teixit \textbf{Ilenum}.}
 \end{center}
 Amb aquest teixit podem observar una correlació alta entre la mitjana del tractament 4 i la mitjana del tractament 1. En canvi, trobem correlacions més febles entre el tractament 4 i els tractaments restants. L'angle entre el tractament 2 i el tractament 3, ens indica una correlació casi nul·la.
-
 \begin{center}
-\includegraphics[scale=0.6]{biplotj.png}
+\includegraphics[scale=0.4]{biplotj.png}
 \captionof{figure}{Representació gràfica de l'ACP de les mitjanes per cada gene-tractament del teixit \textbf{Jejunum}.}
 \end{center}
 En aquest cas trobem correlacions altes entre els tractaments 1, 3 i 4. En canvi el tractament 2, sembla tenir una correlació més feble amb els altres tractaments. Recordem que per calcular el coeficient de correlació en aquest gràfic, només necesitem l'angle que formen els dos vectors, suposem que l'angle entre T4 i T2 és de 45 graus:
 \begin{equation*}
 r(T4,T2)= cos(angle_{(T4,T2)})= cos(\frac{\pi}{4})= 0.7071
 \end{equation*}
-
-\clearpage
 El següent gràfic mostra les mitjanes de cada gen per tractaments, d'aquesta manera es poden observar les diferències que observavem a l'ANOVA i a les comparacions 2 a 2.
 \begin{center}
-\includegraphics[scale=0.9]{lineploti.png}
+\includegraphics[scale=0.6]{lineploti.png}
 \captionof{figure}{Mitjana dels gens per tractament, teixit \textbf{Ilenum}. El gràfic esta ordenat per família gènica primer i dins de la familia per el tractament 1 de forma decreixent. El nom de cada gen esta acompanyat de la seva funció dins de l'organisme, com per exemple, \textit{BF.OCLN} = funció del gen: \textit{Barrer Function}, nom del gen: \textit{OCLN}}
 \end{center}
 \begin{center}
-\includegraphics[scale=0.9]{lineplotj.png}
+\includegraphics[scale=0.6]{lineplotj.png}
 \captionof{figure}{Mitjana dels gens per tractament, teixit \textbf{Jejunum}. El gràfic esta ordenat per família gènica primer i dins de la familia per el tractament 1 de forma decreixent.}
 \end{center}
-Un fet imporant a destacar en el gràfic del texit \textbf{Jejunum}, és el gran número de gens significatius que tenen una funció barrera o protectora (BF) dins del organisme.
-\clearpage
-Per últim, es presenten els \textit{heatmap} per a cada teixit. Les conclusions d'aquest apartat queden incloses en les conclusions finals del cas d'estudi.
+Un fet imporant a destacar en el gràfic del texit \textbf{Jejunum}, és el gran número de gens significatius que tenen una funció barrera o protectora (BF) dins del organisme.\\
+
+Per últim, es presenten els \textit{heatmap} per a cada teixit:
 \begin{center}
-\includegraphics[scale=0.9]{heatmapi.png}
-\captionof{figure}{Heatmap del teixit\textbf{Ilenum}.}
+\includegraphics[scale=0.6]{heatmapi.png}
+\captionof{figure}{Heatmap del teixit \textbf{Ilenum}.}
 \end{center}
 \begin{center}
-\includegraphics[scale=0.9]{heatmapj.png}
+\includegraphics[scale=0.6]{heatmapj.png}
 \captionof{figure}{Heatmap del teixit \textbf{Jejunum}.}
 \end{center}
+
+Les conclusions d'aquest apartat queden incloses en les conclusions finals del cas d'estudi.
 \clearpage
-\twocolumn
 \subsection{Conclusions (Cas d'estudi)}
 
 Un cop realitzat l'anàlisi per mitjà del protocol que hem desenvolupat, es l'hora de les conclusions. Recordem que estem analitzant un estudi bastant exploratori, per tant, nosaltres mateixos hem definit les hipotesis i criteris estadístics que creiem més importants. Aquests criteris poden ajudar a que els investigadors interpretin resultats presents o futurs.
@@ -935,41 +934,76 @@ A l'aplicació podem trobar 2 taules de resultats, una corresponent a l'anàlisi
 \end{center}
 Les cel·les en verd mostren els p-valors que han sigut significatius. El nivell de significació s'estableix amb anterioritat per l'usuari al panell de configuració.
 \subsubsection{Gràfics}
-El primer gràfic que trobem correspon a les mitjanes per tractament i per gen. Aquest gràfic disposa de diferents opcions de personalització, com canviar l'ordre de les dades o fins i tot el color de les línies.
+\noindent\textbf{LinePlot}\\
+
+\noindent El primer gràfic que trobem correspon a les mitjanes per tractament i per gen. Aquest gràfic disposa de diferents opcions de personalització, com canviar l'ordre de les dades o fins i tot el color de les línies.
 \begin{center}
 \includegraphics[scale=0.5]{app7.png}
 \captionof{figure}{Panell de configuració del \textit{LinePlot}}
 \end{center}
 \clearpage
-\onecolumn
 \begin{center}
-\includegraphics[scale=0.4]{app8.png}
+\includegraphics[scale=0.3]{app8.png}
 \captionof{figure}{\textit{LinePlot}. Exemple on ordenem els gens (eix x) de forma decreixent pel valor del tractament 1 i escollim els colors per a cada tractament.}
 \end{center}
 \begin{center}
-\includegraphics[scale=0.4]{app9.png}
+\includegraphics[scale=0.3]{app9.png}
 \captionof{figure}{\textit{LinePlot}. Exemple on ordenem els gens (eix x) de forma decreixent pel valor del tractament 3 i agrupat per la funcionalitat del gen. A més escollim una escala de grisos.}
 \end{center}
-\clearpage
-El següent gràfic que trobem és la representació gràfica de l'ACP, on podem comparar les correlacions entre les mitjanes dels tractaments:
+\newpage
+
+\noindent\textbf{Representació gràfica de l'ACP}\\
+
+\noindent Els gràfics de variabes i de casos s'interpreten conjuntament. La posició de les variables en el gràfic mostra l'estructura de les dades i suggereix possibles interpretacions de les components principals. Són gràfiques exploratòries, no porten significació estadística associada.\\
+
+\noindent\textbf{Gràfic de variables}\\
+
+\noindent Per a dades escalades o tipificades (cas habitual), les variables queden representades per fletxes de longitud entre 0 i 1. \\
+
+\textbf{Longitud i qualitat de representació}. La longitud de la fletxa indica la mida de la seva projecció en el subespai de les components (preferentment, de les dues primeres) i, per tant, la seva  qualitat de representació: Una variable està  ben representada  en el subespai de les dues components, si la fletxa té longitud propera a 1, és a dir, s'aproxima a la circumferència de radi 1. (Només es poden interpretar les variables ben representades)\\
+
+\textbf{Angles i correlació}. El cosinus de l'angle format pels dos vectors és proporcional a la seva correlació, per tant: \textit{Els angles que formen dues fletxes (o variables) entre sí, ens mostren la correlació existent entre les corresponents variables}. Els sentits dels vectors indiquen el signe de la correlació. L'angle que forma una fletxa (variable) i un eix (component) indica la correlació entre la variable i la component.\\
+
+Per tant,\\
+\begin{itemize}
+\item Si dues variables estan ben representades, com més petit (proper a zero) sigui l'angle entre les seves fletxes, més forta i positiva és la seva correlació.
+
+\item Si dues variables estan ben representades, com més  proper a 180$^o$ ($\pi$) sigui l'angle entre les seves fletxes, més forta i negativa és la seva correlació.
+
+\item Si dues variables estan ben representades i l'angle entre les dues fletxes és proper al recte, la correlació és pràcticament zero.
+
+\item Si hi ha un grup de variables ben representades i en posicions properes en el gràfic, això indica que totes elles estan molt relacionades entre sí i que ens subministren bàsicament la mateixa informació, diem que conformen \textit{un factor latent}.
+
+\item Si apareixen varis grups de variables corrleacionades, vol dir que hi ha \textit{diversos factors latents} a la matriu de dades.
+
+\item Si una o mès  variables estan ben representades i tenen un angle molt petit amb un dels eixos de coordenades, això indica que una de les components  està fortament correlacionada amb aquesta(es) variable(s) i, per tant, es pot interpretar (etiquetar) la component en base al significat d'aquesta(es) variable(s).
+\end{itemize}
+
+\noindent\textbf{Gràfic de casos individuals}\\
+
+\noindent Els gens (en general, els casos) es representen mitjançant un diagrama de dispersió dels scores o puntuacions en l'espai de les components. Els casos amb puntuacions més elevades en una component es poden interpretar en base amb les variables més correlacionades amb aquesta component. Els colors de la gràfica de dispersió se solen utilitzar per visualitzar una variable qualitativa.
 \begin{center}
-\includegraphics[scale=0.5]{app5.png}
+\includegraphics[scale=0.3]{app5.png}
 \captionof{figure}{Representació gràfica de l'ACP}
 \end{center}
-El \textit{Heatmap} el trobem de forma interactiva i amb moltes components interessants per analitzar:
+
+\noindent\textbf{Heatmap}\\
+
+\noindent El \textit{heatmap} és la respresentació conjunta de dos \textit{dendrogrames}: un dendrograma vertical que mostra agrupacions de files (gens o variables) i un dendrograma horitzontal que mostra agrupacions de columnes (mostres o casos). Un dendrograma és un arbre que representa una jerarquia de particions (des de la màxima on cada element és un clúster fins a la mínima on tots els elements estan agrupats en un clúster únic). Per decidir quina partició s'escull, un criteri és tallar l'arbre per on les \textit{branques són més llargues} (perquè correspon a maximitzar les distàncies entre els clústers resultants).
 \begin{itemize}
-\item La matriu d'expressió, podem trobar patrons en ella.
-\item Els dendrogrames, tant les agrupacions per casos com les agrupacions per gens, ens poden ajudar a fer clústers.
-\item Les variables, \textit{tractament} i \textit{funció del gen}, donen molt suport descriptiu a l'anàlisi.
+\item Al dendrograma vertical hi ha els clústers dels gens. Després d'escollir la partició, els gens agrupats en un mateix clúster tendeixen a tenir pautes d'expressió similars en el conjunt de les mostres.
+\item  La variable categòrica \textit{funció del gen} es visualitza segons els colors que veiem sota del dendrograma vertical, i és  útil per explorar si els gens agrupats en un mateix clúster (expressions similars) tendeixen a tenir la mateixa funcionlitat o, per contra, l'agrupació per clústers no es correspon a l'agrupacio per funcionalitats.
+\item  Al dendrograma horitzontal hi ha els clústers de les mostres. Després d'escollir la partició, les mostres agrupades en un mateix clúster tendeixen a tenir pautes d'expressió similars en el conjunt dels gens.
+\item  La variable \textit{tractament} es visualitza segons els colors que veiem sota del dendrograma horitzontal, i és útil per  explorar si les mostres d'un mateix clúster (expressions similars) tendeixen a correspondres a un mateix tractment o, per contra, l'agrupació per clústers no es correspon a l'agrupacio per tractaments.
+\item  En blanc trobem els casos que són NA's.
 \end{itemize}
+
 \begin{center}
-\includegraphics[scale=0.6]{app6.png}
+\includegraphics[scale=0.3]{app6.png}
 \captionof{figure}{\textit{Heatmap} interactiu}
 \end{center}
-\clearpage
-\twocolumn
-\subsection{Futures versions de l'aplicació}
 
+\subsection{Futures versions de l'aplicació}
 A dia d'avui l'aplicació està a la versió 1.0.0. En aquest apartat es plantegen noves funcionalitats per a futures versions:
 \begin{enumerate}
 \item Utilitzar un servidor per tenir l'aplicatiu disponible en forma de pàgina web. D'aquesta manera es desvincula la necessitat que cada usuari compili l'aplicatiu des de el seu dispositiu. És una manera de facilitar als investigadors la feina, ja que no seria necessari tenir coneixement d'\texttt{R} per obrir l'aplicació.
@@ -989,6 +1023,7 @@ La possibilitat d'utilitzar una pròpia eina que ha sigut generalitzada i automa
 
 El caràcter exploratori en les dades i en el conjunt del treball deixa oberta la porta a futurs canvis per millorar el protocol d'anàlisi i l'aplicatiu.
 \section{Agraïments}
+\label{agr}
 Per portar endavant aquest projecte he necessitat l'ajuda d'algunes persones a les quals volia agrair la seva col·laboració i esfor\c{c}.\\
 
 Agrair la col·laboració de l'estudiant de veterinària Francesc Gonzàlez i el Dr. David Solà.\\
@@ -997,39 +1032,41 @@ També voldria donar les gràcies a la tutora del treball, la Dr. Mercè Farré,
 %Bibliografia
 \clearpage
 \begin{thebibliography}{aaaa}
+\bibitem{tami}
+Guillermo Ayala.(2018).Bioinformática Estadística: Análisis estadístico de datos ómicos. \pageref{1.1}
+\\\texttt{https://www.uv.es/ayala/docencia/tami/tami13.pdf}
+\bibitem{effron}
+Efron, B., $\&$ Hastie, T. (2016). Computer Age Statistical Inference: Algorithms, Evidence, and Data Science (Institute of Mathematical Statistics Monographs). Cambridge: Cambridge University Press. pp. 271-294, doi:10.1017/CBO9781316576533. \pageref{2.2}
+\bibitem{multi}
+Everitt, B., Hothorn, T. : An introduction to Applied Multivariate Analysis with R. Springer. 2011. \pageref{2.4}
+\bibitem{multi2}
+Härdle, W., Simar, L.: Applied Multivariate Statistical Analysis. Springer. 2007. \pageref{2.4}
 \bibitem{fdr}
-Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing Journal of the Royal Statistical Society. Series B (Methodological), Vol. 57, No. 1. (1995), pp. 289-300, doi:10.2307/2346101 by Yoav Benjamini, Yosef Hochberg\\
-\bibitem{caca8}
-Mark D. Robinson, Davis J. McCarthy, Gordon K. Smyth; edgeR: a Bioconductor package for differential expression analysis of digital gene expression data, Bioinformatics, Volume 26, Issue 1, 1 January 2010, Pages 139–140,
-\\\texttt{https://doi.org/10.1093/bioinformatics/btp616}
+Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing Journal of the Royal Statistical Society. Series B (Methodological), Vol. 57, No. 1. (1995), pp. 289-300, doi:10.2307/2346101 by Yoav Benjamini, Yosef Hochberg. \pageref{2.2.1}
 
-\bibitem{caca2}
+\bibitem{cite2}
 Ramón Tamarit Agusti. Análisis de cluster no supervisados. Aplicaciones en
 la búsqueda y visualización de perfiles de expresión
-en datos de microarrays.
+en datos de microarrays. \pageref{2.4.1}
 \\\texttt{http://mural.uv.es/rata3/PECSspace.html}
 
-\bibitem{pca}
-Dong Hyun Jeong, Caroline Ziemkiewicz, William Ribarsky and Remco Chang: Understanding Principal Component Analysis Using a Visual Analytics Tool,
+\bibitem{cite3}
+Dong Hyun Jeong, Caroline Ziemkiewicz, William Ribarsky and Remco Chang: Understanding Principal Component Analysis Using a Visual Analytics Tool. \pageref{2.4.3}
 \\\texttt{http://www.knowledgeviz.com/pdf/UKC2009.pdf}
 
-\bibitem{caca1}
-Universidad de Granada: Comparaciones múltiples.
-\\\texttt{http://wpd.ugr.es/$\sim$bioestad/guia-spss/practica7}
-
-\bibitem{caca}
-Universidad de Granada: Métodos de análisis multivariante. Análisis clúster.
+\bibitem{cite5}
+Universidad de Granada: Métodos de análisis multivariante. Análisis clúster. \pageref{2.4.1}
 \\\texttt{http://wpd.ugr.es/$\sim$bioestad/guia-spss/}
 
-\bibitem{cl}
-Universidad de Granada: Métodos Jerárquicos de Análisis Cluster.
+\bibitem{cite6}
+Universidad de Granada: Métodos Jerárquicos de Análisis Cluster. \pageref{2.4.1}
 \\\texttt{http://www.ugr.es/$\sim$gallardo/pdf/cluster-3.pdf}
 
-\bibitem{caca5}
+\bibitem{cite7}
 \textit{NCBI, National Center of Biotechnology Information.}
 \\\texttt{https://www.ncbi.nlm.nih.gov/}. USA
 
-\bibitem{caca6}
+\bibitem{cite8}
 \textit{PubMed. US National Library of Medicine.}
 \\\texttt{https://www.ncbi.nlm.nih.gov/pubmed/}. USA
 
