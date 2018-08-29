@@ -7,8 +7,8 @@ server <- function(input, output,session) {
   provador=F
   if(provador){
     input <- list()
-    newData <-  read_xlsx("~/Descargas/Database_AGL_H3_d2.xlsx",col_names = TRUE,sheet = 1)
-    functions <- read_xlsx("~/Descargas/Database_AGL_H3_d2.xlsx",col_names = TRUE,sheet = 2)
+    newData <-  read_xlsx("~/Descargas/Database_AGL_H3_d1.xlsx",col_names = TRUE,sheet = 1)
+    functions <- read_xlsx("~/Descargas/Database_AGL_H3_d1.xlsx",col_names = TRUE,sheet = 2)
     functions <- functions[,1:2]
     input$factors <- c("Sample ID","Group","Treatment","Tissue")
     input$covariables <- c("Treatment")

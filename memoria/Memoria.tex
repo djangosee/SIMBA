@@ -648,7 +648,7 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
 \caption{P-valors de l'ANOVA entre tractaments pel teixit \textbf{Ileum}. Els p-valors per sota de 0.05 queden marcats amb $^{***}$ i per sota de 0.1 amb $^{*}$.}
 \end{table}
 
-\noindent El nivell de significació és $\alpha$=0.05, però degut al conjunt de tests realitzats s'aplica una correcció (\textit{Benjamini $\&$ Hochberg}). Per tant, només s'haurien de considerar significatius del conjunt experimental aquells tests en els que el p-valor de \textit{Benjamini $\&$ Hochberg} estigui per sota de determinat llindar, en aquest cas hem fixat un nivell de significació del 5$\%$, encara que en aquests tipus d'experiments poden arrbiar al $10\%$. Observem que hi ha gens sense cap p-valor, això es degut a que després de fer el tractament de dades faltants (descrit a l'apartat anterior) encara hi ha NA's, per tant, l'anàlisi de la variància no contempla aquests gens.
+\noindent El nivell de significació és $\alpha$=0.05, però degut al conjunt de tests realitzats s'aplica una correcció (\textit{Benjamini $\&$ Hochberg}). Per tant, només s'haurien de considerar significatius del conjunt experimental aquells tests en els que el p-valor de \textit{Benjamini $\&$ Hochberg} estigui per sota de determinat llindar, en aquest cas hem fixat un nivell de significació del 5$\%$, encara que en aquests tipus d'experiments poden arribar al $10\%$. Observem que hi ha gens sense cap p-valor, això es degut a que després de fer el tractament de dades faltants (descrit a l'apartat anterior) encara hi ha NA's, per tant, l'anàlisi de la variància no contempla aquests gens.
 \clearpage
 %Jejunum
 \begin{table}[ht]
@@ -794,26 +794,27 @@ Per últim, es presenten els \textit{heatmap} per a cada teixit:
 
 Les conclusions d'aquest apartat queden incloses en les conclusions finals del cas d'estudi.
 \clearpage
-\subsection{Conclusions (Cas d'estudi)}
+\subsection{Conclusions (cas d'estudi)}
 
-Un cop realitzat l'anàlisi per mitjà del protocol que hem desenvolupat, es l'hora de les conclusions. Recordem que estem analitzant un estudi bastant exploratori, per tant, nosaltres mateixos hem definit les hipotesis i criteris estadístics que creiem més importants. Aquests criteris poden ajudar a que els investigadors interpretin resultats presents o futurs.
+Un cop realitzat l'anàlisi per mitjà del protocol que hem desenvolupat, es l'hora de les conclusions. Recordem que és un estudi eminentment exploratori (en el sentit de que és un prototip o protocol d'actuació, sense gaires precedents en l'àmbit de la producció animal). Per tant, l'equip estadístic
+ha tingut un paper clau en definir les hipotesis i criteris estadístics que creiem més importants. Aquests criteris pretenen ajudar a que els investigadors interpretin resultats presents o futurs.
 \\
 
-Fixat cada gen, la primera hipòtesi de recerca que ens plantegem és:
+Els primers apartats del protocol consisteixen  en l'anàlisi separada per a cada gen fixat, però amb correcció FDR, atès que les anàlisis són simultànies. La primera hipòtesi de recerca que ens plantegem és:
 \\
 
 \textit{En algun gen (i quin o quins) hi ha diferències significatives en els nivells d'expressió entre tractaments?}
 \\
 
-Per al teixit \textit{Ilenum}, d'un total de 31 gens, s'han trobat 2 gens amb una expressió diferencial (p-valor(Benjamini $\&$ Hochberg) < 0.05), \textit{MUC2} i \textit{GPX2}. Anomenarem quasi significatius aquells gens que es troben entre $0.5 <$ p-valor $\leq 0.1$. Els gens quasi significatius són 3; \textit{TFF3}, \textit{IFNGR1} i \textit{SLC30A1.ZnT}. Podem trobar aquests resultats a la \textit{Taula 2}.
+Per al teixit \textit{Ilenum}, d'un total de 31 gens, s'han trobat 2 gens amb una expressió diferencial significativa (p-valor(Benjamini $\&$ Hochberg) $\leq$ 0.05), \textit{MUC2} i \textit{GPX2}. Anomenarem quasi significatius aquells gens que es troben entre $0.5 $ p-valor $\leq 0.1$. Els gens quasi significatius són 3: \textit{TFF3}, \textit{IFNGR1} i \textit{SLC30A1.ZnT}. Podem trobar aquests resultats a la \textit{Taula 2}.
 \\
 
-Per al teixit \textit{Jejunum}, d'un total de 32 gens, s'han trobat 2 gens amb una expressió diferencial (p-valor(Benjamini $\&$ Hochberg) < 0.05), \textit{SLC39A4.ZIP4} i \textit{GCG}. Els gens quasi significatius són 8; \textit{TFF3}, \textit{OCLN}, \textit{MUC2}, \textit{SI}, \textit{DAO1}, \textit{SLC13A1.NAS1}, \textit{SLC5A1.SGLT1} i \textit{HNMT}. Podem trobar aquests resultats a la \textit{Taula 3}.\\
+Per al teixit \textit{Jejunum}, d'un total de 32 gens, s'han trobat 2 gens amb una expressió diferencial (p-valor(Benjamini $\&$ Hochberg) $\leq$ 0.05), \textit{SLC39A4.ZIP4} i \textit{GCG}. Els gens quasi significatius són 8: \textit{TFF3}, \textit{OCLN}, \textit{MUC2}, \textit{SI}, \textit{DAO1}, \textit{SLC13A1.NAS1}, \textit{SLC5A1.SGLT1} i \textit{HNMT}. Podem trobar aquests resultats a la \textit{Taula 3}.\\
 
 Fixat cada gen, i mirant els gens significatius, la segona pregunta que ens plantegem és:
 \\
 
-\textit{Entre quins tractaments (parelles) hi ha diferències significatives?}
+\noindent\textit{Entre quins tractaments (parelles) hi ha diferències significatives?}
 \\
 
 Com hem vist en l'apartat anterior, per al teixit \textit{Ilenum}, es podría destacar que gairebé en tots els gens s'han trobat diferències significatives entre el tractament 4 i el tractament 1. A la \emph{Taula 4} es poden trobar totes les comparacions significatives, i es podría fer un anàlisi més detallat per a cada gen (segons l'interès de l'investigador). En el cas del teixit \textit{Jejunum}, podem veure que cap gen presenta diferencies significatives entre el tractament 4 i 3. Els resultats els podem trobar a la \textit{Taula 5}, i segons l'interès de l'investigador es podría veure de manera més detallada quines són les comparacions significatives entre tractaments per a cada gen.
@@ -822,28 +823,28 @@ Com hem vist en l'apartat anterior, per al teixit \textit{Ilenum}, es podría de
 La següent part de l'anàlisi consistia en fer una exploració gràfica del conjunt total de gens. L'exploració gràfica esta dividida en tres tipus de gràfics:
 \\
 
-\textit{ Amb el heatmap, explorem el doble agrupament (clustering) de gens i mostres.}
+\noindent I)\textit{ Amb el heatmap, explorem el doble agrupament (clustering) de gens i mostres.}
 \\
 
-Al teixit \textit{Ilenum}, el dendrograma vertical no mostra cap agrupació clara per funcionalitat del gen, encara que si s'observen dos gens, \textit{FAXDC2} i \textit{SLC15A1.PEPT1}, que tenen una expressió alta i estan agrupats en un sol clúster (probablement siguin \textit{outliers}). El clúster horitzontal, mostra un conjunt de casos amb una expressió baixa sota els tractaments 3 i 4, els quals en aquesta zona s'agrupen en un clúster. A l'altre part del dendograma hi ha una separació poc nítida entre tractaments.
-
-Per al teixit \textit{Jejunum}, al dendrograma vertical no es veu cap agrupació clara per funcionalitat (els colors del dendrograma estan força barrejats). S’hi veu (al mig) un clúster amb dos gens, \textit{FAXDC2} i \textit{SLC15A1.PEPT1}, amb uns nivells d’expressió alts en la majoria de mostres. Aquests gens tenen un comportament outlier comparat amb els altres i convindria analitzar-lo amb més detall: revisar dades, fer noves proves per veure si es mantenen els nivells d’expressió alts, etc. El dendrograma horitzontal, corresponent a l'agrupació de mostres, observem que les mostres del tractament 2 i el tractament 4 queden bastant agrupades. Els tractaments 3 i 4 tenen nivells d'expressió més elevats sobretot en els gens que conformen el clúster superior.
+Al teixit \textit{Ilenum} (\textit{Figura 10}), el dendrograma vertical no mostra cap agrupació clara per funcionalitat del gen, encara que sí s'observen dos gens, \textit{FAXDC2} i \textit{SLC15A1.PEPT1}, que tenen una expressió alta i estan agrupats en un sol clúster (probablement siguin \textit{outliers}). El clúster horitzontal, mostra un conjunt de casos amb una expressió baixa sota els tractaments 3 i 4, els quals en aquesta zona s'agrupen en un clúster. A l'altre part del dendograma hi ha una separació poc nítida entre tractaments. Per al teixit \textit{Jejunum} (\textit{Figura 11}), al dendrograma vertical no es veu cap agrupació clara per funcionalitat (els colors del dendrograma estan força barrejats). S’hi veu (al mig) un clúster amb dos gens, \textit{FAXDC2} i \textit{SLC15A1.PEPT1}, amb uns nivells d’expressió alts en la majoria de mostres. Aquests gens tenen un comportament outlier comparat amb els altres i convindria analitzar-lo amb més detall: revisar dades, fer noves proves per veure si es mantenen els nivells d’expressió alts, etc. El dendrograma horitzontal, corresponent a l'agrupació de mostres, observem que les mostres del tractament 2 i el tractament 4 queden bastant agrupades. Els tractaments 3 i 4 tenen nivells d'expressió més elevats sobretot en els gens que conformen el clúster superior.
 \\
 
-\textit{ Amb la representació gràfica de l'ACP, explorem les correlacions entre mitjanes de tractaments al llarg dels gens.}
+\noindent II)\textit{ Amb la representació gràfica de l'ACP, explorem les correlacions entre mitjanes de tractaments al llarg dels gens.}
 \\
 
-En el cas del teixit \textit{Ilenum} destaquem una correlació alta entre la mitjana del tractament 4 i la mitjana del tractament 1. Per al cas del teixit \textit{Jejunum}, trobem correlacions altes entre els tractaments 1, 3 i 4.
+En el cas del teixit \textit{Ilenum} destaquem una correlació alta i positiva entre la mitjana del tractament 4 i la mitjana del tractament 1. Per al cas del teixit \textit{Jejunum}, trobem correlacions altes i positives entre els tractaments 1, 3 i 4. Trobem aquests gràfics a les \textit{Figures 6} i \textit{7}, respectivament.
 \\
 
-\textit{ Explorem l'evolució de les línies de mitjanes al llarg dels gens, per a cada tractament.}
+\noindent III)\textit{ Amb les gràfiques de línies per a les mitjanes dels tractaments, podem comparar
+visualment l'evolució de les mitjanes al llarg dels gens.}
 \\
 
-Aquests gràfics que trobem a les \textit{Figures 8 i 9}, realment són una representació gràfica de l'ANOVA, i ens pot ajudar a veure els resultats obtinguts a les taules. El fet més remarcable el trobem al teixit \textit{Jejunum}, on els gens que han sortit significatius principalment són aquells que desenvolupen una funció barrera o protectora, \emph{Barrer Function (BT)}.
+Aquests gràfics, que trobem a les \textit{Figures 8 i 9}, realment són una representació gràfica suplementària al test ANOVA, perquè es marquen els gens que presenten diferències significatives i es pot apreciar entre quins tractaments hi ha més diferència i el signe d'aquesta. El fet més remarcable el trobem al teixit \textit{Jejunum}, on els gens que han sortit significatius principalment són aquells que desenvolupen una funció barrera o protectora, \emph{Barrer Function (BT)}. Les gràfiques de línia també són útils per explorar la correlació entre tractaments, en coherència amb l'ACP.
 \\
 
-Amb les conclusions anteriors els investigadors poden veure els efectes dels tractaments en l'expressió dels gens i complementar aquest anàlisi amb el seus criteris com especialistes en el seu àmbit. Finalment amb l'interacció entre la part estadística (l'eina estadística desenvolupada en \texttt{R}) i la part biològica (criteri dels investigadors), es completa l'anàlisi de les matrius d'expressió gènica.
+Amb les conclusions anteriors els investigadors poden veure els efectes dels tractaments en l'expressió dels gens i complementar aquesta anàlisi amb el seus criteris com especialistes en l'àmbit biocientífic. L'anàlisi del cas d'estudi consisteix doncs en la utilització de l'eina estadística que proporciona els resultats (taules i gràfics) esmentats, i ofereix un esquema bàsic de les possibles interpretacions (indicacions).
 %%Shiny
+
 \clearpage
 \section{TL3P: Aplicatiu Web amb el paquet \texttt{Shiny} de R}
 Implementar una eina capa\c{c} de realitzar el protocol d'anàlisi d'una manera interactiva i generalitzada ha sigut l'objectiu principal del treball. En els següents apartats s'introdueix el software i la metodologia utilitzada per crear l'eina.
@@ -856,9 +857,9 @@ Amb la idea de facilitar futures investigacions als grups de recerca de la UAB, 
 
 Principalment el codi està dividit en 3 scripts, anomenats:
 \begin{itemize}
-\item \texttt{ui.R} (\textit{A user interface object})
-\item \texttt{server.R} (\textit{A server function})
-\item \texttt{App.R} (\textit{A call to the \texttt{shinyApp} function})
+\item \texttt{ui.R} (\textit{User interface object})
+\item \texttt{server.R} (\textit{Server function})
+\item \texttt{App.R} (\textit{Call to the \texttt{shinyApp} function})
 \end{itemize}
 L'objecte \textit{user interface (ui)} controla l'aparen\c{c}a de l'aplicació i interactua amb llenguatges com \textit{HTML, CSS, Javascript}. La funció \textit{server} conté els càlculs interns de l'aplicació. Finalment, la funció \texttt{shinyApp} fa una crida a l'\textit{ui} i el \textit{server} per obrir l'aplicació.
 \\
@@ -877,7 +878,7 @@ Abans de parlar sobre l'aplicació que hem desenvolupat, caldria destacar quina 
 
 \newpage
 El repositori on es troba tot el codi de l'aplicació el tenim al següent enlla\c{c}: \url{https://github.com/djangosee/TFGShinyApp}.
-A l'enlla\c{c} trobem les instruccions necessàries per descarregar el repositori i obrir l'aplicació. El codi s'ha emmagatzemat de forma pública i qualsevol usuari de la plataforma pot obtenir-lo i treballar desenvolupant noves funcionalitats.
+A l'enlla\c{c} hi trobem les instruccions necessàries per descarregar el repositori i obrir l'aplicació. El codi s'ha emmagatzemat de forma pública i qualsevol usuari de la plataforma pot obtenir-lo i treballar desenvolupant noves funcionalitats.
 %https://github.com/Hispano/Guia-sobre-Git-Github-y-Metodologia-de-Desarrollo-de-Software-usando-Git-y-Github
 \\
 
@@ -892,7 +893,7 @@ Un cop accedim a l'aplicació, trobem la següent interfície:
 La idea principal a l'hora de desenvolupar l'aplicatiu ha sigut la de crear un entorn atractiu i fàcil per a l'usuari. L'aplicació està formada de 3 pestanyes:
 \begin{enumerate}
 \item \textit{DataVisualitzation}: Pestanya on carreguem les dades i obtenim unes taules per poder fer consultes i visualitzar les dades.
-\item \textit{Analize}: Aquesta pestanya conté la configuració dels paràmetres i el posterior protocol d'anàlisi.
+\item \textit{Analize}: Aquesta pestanya conté la configuració dels paràmetres i, un cop executat, els resultats de l'anàlisi i algunes ajudes a la interpretació.
 \item \textit{Usage}: Per últim, trobem les especificacions necessàries per obrir la base de dades i un petit tutorial de l'aplicatiu.
 \end{enumerate}
 
@@ -906,20 +907,20 @@ En aquest apartat es presenten les funcionalitats que té l'aplicació en forma 
 \subsubsection{Panell de configuració dels paràmetres}
 També anomenat \textit{SidebarPanel}, en aquest panell trobem els paràmetres i variables relacionats amb l'estudi:
 \begin{center}
-\includegraphics[scale=0.4]{app2.png}
+\includegraphics[scale=0.6]{app2.png}
 \captionof{figure}{Panell de configuració dels paràmetres}
 \end{center}
 La configuració abans de comen\c{c}ar l'anàlisi està formada per:
 \begin{enumerate}
-\item Selecció dels factors de la base de dades
-\item Selecció de la variable tractament
-\item Selecció de la variable id
-\item Selecció de la variable teixit
-\item Selecció de la categoria de la variable teixit
-\item $\alpha$ per a l'ANOVA
-\item $\alpha$ BenjaminiHochberg
-\item $\alpha$ per a les comparacions 2 a 2 (Tukey)
-\item Percentatge de dades faltants a eliminar per tractament per a cada gen (Per defecte al 50$\%$)
+\item Selecció dels factors de la base de dades.
+\item Selecció de la variable tractament.
+\item Selecció de la variable id.
+\item Selecció de la variable teixit.
+\item Selecció de la categoria de la variable teixit.
+\item $\alpha$ per a l'ANOVA.
+\item $\alpha$ BenjaminiHochberg(FDR).
+\item $\alpha$ per a les comparacions 2 a 2 (Tukey).
+\item Percentatge de dades faltants a eliminar per tractament per a cada gen (per defecte, el 50$\%$).
 \end{enumerate}
 \newpage
 \subsubsection{Taules}
@@ -1006,22 +1007,22 @@ Per tant,\\
 \subsection{Futures versions de l'aplicació}
 A dia d'avui l'aplicació està a la versió 1.0.0. En aquest apartat es plantegen noves funcionalitats per a futures versions:
 \begin{enumerate}
-\item Utilitzar un servidor per tenir l'aplicatiu disponible en forma de pàgina web. D'aquesta manera es desvincula la necessitat que cada usuari compili l'aplicatiu des de el seu dispositiu. És una manera de facilitar als investigadors la feina, ja que no seria necessari tenir coneixement d'\texttt{R} per obrir l'aplicació.
+\item Utilitzar un servidor per tenir l'aplicatiu disponible en forma de pàgina web. D'aquesta manera es desvincula la necessitat que cada usuari compili l'aplicatiu des de el seu dispositiu. És una manera de facilitar als investigadors la feina, ja que no seria necessari tenir cap coneixement d'\texttt{R} per obrir l'aplicació.
 \item La possibilitat de descarregar un informe, fet en \texttt{LateX}, dels resultats obtinguts.
-\item Implementar nous mètodes per a dissenys desbalancejats.
-\item Implementar les gràfiques utilitzades per a les comparacions 2 a 2 (Tukey).
-\item Fer encara més interactiva l'aplicació, amb nous gràfics de línies. Això podria anar en contra del temps d'execució de l'anàlisi.
+\item Implementar métodes més acurats per a dissenys desbalancejats.
+\item Implementar les gràfiques de barres d'error, per visualitzar les comparacions 2 a 2 (Tukey).
+\item Fer encara més interactiva l'aplicació, amb nous gràfics de línies, si bé això podria anar en detriment del temps d'execució de l'anàlisi.
 \end{enumerate}
 Aquestes idees i altres que es puguin tenir, es poden implementar en un futur. El codi de l'aplicació és públic, i queda obert per a usuaris que vulguin col·laborar amb el projecte. L'únic necessari és registrar-se en la plataforma de \textit{GitHub} i sol·licitar una col·laboració a l'administrador del projecte.
 \newpage
 \section{Conclusions}
-En aquest treball s'ha descrit un protocol d'anàlisi capa\c{c} de donar resultats fiables a experiments relacionats amb el camp de la genètica. Amb l'aplicació, és possible analitzar com s'expressen els gens sota diferents tractaments, dietes, medicacions, situacions experimentals, etc. A més, es poden analitzar les dades d'expressió gènica provinents de la tecnologia \textit{OpenArray} d'una manera senzilla i còmode per a l'usuari.
+En aquest treball s'ha descrit un protocol d'anàlisi capa\c{c} d'analitzar i explorar diversos aspectes d'una base de dades d'expressió gènica d'un seguit de gens, on les mostres estan classificades segons un factor, habitualment un tractament, una dieta o una altra situació experimental...A més, analitzar les dades d'expressió gènica provinents de la tecnologia \textit{OpenArray} d'una manera senzilla i còmode per a l'usuari.
 \\
 
-La possibilitat d'utilitzar una pròpia eina que ha sigut generalitzada i automatitzada, obre un ventall de possibilitats als investigadors. La replicació de l'anàlisi amb futures dades és una realitat amb l'aplicatiu. A més la seva estructura interna facilita la introducció de nous mètodes estadístics dins del codi. D'aquesta manera l'eina podria anar evolucionant al llarg del temps amb la finalitat de fer una anàlisi més complet i que contingui diferents tipus de dissenys.
+La possibilitat d'utilitzar una eina específica per aquest tipus d'estudi, però que s'ha fet prou general i automàtica, obre un ventall de possibilitats als investigadors. La replicació de l'anàlisi amb futures dades és una realitat amb l'aplicatiu. A més la seva estructura interna facilita l'eventual integració de nous mètodes estadístics dins del codi. D'aquesta manera l'eina podria anar evolucionant al llarg del temps amb la finalitat de fer una anàlisi completa i apta per a altres dissenys.
 \\
 
-El caràcter exploratori en les dades i en el conjunt del treball deixa oberta la porta a futurs canvis per millorar el protocol d'anàlisi i l'aplicatiu.
+El treball de fi de grau m'ha permès aprofundir en temes bàsics de la inferència estadística (ANOVA, Tukey) i de l'anàlisi multivariant (PCA, anàlisi de clústers), entre altres. Al mateix temps, he estudiat conceptes o recursos que no havia tractat durant el grau (FDR, heatmap), dels quals he fet recerca bibliogràfica. També he pogut practicar i ampliar elements de programació (\texttt{R},\texttt{Shiny}, gestió de versions, etc.,), alguns dels quals he après de manera autodidacta. Finalment, voldria destacar el caràcter multidisciplinar d'aquest treball, entre estadística, biomedicina i bioinformàtica, que suposa un nexe d'unió entre algunes assignatures que he cursat durant el grau.
 \section{Agraïments}
 \label{agr}
 Per portar endavant aquest projecte he necessitat l'ajuda d'algunes persones a les quals volia agrair la seva col·laboració i esfor\c{c}.\\
@@ -1148,3 +1149,4 @@ $E_{Gen_1}=0$ & $41.5850$ & $41.58$ \\
 \label{annex:d}
 \lstinputlisting[float=ht,frame=tb,caption=Output sessionInfo(),label=zebra]{output.txt}
 \end{document}
+\grid
