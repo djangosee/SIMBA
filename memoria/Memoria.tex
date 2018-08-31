@@ -63,7 +63,7 @@ El análisis de datos de expresión genética para detectar expresiones diferenc
 }
 
 \date{
-\textsc{Supervisor:} Mercè Farré \\[1em]
+\textsc{Supervisora:} Mercè Farré \\[1em]
 \today
 }
 
@@ -87,10 +87,10 @@ Un dels reptes més grans de la biologia actualment és analitzar els volums mas
 La bioinformàtica és un àrea emergent interdisciplinària que s'ocupa de l'aplicació de l'informàtica a la recopilació, emmagatzematge, organització, anàlisis, manipulació d'informació relativa a les dades biològiques o mèdiques.
 \\
 
-Aquest treball s'ha centrat en l'anàlisis de bases de dades d'expressió genètica per a comparar diferents condicions experimentals. Al llarg del treball s'utilitzen técniques per analitzar aquests tipus de dissenys on l'objectiu recau en veure quins gens s'expressen de manera significativament diferenciada, sota condicions experimentals establertes.
+Aquest treball s'ha centrat en l'anàlisis de bases de dades d'expressió genètica per a comparar diferents condicions experimentals. Al llarg del treball s'utilitzen técniques per analitzar aquests tipus de dissenys on l'objectiu recau en veure quins gens s'expressen de manera significativament diferenciada, sota condicions experimentals establertes (podeu consultar [\ref{aya}]).
 \\
 
-Amb aquesta premissa, el treball també s'ha enfocat en crear un aplicatiu web capaç de fer una anàlisi estadística de les matrius d'expressió gènica. L'aplicatiu ha sigut programat amb R, per mitjà del paquet Shiny. Aquest paquet és capa\c{c} d'implementar el codi R de manera interactiva. No només implementa el codi R, sinó també és capaç d'interactuar amb diferents llenguatges com html, css o java. L'aplicació, en el seu conjunt, s'ha organitzat i compartit per mitjà d'un repositori creat en la plataforma GitHub. D'aquesta manera el codi queda a disposició de qualsevol usuari que vulgui utilitzar-lo o consultar els métodes emprats.
+Amb aquesta premissa, el treball també s'ha enfocat en crear un aplicatiu web capaç de fer una anàlisi estadística de les matrius d'expressió gènica. L'aplicatiu ha sigut programat amb \texttt{R}, per mitjà del paquet \texttt{Shiny}. Aquest paquet és capa\c{c} d'implementar el codi \texttt{R} de manera interactiva. No només implementa el codi \texttt{R}, sinó també és capaç d'interactuar amb diferents llenguatges com html, css o java. L'aplicació, en el seu conjunt, s'ha organitzat i compartit per mitjà d'un repositori creat en la plataforma GitHub. D'aquesta manera el codi queda a disposició de qualsevol usuari que vulgui utilitzar-lo o consultar els métodes emprats.
 
 \subsection{Introducció als conceptes bàsics de la bioinformàtica}
 \label{1.1}
@@ -99,7 +99,7 @@ Amb aquesta premissa, el treball també s'ha enfocat en crear un aplicatiu web c
 Cada organisme es defineix pel seu material genètic, el genoma. La informació genètica la trobem emmagatzemada en una macromolècula anomenada DNA, que es troba al nucli de cada cèl·lula.
 \\
 
-Un gen consisteix en un segment de DNA que conté el codi per a la producció d'una proteïna. Una única cadena d'ADN conté milers de gens i cadascun sintetitza una proteïna concreta. Per fer-nos a la idea, els humans tenim al voltant de 20.000 gens. La longitud i seqüència d'un gen determina la grandària i la forma de la proteïna que sintetitza, i quina funció tindrà aquesta proteïna dins de l'organisme.
+Un gen consisteix en un segment de DNA que conté el codi per a la producció d'una proteïna. Una única cadena d'DNA conté milers de gens i cadascun sintetitza una proteïna concreta. Per fer-nos a la idea, els humans tenim al voltant de 20.000 gens. La longitud i seqüència d'un gen determina la grandària i la forma de la proteïna que sintetitza, i quina funció tindrà aquesta proteïna dins de l'organisme.
 \\
 
 La dotació de gens que presenta una espècie, s'anomena genotip, i l'aparen\c{c}a externa d'un caràcter genètic, l'anomenem fenotip. L'expressió del genotip ve determinat, a més de per la càrrega genètica, per l'ambient i el comportament dels éssers vius. Si un gen no s'expressa en un individu, aquest tindrà el mateix fenotip que un individu que no presenti el gen. Però com podem arribar a obtenir una mesura de l'expressió dels gens? Existeixen tècniques per quantificar-ho? La resposta és sí.
@@ -115,19 +115,19 @@ Els centres de genòmica s'encarreguen de fer aquests processos i de retornar el
 Des de la facultat de veterinaria de l'Universitat Autònoma s'han dut a terme estudis experimentals sobre l'expressió dels gens animals en certes condicions experimentals. L'aplicatiu web ha sigut creat per donar suport estadístic al grup d'investigació de la UAB i al \textit{Servei de Nutrició i Benestar Animal} (SNiBA).
 \\
 
-El cas d'estudi que el treball ha contemplat consisteix en un experiment amb animals, concretament, amb porcins. Durant l'experiment s'administraven diferents tractaments/dietes als porcins. D'aquesta manera es volia veure l'afectació d'alguns tractaments en la regulació intestinal i com afectava el creixement dels porcins.
+El cas d'estudi que el treball ha contemplat consisteix en un experiment amb animals, concretament, amb porcs. Durant l'experiment s'administraven diferents tractaments/dietes als porcs. D'aquesta manera es volia estudiar com les diferents dietes o additius administrades (tractaments) als animals poden afectar a l'expressió de diferents gens relacionats amb la salut intestinal. tantmateix els diferents tractaments experimentals poden afectar els rendiments productius i el creixement dels animals.
 \\
 
-Les dades utilitzades en aquest treball han sigut proporcionades per \textit{Servei de Nutrició i Benestar Animal} (SNiBA) per mitjà de la tecnologia OpenArray. El material biològic que s'ha utilitzat per l'obtenció de les dades, han sigut diferents tipus de teixits de l'intestí. Els gens van ser escollits amb criteris científics pels investigadors i tenen un significat concret dins del funcionament de la regulació intestinal.
+Les dades utilitzades en aquest treball han sigut proporcionades per \textit{Servei de Nutrició i Benestar Animal} (SNiBA) per mitjà de la tecnologia \textit{OpenArray}. El material biològic que s'ha utilitzat per l'obtenció de les dades, han sigut diferents tipus de teixits de l'intestí. Els gens van ser escollits amb criteris científics pels investigadors i tenen un significat concret dins del funcionament de la regulació intestinal.
 \\
 
-Encara que l'aplicatiu web s'ha creat a partir d'aquest estudi, el codi s'ha dissenyat amb funcions genèriques que es poden aplicar a altres situacions experimentals, sempre que es vulguin comparar tractaments (dietes, medicacions, situacions experimentals, etc.) a partir de dades d'openarray de diversos gens.
+Encara que l'aplicatiu web s'ha creat a partir d'aquest estudi, el codi s'ha dissenyat amb funcions genèriques que es poden aplicar a altres situacions experimentals, sempre que es vulguin comparar tractaments (dietes, medicacions, situacions experimentals, etc.) a partir de dades d'\textit{Openarray} de diversos gens.
 
 \section{Protocol d'anàlisi}
 %https://stats.stackexchange.com/questions/78920/mathematical-explanations-behind-anova
 En aquest apartat queden definits els mètodes estadístics utilitzats en el protocol d'anàlisi. Cada mètode ha sigut implementat en l'aplicatiu i més endavant es mostren els resultats del cas d'estudi.
 \subsection{Anàlisi de la variància (ANOVA)}
-L'anàlisi de la variància (ANOVA) és el mètode clàssic per comparar mitjanes entre grups, dos grups o més.
+L'anàlisi de la variància (ANOVA) és el mètode clàssic per comparar mitjanes entre grups (dos grups o més).
 \\
 
 \noindent\textbf{Observació.} Hi ha una sèrie de supòsits que s'han de fer abans que s'apliqui l'ANOVA, la desviació en aquests supòsits portaran a resultats que poden ser enganyosos o inexactes. Aquests supòsits inclouen la independència, normalitat i variància constant dels errors. En algunes situacions, hi ha transformacions que poden ser utilitzades per evitar les violacions d'aquests supòsits, com ara la transformació logarítmica de les dades.
@@ -185,7 +185,7 @@ dividint pels graus de llibertat. L'estadístic de contrast de l'ANOVA es define
 \begin{equation*}
 F = \frac{MSG}{MSE}
 \end{equation*}
-L'estadístic $F$ segueix una distribució F de Snedecor amb $k-1$ i $N-k$ graus de llibertat, sota les condicions imposades al model, i quan la hipòtesi nul.la és certa. Si la hipòtesi nul·la és certa, $F$ seria proper a 1. D'altra banda, si la mitjana quadràtica entre grups $MSG$ és gran, suposaria un valor gran de l'estadístic F. Bàsicament, l'ANOVA examina les dues fons de la variància total i mira quina part contribueix més. Per aquest motiu, s'anomena anàlisi de la variància encara que la intenció sigui comparar les mitjanes dels grups.
+L'estadístic $F$ segueix una distribució F de Snedecor amb $k-1$ i $N-k$ graus de llibertat, sota les condicions imposades al model, i quan la hipòtesi nul.la és certa. Si la hipòtesi nul·la és certa, $F$ seria proper a 1. D'altra banda, si la mitjana quadràtica entre grups $MSG$ és gran, suposaria un valor gran de l'estadístic F. Bàsicament, l'ANOVA examina les dues fons de la variància total i mira quina part contribueix més (podeu consultar [\ref{efron}]). Per aquest motiu, s'anomena anàlisi de la variància encara que la intenció sigui comparar les mitjanes dels grups.
 \\
 
 \subsubsection{Anova per a dissenys desbalancejats}
@@ -249,7 +249,7 @@ Per a escenaris de \textit{large-scale multiple testing} com els estudis de gen�
 \\
 
 El  \emph{FDR} es defineix com la proporció esperada de falsos positius d'entre tots els tests considerats com significatius. L'objectiu de controlar el \emph{FDR} es establir un límit de significació per a un conjunt de tests tal que, d'entre tots els tests considerats com significatius, la proporció de falsos positius no superin un determinat valor.
-Un altre avantatge afegit és la seva fàcil interpretació, per exemple, si un estudi publica resultats estadísticament significatius per a un $FDR$ del 10$\%$, el lector té la seguretat que, com a màxim, un 10$\%$ dels resultats considerats com a significatius poden ser realment falsos positius.
+Un altre avantatge afegit és la seva fàcil interpretació, per exemple, si un estudi publica resultats estadísticament significatius per a un $FDR$ del 10$\%$, el lector té la seguretat que, com a màxim, un 10$\%$ dels resultats considerats com a significatius poden ser realment falsos positius (ho podeu trobar a [\ref{fdrr}]).
 \\
 La primera aproximació per controlar el \emph{FDR} va ser descrita per Benjamini $\&$ Hochberg en 1995. D'acord amb la seva publicació \cite{fdr}, si es desitja controlar que en un estudi amb $n$ comparacions el \emph{FDR} no superi un percentatge $d$ hem de:
 
@@ -363,7 +363,7 @@ L'exemple de la Figura 2 l'hem obtingut amb l'aplicatiu que hem creat:
 \captionof{figure}{\texttt{Heatmap} generat a partir de 34 gens i 16 mostres. A les files trobem els gens i a les columnes les mostres.Veiem agrupacions (clústers) tant de gens com de mostres obtingudes mitjançant un algoritme jeràrquic. Per obtenir més informació, s'ha afegit variables alienes a la matriu d'expressions , concretament, a quin tractament correspon la mostra, i quina funció desenvolupa el gen.}
 \end{center}
 
-El mapa de calor també es pot combinar amb mètodes de \textit{clustering} que agrupen els gens i les mostres junts en funció de la similitud del seu patró d'expressió gènica. Això pot ser útil per identificar els gens que normalment s'expressen molt semblant i detectar patrons sota condicions o covariables establertes. El mètode implementat per la funció \texttt{heatmap}, utilitza l'anàlisi de clústers jeràrquics.
+El mapa de calor també es pot combinar amb mètodes de \textit{clustering} que agrupen els gens i les mostres junts en funció de la similitud del seu patró d'expressió gènica. Això pot ser útil per identificar els gens que normalment s'expressen molt semblant i detectar patrons sota condicions o variables establertes. El mètode implementat per la funció \texttt{heatmap}, utilitza l'anàlisi de clústers jeràrquics (podeu consultar [\ref{gran}]).
 \\
 
 En el cas dels mètodes jeràrquics les dades s'ordenen en nivells de manera que els nivells superiors contenen als inferiors. La jerarquia construïda permet obtenir també una partició de les dades en grups. S'utilitza la matriu de distàncies o similituds entre els elements de la matriu original de les dades.
@@ -413,20 +413,20 @@ el procés es repeteix fins a l'obtenció del dendrograma i l'agrupació dels in
 \subsubsection{Anàlisi de components principals (ACP): gràfiques}
 %http://www.knowledgeviz.com/pdf/UKC2009.pdf
 %http://www.econ.upf.edu/~satorra/M/ComponentsPrincipals.pdf
-L'anàlisi de components principals és una de les diferents maneres per analitzar l'estructura d'una matriu de correlacions donada. En aquest apartat definirem la teoria de l'anàlisi de components principals i la seva representació gràfica.
+L'anàlisi de components principals és una de les diferents maneres per analitzar l'estructura d'una matriu de correlacions donada. En aquest apartat definirem la teoria de l'anàlisi de components principals i la seva representació gràfica (trobareu informació a [\ref{dong}]).
 \\
 
 \noindent\textbf{L'objectiu de l'ACP}\\
 Donades $p$ variables $X_1,X_2, \ldots,X_p$ que suposarem centrades
 (sovint també normalitzades amb variància igual a 1), volem
 construir $p$ noves variables $Z_1,Z_2, \ldots,Z_p$, que anomenarem
-compoents (les components principals seran cert subconjunt
+components (les components principals seran cert subconjunt
 d'aquestes) amb les següents condicions:
 \begin{enumerate}
  \item Les noves variables han de ser combinació lineal de les
  variables originals.
  \item Les noves variables han de ser incorrelacionades.
- \item Les noves variables han de contenir la mateixa informaicó (variància
+ \item Les noves variables han de contenir la mateixa informació (variància
  total) que les originals, i estar ordenades de major a menor
  variància.
 \end{enumerate}
@@ -473,7 +473,7 @@ components, si representen un percentatge ``prou important'' (70\%,
 0.7  \mbox{ (o bé 0.8, etc.)}
 $$
 Les $k$ primeres components, escollides segons aquest o un altre
-criteri, s'anomenen \emph{components principals}.
+criteri, s'anomenen \emph{components principals} (Es pot consultar aquesta part teòrica a [\ref{Evertit}] i [\ref{hardle}]).
 
 Pel cas més habitual en que les variables inicials estan
 estandarditzades (centrades i escalades), és a dir $\sigma_i^2=1$,
@@ -491,7 +491,7 @@ s'anomena matriu de pesos (\emph{loadings})  i dóna les coordenades
 per expressar  les variables com a combinació lineal (o mitjana
 ponderada) de les components (veure la gràfica de les variables, a
 l'apartat següent). Si suposem que $k=2$, la variable original $X_i$
- es representa amb les coordenades $(w_{i1,w_i2})$, en forma de ``fletxa''. La igualtat
+ es representa amb les coordenades $(w_{i1},w_{i2})$, en forma de ``fletxa''. La igualtat
  (\ref{sig}) és equivalent a
  $$
  \Sigma=W^tW
@@ -510,8 +510,6 @@ i la fletxa d'aquesta variable s'apropa a la circumferència de radi
 \\
 
 Si una variable quedés explicada en un $100\%$, la longitud del vector seria 1. Si, en canvi, quedés molt mal explicada, la longitud del vector corresponent seria propera a zero. Per tant, com més properes al cercle unitat estiguin les variables, més llargues seran les fletxes i millor quedaran representades. És a dir, menor serà la pèrdua d'informació que es produeix en substituir les variables originals per les components principals.
-En aquest exemple, el gràfic ens mostra que les quatre variables queden molt ben
-representades.
 \\
 
 ``\textit{Els angles que formen dues fletxes entre sí, ens mostren la correlació existent entre les corresponents variables}''
@@ -543,17 +541,23 @@ ha diferents aspectes descrits per la matriu de dades. També el fet que alguna 
 %%% RESULTS
 \clearpage
 \section{Cas d'estudi}
-El cas d'estudi consisteix en un disseny experimental fet amb porcins que han sigut alimentats amb diferents fonts de proteïnes (diverses combinacions de productes de soja, plasma animal i mucosa) a principis del deslletament. L'objectiu principal del estudi és avaluar la salut intestinal del porc poc després d'administrar les diferents dietes. A més, és vol veure si els tractaments tenen un efecte en el creixement del porc, i per tant, en la productivitat de l'empresa.
+El cas d'estudi consisteix en un disseny experimental fet amb porcs que han sigut alimentats amb diferents fonts de proteïnes (diverses combinacions de productes de soja, plasma animal i mucosa) a principis del deslletament (primers 14 dies post-deslletament).\\
+
+Garrins deslletats a 21 dies de vida, i un cop separats de la mare de manera brusca, passen de menjar llet a menjar una dieta solida en base a cereals i fonts de proteïna. Aquest canvi brusc de dieta, així com la seva adaptació, representen un dels períodes més crítics en la vida productiva del porc. La dificultat per iniciar-se a consumir la dieta solida oferida a partir del deslletament, així com l'adaptació de l'aparell digestiu per digerir la nova dieta, fan que durant les primeres dues setmanes (amb un màxim entre 8-10 dies post-deslletament) hi hagi problemes greus de salut intestinal (inflamació de la mucosa intestinal, atròfia de la mucosa, activació del sistema immune, dany de la mucosa, permeabilitat de la barrera intestinal associada a aquesta inflamació i que permet l'entrada de patògens i la seva colonització). Això desencadena en un procés patològic de l'animal on deixa de produir (créixer) i cal tractar-lo amb tractaments terapèutics (generalment antibiòtics) per tal de recuperar aquesta situació. \\
+
+Aquest procés genera una gran quantitat de pèrdues per morbilitat (aturada del creixement) i mortalitat (pèrdua d'animals per mort). Per tant s'intenta lluitar des del punt de vista nutricional per suavitzar aquesta transició i millorar l'adaptació de l'animal a la nova dieta. La mesura de l'expressió gènica intestinal ens proporciona una eina capaç de valorar o servir d'indicador del grau de millora que podem generar amb un tractament respecte a l'altre en termes d'inflamació, oxidació, transport de nutrients, funció barrera,etc. La interpretació d'aquests resultats ens permeten tenir una idea del grau de salut intestinal.
 \subsection{Descripció de l'estudi}
 L'estudi es defineix breument en els següents punts\\
 
 \noindent\textbf{Objectiu de l'estudi}
 \begin{itemize}
-  \item Analitzar i comparar els diferents tractaments i com afecten a l'expressió dels gens.
+  \item Analitzar i comparar els diferents tractaments i com afecten a l'expressió dels gens seleccionats per a l'open array (es una kit predissenyat on en base a bibliografia previament publicada van fer una selecció d'aquells gens més influents en termes de salut intestinal. Son 56 totals , 48 útils i la resta \textit{houskeaping} (controls)). (Podeu consultar la taula dels gens a l'annex \ref{annex:b})
   \item Trobar relacions entre la funcionalitat del gen i la seva expressió sota diferents tractaments.
 \end{itemize}
+\newpage
 \noindent\textbf{Disseny de l'estudi}\\
-Estudi experimental amb una mostra total de 48 casos. És un un dels primers experiments realitzats pel \textit{SNiBA}, per tant, l'experiment es totalment exploratori i es podría definir com una prova per a futurs dissenys.
+
+Estudi experimental amb una mostra total de 48 casos. És un un dels primers experiments realitzats pel \textit{SNiBA}, per tant, l'experiment es totalment exploratori i es podría definir com una prova per a futurs dissenys.\\
 \noindent\textbf{Tractaments}
 \begin{itemize}
   \item \textbf{T1}: Inclusió d'aliments de soja a la dieta.
@@ -562,6 +566,7 @@ Estudi experimental amb una mostra total de 48 casos. És un un dels primers exp
   \item \textbf{T4}: Inclusió de $50\%$ de plasma animal i  $50\%$ de mucosa a la dieta.
 \end{itemize}
 \noindent\textbf{Variables explicatives}\\
+
 La principal variable explicativa és:
 \begin{itemize}
   \item Tractament
@@ -576,15 +581,19 @@ Les variables secundàries que també trobem a l'estudi:
   \end{itemize}
 \end{enumerate}
 \noindent\textbf{Variables genètiques}\\
-Cada gen és una variable on es mesura l'abundancia de material genètic. Els gens han sigut escollits pels investigadors basant-se en les seves recerques i reben el nom de gens \textit{diana}. A l'annex \ref{annex:b} trobem una taula de tots els gens de l'estudi amb la seva funcionalitat dins de l'organisme.
-\newpage
+
+Cada gen és una variable on es mesura l'abundancia de material genètic. Els gens han sigut escollits pels investigadors basant-se en les seves recerques i reben el nom de gens \textit{diana}. A l'annex \ref{annex:b} trobem una taula de tots els gens de l'estudi amb la seva funcionalitat dins de l'organisme.\\
+
 \noindent\textbf{Tractament de dades faltants}\\
+
 El tractament dels NA’s és el següent:
 \begin{enumerate}
 \item S’eliminen aquelles files i columnes sense cap observació vàlida.
 \item S’eliminen aquelles columnes (gens) que tinguin més del 50$\%$ de valors perduts en algun tractament.
 \end{enumerate}
+\clearpage
 \noindent\textbf{Mètodes estadístics}\\
+
 L'anàlisi estadístic ha sigut realitzat utilitzant \texttt{R} amb la versió 3.4.3.
 \\
 
@@ -592,8 +601,10 @@ Per a tots els tests estadístics s'ha aplicat un nivell de significació del $5
 \\
 
 Tota la documentació, codi i \textit{outputs} han sigut emmagatzemats en un repositori públic a la plataforma \textit{GitHub}.\\
+\newpage
 \noindent\textbf{Tractament de les dades}\\
-Les dades han sigut validades abans de l'anàlisi, qualsevol inconsistencia en el format de les dades ha sigut eliminat o canviat. Més endavant s'expliquen quins criteris de l'estructura de la base de dades són els adequats perquè sigui funcional a l'aplicatiu.
+
+Les dades han sigut validades abans de l'anàlisi, qualsevol inconsistencia en el format de les dades ha sigut eliminat o canviat. A l'aplicatiu s'expliquen quins són els criteris de l'estructura de la base de dades perquè sigui funcional a l'aplicació.
 \\
 
 A més, hem aplicat una tranformació logarítmica als valors d'expressió gènica per a cada gen, amb l'objectiu de treballar amb una distribució normal i poder aplicar els mètodes estadístics descrits anteriorment.
@@ -695,15 +706,15 @@ Amb l'objectiu de trobar quins gens s'expressen diferencialment sota els diferen
 \end{table}
 \noindent\textbf{Ileum}\\
 \\
-Un cop fet l'ANOVA i la corresponent correcció per multiplicitat de contrastos (FDR), s'han trobat 2 gens amb una expressió diferencial (p-valor < 0.05), \textit{MUC2} i \textit{GPX2}. Anomenarem quasi significatius aquells gens que es troben entre $0.5 <$ p-valor $\leq 0.1$. Els gens quasi significatius són 3; \textit{TFF3}, \textit{IFNGR1} i \textit{SLC30A1.ZnT}. Podem trobar aquests resultats a la \textit{Taula 2}.\\
+Un cop fet l'ANOVA i la corresponent correcció per multiplicitat de contrastos (FDR), s'han trobat 2 gens amb una expressió diferencial (p-valor $\leq$ 0.05), \textit{MUC2} i \textit{GPX2}. Anomenarem quasi significatius aquells gens que es troben entre $0.5 <$ p-valor $\leq 0.1$. Els gens quasi significatius són 3: \textit{TFF3}, \textit{IFNGR1} i \textit{SLC30A1.ZnT}. Podem trobar aquests resultats a la \textit{Taula 2}.\\
 \\
 \noindent\textbf{Jejunum}\\
 \\
-Un cop fet l'ANOVA i la corresponent correcció per multiplicitat de contrastos (FDR), s'han trobat 2 gens amb una expressió diferencial (p-valor < 0.05), \textit{GCG} i \textit{SLC39A4.ZIP4} Els gens quasi significatius són 8; \textit{TFF3}, \textit{OCLN}, \textit{MUC2}, \textit{SI}, \textit{DAO1}, \textit{HNMT}, \textit{SLC5A1.SGLT1} i \textit{SLC13A1.NAS1}. Podem trobar aquests resultats a la \textit{Taula 3}.\\
+Un cop fet l'ANOVA i la corresponent correcció per multiplicitat de contrastos (FDR), s'han trobat 2 gens amb una expressió diferencial (p-valor $\leq$ 0.05), \textit{GCG} i \textit{SLC39A4.ZIP4}. Els gens quasi significatius són 8: \textit{TFF3}, \textit{OCLN}, \textit{MUC2}, \textit{SI}, \textit{DAO1}, \textit{HNMT}, \textit{SLC5A1.SGLT1} i \textit{SLC13A1.NAS1}. Podem trobar aquests resultats a la \textit{Taula 3}.\\
 
 \clearpage
 \subsubsection{Comparacions múltiples 2 a 2}
-Un cop identificats els gens que han manifestat una expressió diferencial hem aplicat comparacions 2 a 2 amb l'objectiu de veure quins tractaments són diferents entre si. L'anàlisi esta fet per a cada teixit i el mètode utilitzat per corregir la multiplicitat de contrastos ha sigut el mètode de Tukey.
+Un cop identificats els gens que han manifestat una expressió diferencial hem aplicat comparacions 2 a 2 amb l'objectiu de veure quins tractaments són diferents entre si. L'anàlisi esta feta per a cada teixit i el mètode utilitzat per corregir la multiplicitat de contrastos ha sigut el mètode de Tukey.
 \begin{table}[ht]
 \centering
 \scalebox{0.75}{
@@ -771,7 +782,7 @@ En aquest cas trobem correlacions altes entre els tractaments 1, 3 i 4. En canvi
 \begin{equation*}
 r(T4,T2)= cos(angle_{(T4,T2)})= cos(\frac{\pi}{4})= 0.7071
 \end{equation*}
-El següent gràfic mostra les mitjanes de cada gen per tractaments, d'aquesta manera es poden observar les diferències que observavem a l'ANOVA i a les comparacions 2 a 2.
+El següent gràfic mostra les mitjanes de cada gen per tractaments, d'aquesta manera es poden observar les diferències que observàvem a l'ANOVA i a les comparacions 2 a 2.
 \begin{center}
 \includegraphics[scale=0.6]{lineploti.png}
 \captionof{figure}{Mitjana dels gens per tractament, teixit \textbf{Ilenum}. El gràfic esta ordenat per família gènica primer i dins de la familia per el tractament 1 de forma decreixent. El nom de cada gen esta acompanyat de la seva funció dins de l'organisme, com per exemple, \textit{BF.OCLN} = funció del gen: \textit{Barrer Function}, nom del gen: \textit{OCLN}}
@@ -897,7 +908,7 @@ La idea principal a l'hora de desenvolupar l'aplicatiu ha sigut la de crear un e
 \item \textit{Usage}: Per últim, trobem les especificacions necessàries per obrir la base de dades i un petit tutorial de l'aplicatiu.
 \end{enumerate}
 
-\textbf{Observació}  Si existeixen problemes a l'hora d'obrir l'aplicació, a l'annex \ref{annex:d} podem trobar l'output de la funció \texttt{sessionInfo} on ens mostra la versió d'R utilitzada amb els corresponents paquets.
+\textbf{Observació}. Si existeixen problemes a l'hora d'obrir l'aplicació, a l'annex \ref{annex:d} podem trobar l'output de la funció \texttt{sessionInfo} on ens mostra la versió d'R utilitzada amb els corresponents paquets.
 \clearpage
 \subsection{Funcionalitats de l'aplicació}
 En aquest apartat es presenten les funcionalitats que té l'aplicació en forma d'imatges i comentaris.
@@ -977,7 +988,7 @@ Per tant,\\
 
 \item Si apareixen varis grups de variables corrleacionades, vol dir que hi ha \textit{diversos factors latents} a la matriu de dades.
 
-\item Si una o mès  variables estan ben representades i tenen un angle molt petit amb un dels eixos de coordenades, això indica que una de les components  està fortament correlacionada amb aquesta(es) variable(s) i, per tant, es pot interpretar (etiquetar) la component en base al significat d'aquesta(es) variable(s).
+\item Si una o més  variables estan ben representades i tenen un angle molt petit amb un dels eixos de coordenades, això indica que una de les components  està fortament correlacionada amb aquesta(es) variable(s) i, per tant, es pot interpretar (etiquetar) la component en base al significat d'aquesta(es) variable(s).
 \end{itemize}
 
 \noindent\textbf{Gràfic de casos individuals}\\
@@ -1016,13 +1027,13 @@ A dia d'avui l'aplicació està a la versió 1.0.0. En aquest apartat es planteg
 Aquestes idees i altres que es puguin tenir, es poden implementar en un futur. El codi de l'aplicació és públic, i queda obert per a usuaris que vulguin col·laborar amb el projecte. L'únic necessari és registrar-se en la plataforma de \textit{GitHub} i sol·licitar una col·laboració a l'administrador del projecte.
 \newpage
 \section{Conclusions}
-En aquest treball s'ha descrit un protocol d'anàlisi capa\c{c} d'analitzar i explorar diversos aspectes d'una base de dades d'expressió gènica d'un seguit de gens, on les mostres estan classificades segons un factor, habitualment un tractament, una dieta o una altra situació experimental...A més, analitzar les dades d'expressió gènica provinents de la tecnologia \textit{OpenArray} d'una manera senzilla i còmode per a l'usuari.
+En aquest treball s'ha descrit un protocol d'anàlisi capa\c{c} d'analitzar i explorar diversos aspectes d'una base de dades d'expressió gènica d'un seguit de gens, on les mostres estan classificades segons un factor, habitualment un tractament, una dieta o una altra situació experimental.
 \\
 
 La possibilitat d'utilitzar una eina específica per aquest tipus d'estudi, però que s'ha fet prou general i automàtica, obre un ventall de possibilitats als investigadors. La replicació de l'anàlisi amb futures dades és una realitat amb l'aplicatiu. A més la seva estructura interna facilita l'eventual integració de nous mètodes estadístics dins del codi. D'aquesta manera l'eina podria anar evolucionant al llarg del temps amb la finalitat de fer una anàlisi completa i apta per a altres dissenys.
 \\
 
-El treball de fi de grau m'ha permès aprofundir en temes bàsics de la inferència estadística (ANOVA, Tukey) i de l'anàlisi multivariant (PCA, anàlisi de clústers), entre altres. Al mateix temps, he estudiat conceptes o recursos que no havia tractat durant el grau (FDR, heatmap), dels quals he fet recerca bibliogràfica. També he pogut practicar i ampliar elements de programació (\texttt{R},\texttt{Shiny}, gestió de versions, etc.,), alguns dels quals he après de manera autodidacta. Finalment, voldria destacar el caràcter multidisciplinar d'aquest treball, entre estadística, biomedicina i bioinformàtica, que suposa un nexe d'unió entre algunes assignatures que he cursat durant el grau.
+El treball de fi de grau m'ha permès aprofundir en temes bàsics de la inferència estadística (ANOVA, Tukey) i de l'anàlisi multivariant (PCA, anàlisi de clústers), entre altres. Al mateix temps, he estudiat conceptes o recursos que no havia tractat durant el grau (FDR, heatmap), dels quals he fet recerca bibliogràfica. També he pogut practicar i ampliar elements de programació (\texttt{R}, \texttt{Shiny}, gestió de versions, etc.,), alguns dels quals he après de manera autodidacta. Finalment, voldria destacar el caràcter multidisciplinar d'aquest treball, entre estadística, biomedicina i bioinformàtica, que suposa un nexe d'unió entre algunes assignatures que he cursat durant el grau.
 \section{Agraïments}
 \label{agr}
 Per portar endavant aquest projecte he necessitat l'ajuda d'algunes persones a les quals volia agrair la seva col·laboració i esfor\c{c}.\\
@@ -1034,42 +1045,24 @@ També voldria donar les gràcies a la tutora del treball, la Dr. Mercè Farré,
 \clearpage
 \begin{thebibliography}{aaaa}
 \bibitem{tami}
-Guillermo Ayala.(2018).Bioinformática Estadística: Análisis estadístico de datos ómicos. \pageref{1.1}
+Guillermo Ayala.(2018).Bioinformática Estadística: Análisis estadístico de datos ómicos. \label{aya}
 \\\texttt{https://www.uv.es/ayala/docencia/tami/tami13.pdf}
 \bibitem{effron}
-Efron, B., $\&$ Hastie, T. (2016). Computer Age Statistical Inference: Algorithms, Evidence, and Data Science (Institute of Mathematical Statistics Monographs). Cambridge: Cambridge University Press. pp. 271-294, doi:10.1017/CBO9781316576533. \pageref{2.2}
+Efron, B., $\&$ Hastie, T. (2016). Computer Age Statistical Inference: Algorithms, Evidence, and Data Science (Institute of Mathematical Statistics Monographs). Cambridge: Cambridge University Press. pp. 271-294, doi:10.1017/CBO9781316576533. \label{efron}
 \bibitem{multi}
-Everitt, B., Hothorn, T. : An introduction to Applied Multivariate Analysis with R. Springer. 2011. \pageref{2.4}
+Everitt, B., Hothorn, T. : An introduction to Applied Multivariate Analysis with R. Springer. 2011. \label{Evertit}
 \bibitem{multi2}
-Härdle, W., Simar, L.: Applied Multivariate Statistical Analysis. Springer. 2007. \pageref{2.4}
+Härdle, W., Simar, L.: Applied Multivariate Statistical Analysis. Springer. 2007. \label{hardle}
 \bibitem{fdr}
-Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing Journal of the Royal Statistical Society. Series B (Methodological), Vol. 57, No. 1. (1995), pp. 289-300, doi:10.2307/2346101 by Yoav Benjamini, Yosef Hochberg. \pageref{2.2.1}
-
-\bibitem{cite2}
-Ramón Tamarit Agusti. Análisis de cluster no supervisados. Aplicaciones en
-la búsqueda y visualización de perfiles de expresión
-en datos de microarrays. \pageref{2.4.1}
-\\\texttt{http://mural.uv.es/rata3/PECSspace.html}
+Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing Journal of the Royal Statistical Society. Series B (Methodological), Vol. 57, No. 1. (1995), pp. 289-300, doi:10.2307/2346101 by Yoav Benjamini, Yosef Hochberg. \label{fdrr}
 
 \bibitem{cite3}
-Dong Hyun Jeong, Caroline Ziemkiewicz, William Ribarsky and Remco Chang: Understanding Principal Component Analysis Using a Visual Analytics Tool. \pageref{2.4.3}
+Dong Hyun Jeong, Caroline Ziemkiewicz, William Ribarsky and Remco Chang: Understanding Principal Component Analysis Using a Visual Analytics Tool. \label{dong}
 \\\texttt{http://www.knowledgeviz.com/pdf/UKC2009.pdf}
 
-\bibitem{cite5}
-Universidad de Granada: Métodos de análisis multivariante. Análisis clúster. \pageref{2.4.1}
-\\\texttt{http://wpd.ugr.es/$\sim$bioestad/guia-spss/}
-
 \bibitem{cite6}
-Universidad de Granada: Métodos Jerárquicos de Análisis Cluster. \pageref{2.4.1}
+Universidad de Granada: Métodos Jerárquicos de Análisis Cluster. \label{gran}
 \\\texttt{http://www.ugr.es/$\sim$gallardo/pdf/cluster-3.pdf}
-
-\bibitem{cite7}
-\textit{NCBI, National Center of Biotechnology Information.}
-\\\texttt{https://www.ncbi.nlm.nih.gov/}. USA
-
-\bibitem{cite8}
-\textit{PubMed. US National Library of Medicine.}
-\\\texttt{https://www.ncbi.nlm.nih.gov/pubmed/}. USA
 
 \end{thebibliography}
 %%Appendix
