@@ -1,0 +1,60 @@
+---
+title: "Protocolo de análisis de datos genéticos en Shiny"
+author:   
+  -  Antonio Rodríguez Gómez 
+institute:   
+  - Supervisado por Mercè Farré 
+  - Universidad Autonoma de Barcelona
+date: Septiembre 13, 2018
+output: 
+  beamer_presentation:
+    theme: "Berlin"
+header-includes:
+- \newcommand{\bsmall}{\begin{small}}
+- \newcommand{\esmall}{\end{small}}
+---
+
+# Caso de estudio
+
+- Definir el problema
+- Se diseña un experimento con el objetivo de...
+
+# Estructura del proyecto
+
+<center>
+Problema $\rightarrow$ Protocolo $\rightarrow$ Aplicación $\rightarrow$ Conclusiones
+</center>
+
+# Datos de expresión genética
+
+- Presentar la obtención de los datos
+- Los datos son...
+- La medida es..
+
+![Matriz de los datos](matriu.png){width=200px}
+
+# Protocolo de análisis
+
+## Objetivos del análisis
+
+1. Detectar genes que se expressan...
+2. Buscar diferencias entre tratamientos..
+3. Patrones...
+
+
+----
+# Protocolo de análisis
+
+## Hipotesis planteadas
+
+1. En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos?
+2. Entre cúales tratamientos (parejas) hay diferencias significativas?
+
+# \bsmall En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos? \esmall
+
+ANOVA
+
+# \bsmall Entre cúales tratamientos (parejas) hay diferencias significativas? \esmall
+
+Tukey
+
