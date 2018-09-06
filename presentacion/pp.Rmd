@@ -13,6 +13,9 @@ header-includes:
 - \newcommand{\bsmall}{\begin{small}}
 - \newcommand{\esmall}{\end{small}}
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, size = "footnotesize")
+```
 
 # Caso de estudio
 
@@ -50,9 +53,34 @@ Problema $\rightarrow$ Protocolo $\rightarrow$ Aplicación $\rightarrow$ Conclus
 1. En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos?
 2. Entre cúales tratamientos (parejas) hay diferencias significativas?
 
+
 # \bsmall En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos? \esmall
 
-ANOVA
+- ANOVA para comparar medias entre grupos/tratamientos.
+- Cada gen es una variable. (Expresión del gen)
+- Diseño balanceado y normalidad en los datos.
+- *Ejemplo: En una muestra de 26 individuos, hacemos un experimento con 4 tratamientos. Si aplicamos ANOVA para el gen TFF3:*
+
+```{r,results='asis',echo=F,message=FALSE,warning=F}
+options(xtable.comment = FALSE)
+require(xtable)
+taula <- data.frame("Gen"=c("TFF3"),"F"=c(5.295),"Pvalor"=c(0.005))
+colnames(taula) <- c("Gen","$F_{k-1,N-k}$","P-valor")
+rownames(taula) <- ""
+print(xtable(taula,digits=c(0,0,2,3)),sanitize.text.function=function(x){x})
+
+```
+- Suponemos que tenemos 20 genes, aplicamos el ANOVA para cada gen y listo?
+
+# \bsmall En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos? \esmall
+
+- Cuando realizamos un test podemos cometer el error de rechazar la hipotesis nula cuando realmente es cierta. (Error de tipo I)
+
+## Cálculo de probabilidades
+- Si $H_{0}$ es cierta: $P(FP)=\alpha$ y $P(VP)=1-\alpha$
+- $P($Almenos un $FP$ en $m$ tests$)=1-(1-\alpha)^m$
+- Para $m=1$, $P($Almenos...$)= 1-(1-0.05)^1=0.05$
+- Para $m=50$, P(Almenos...$)= 1-(1-0.05)^{50}=0.92$ 
 
 # \bsmall Entre cúales tratamientos (parejas) hay diferencias significativas? \esmall
 
