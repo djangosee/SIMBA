@@ -1,12 +1,12 @@
 ---
 title: "Protocolo de análisis de datos genéticos en Shiny"
 author:   
-  -  Antonio Rodríguez Gómez 
+  -  Antonio Rodríguez Gómez
 institute:   
-  - Supervisado por Mercè Farré 
+  - Supervisado por Mercè Farré
   - Universidad Autonoma de Barcelona
 date: Septiembre 13, 2018
-output: 
+output:
   beamer_presentation:
     theme: "Berlin"
 header-includes:
@@ -17,51 +17,54 @@ header-includes:
 knitr::opts_chunk$set(echo = TRUE, size = "footnotesize")
 ```
 
-# Caso de estudio
+# Contexto experimental
 
-- Definir el problema
-- Se diseña un experimento con el objetivo de...
+1. ![SNIBA](servei.png){width=50px}: Científicos experimentales.
 
-# Estructura del proyecto
+2. ![SGB](genom.jpg){width=50px}: Especialistas en genómica obtienen la matriz de expressión genética.
 
-<center>
-Problema $\rightarrow$ Protocolo $\rightarrow$ Aplicación $\rightarrow$ Conclusiones
-</center>
+3. GEA: Creación de un protocolo de análisis, interpretación de resultados, creación de una aplicación.
+
+4. ![SNIBA](servei.png){width=50px} + GEA: Interpretación en el contexto experimental, mejoras ...
+
 
 # Datos de expresión genética
 
-- Presentar la obtención de los datos
-- Los datos son...
-- La medida es..
+- Pocos casos.
+- Datos faltantes (NA).
+- Variables: funcionalidad del gen, tratamientos...
 
-![Matriz de los datos](matriu.png){width=200px}
+![Matriz de expresión genética](matriu.png){width=200px}
 
 # Protocolo de análisis
 
 ## Objetivos del análisis
 
-1. Detectar genes que se expressan...
-2. Buscar diferencias entre tratamientos..
-3. Patrones...
+1. Analizar y comparar los diferentes tratamientos y como afectan a la expresión de los genes seleccionados.
+2. Encontrar relaciones entre la funcionalidad del gen y su expresión bajo diferentes tratamientos.
 
-
-----
 # Protocolo de análisis
 
 ## Hipotesis planteadas
 
-1. En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos?
-2. Entre cúales tratamientos (parejas) hay diferencias significativas?
+1. En algún gen (y cuál o cuáles) hay diferencias significativas entre los niveles de expresión entre tratamientos?
+
+\center
+  $H_0: \mu_1 = \mu_2  = ... = \mu_k$
+\center
+
+2. Entre cuáles tratamientos (parejas) hay diferencias significativas?
+
+\center
+  $H_{0}: \mu_i = \mu_j \text{ para cada pareja de medias }  i \neq j$
 
 
-# \bsmall En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos? \esmall
+# Análisis inferencial
 
-- ANOVA para comparar medias entre grupos/tratamientos.
-- Cada gen es una variable. (Expresión del gen)
-- Diseño balanceado y normalidad en los datos.
-- *Ejemplo: En una muestra de 26 individuos, hacemos un experimento con 4 tratamientos. Si aplicamos ANOVA para el gen TFF3:*
-
-```{r,results='asis',echo=F,message=FALSE,warning=F}
+- ANOVA para comparar medias entre diversos grupos/tratamientos.
+- Normalidad, varianza igual e independencia.
+- Logaritmo en los datos para normalizarlos.
+```{r,results='asis',echo=F,eval=T,message=FALSE,warning=F}
 options(xtable.comment = FALSE)
 require(xtable)
 taula <- data.frame("Gen"=c("TFF3"),"F"=c(5.295),"Pvalor"=c(0.005))
@@ -70,9 +73,9 @@ rownames(taula) <- ""
 print(xtable(taula,digits=c(0,0,2,3)),sanitize.text.function=function(x){x})
 
 ```
-- Suponemos que tenemos 20 genes, aplicamos el ANOVA para cada gen y listo?
+- Suponemos que tenemos 50 genes, aplicamos el ANOVA para cada gen y listo?
 
-# \bsmall En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos? \esmall
+# Análisis inferencial
 
 - Cuando realizamos un test podemos cometer el error de rechazar la hipotesis nula cuando realmente es cierta. (Error de tipo I)
 
@@ -80,31 +83,50 @@ print(xtable(taula,digits=c(0,0,2,3)),sanitize.text.function=function(x){x})
 - Si $H_{0}$ es cierta: $P(FP)=\alpha$ y $P(VP)=1-\alpha$
 - $P($Almenos un $FP$ en $m$ tests$)=1-(1-\alpha)^m$
 - Para $m=1$, $P($Almenos...$)= 1-(1-0.05)^1=0.05$
-- Para $m=50$, P(Almenos...$)= 1-(1-0.05)^{50}=0.92$ 
+- Para $m=50$, P(Almenos...$)= 1-(1-0.05)^{50}=0.92$
 
-# \bsmall En algun gen (y cuál o cuales) hay diferencias significativas entre los niveles de expresión entre tatamientos? \esmall
+# Análisis inferencial
 
 - Corregir los p-valores para controlar el error de tipo I
 
 ## False Discovery Rate (FDR)
 - Proporción esperada de falsos positivos entre todos los tests considerados como significativos.
 - El método para controlar el FDR: Benjamini$\&$Hochberg.
-- Falta...
-![Tabla ANOVA](taula.png){width=300px}
+
+```{r,results='asis',echo=F,eval=T,message=FALSE,warning=F}
+options(xtable.comment = FALSE)
+require(xtable)
+taula <- data.frame("Gen"=c("Gen1","Gen2","Gen3"),"Pvalor"=c(0.003,0.02,0.45))
+taula <- cbind(taula,p.adjust(taula[,2],method="BH"))
+colnames(taula) <- c("Gen","P-valor","P-valor.BH")
+print(xtable(taula,digits=c(0,0,3,3),row.names=F),sanitize.text.function=function(x){x},scale=0.75)
 
 
-# \bsmall Entre cúales tratamientos (parejas) hay diferencias significativas? \esmall
+```
+
+# Análisis inferencial
 
 - De los genes que han salido significativos en el ANOVA, hacemos comparaciones 2 a 2 entre las medias de los grupos.
 
-- Utilizamos el método de Tukey:
+![Comparaciones 2 a 2](IleumTukey.png){width=200px}
 
+# Análisis exploratorio
 
-# Análisis descriptivo
+1. Heatmap : explorar la doble agrupación (*clustering*) de genes y muestras.
 
-1. Heatmap
-2. Representación ACP
-3. LinePlot
+![Heatmap](heatmapj.png){width=200px}
+
+# Análisis exploratorio
+
+2. Representación ACP : explorar las correlaciones entre las medias de los tratamientos. 
+
+![ACP](app5.png){width=400px}
+
+# Análisis exploratorio
+
+3. LinePlot : comparar las medias de los tratamientos a lo largo de los genes.
+
+![LinePlot](lineploti.png){width=200px}
 
 # Aplicación en Shiny
 
@@ -118,4 +140,7 @@ https://github.com/djangosee/TFGShinyApp
 
 # Conclusiones
 
-
+- Se ha descrito un protocolo de análisis capaz de analizar y explorar diversos aspectos de una matriz de expresión genética.
+- La implementación del protocolo en una aplicación va a facilitar futuros análisis a los investigadores.
+- La posibilidad de añadir mejoras y en la aplicación. (Futuras versiones)
+- Carácter multidisciplinar del trabajo: estadística, biomedicina y bioinformática.
