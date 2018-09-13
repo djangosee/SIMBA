@@ -4,7 +4,7 @@ author:
   -  Antonio Rodríguez Gómez
 institute:   
   - Supervisado por Mercè Farré
-  - Universidad Autonoma de Barcelona
+  - Universidad Autónoma de Barcelona
 date: Septiembre 13, 2018
 output:
   beamer_presentation:
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE, size = "footnotesize")
 
 1. ![SNIBA](servei.png){width=50px}: Científicos experimentales.
 
-2. ![SGB](genom.jpg){width=50px}: Especialistas en genómica obtienen la matriz de expressión genética.
+2. ![SGB](genom.jpg){width=50px}: Especialistas en genética obtienen la matriz de expresión genética.
 
 3. GEA: Creación de un protocolo de análisis, interpretación de resultados, creación de una aplicación.
 
@@ -45,7 +45,7 @@ knitr::opts_chunk$set(echo = TRUE, size = "footnotesize")
 
 # Protocolo de análisis
 
-## Hipotesis planteadas
+## Hipótesis planteadas
 
 1. En algún gen (y cuál o cuáles) hay diferencias significativas entre los niveles de expresión entre tratamientos?
 
@@ -77,7 +77,7 @@ print(xtable(taula,digits=c(0,0,2,3)),sanitize.text.function=function(x){x})
 
 # Análisis inferencial
 
-- Cuando realizamos un test podemos cometer el error de rechazar la hipotesis nula cuando realmente es cierta. (Error de tipo I)
+- Cuando realizamos un test podemos cometer el error de rechazar la hipótesis nula cuando realmente es cierta. (Error de tipo I)
 
 ## Cálculo de probabilidades
 - Si $H_{0}$ es cierta: $P(FP)=\alpha$ y $P(VP)=1-\alpha$
@@ -142,5 +142,5 @@ https://github.com/djangosee/TFGShinyApp
 
 - Se ha descrito un protocolo de análisis capaz de analizar y explorar diversos aspectos de una matriz de expresión genética.
 - La implementación del protocolo en una aplicación va a facilitar futuros análisis a los investigadores.
-- La posibilidad de añadir mejoras y en la aplicación. (Futuras versiones)
-- Carácter multidisciplinar del trabajo: estadística, biomedicina y bioinformática.
+- La posibilidad de añadir mejoras en la aplicación. (Futuras versiones)
+- Carácter multidisciplinario del trabajo: estadística, biomedicina y bioinformática.
