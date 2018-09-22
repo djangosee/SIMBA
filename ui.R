@@ -4,10 +4,9 @@ source(paste0(script.dirname,"/ui/GetAnalizeMaterialTabContent.R"))
 
 
 ui <- fluidPage(theme=shinytheme("flatly"), 
-   title = "T3LP: Statistical software analysis for GeneExpression",
+   title = "SIMBA: Statistical Inference Methods for BioGeneExpression Analysis",
    tags$style(type="text/css", "body {padding-top: 70px;}"),
-   navbarPage(title = div("T3LP", img(src = "https://github.com/djangosee/TFGShinyApp/blob/UserInterface/www/logo.png?raw=true", height = "70px", 
-              style = "position: fixed; right: 10px;  top: -5px;")),
+   navbarPage(title = "SIMBA",
               collapsible = T,
               position = "fixed-top",
     # tabPanel("Usage",uiOutput('markdown')),
@@ -22,12 +21,6 @@ ui <- fluidPage(theme=shinytheme("flatly"),
              )),
     GetMaterialAnalizeTabContent,
     tabPanel("Usage",
-             HTML('<div style="width: 100%;">
-                    <div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;">
-                    <iframe frameborder="0" width="1200" height="675" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://view.genial.ly/5b794b55c900496607622291" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe>
-                    </div>
-                    </div>'),
-             hr(),
              includeMarkdown(paste0(script.dirname,"Usage.md")))
     #tabPanel("About",GetMaterialAboutTabContent())
   ))

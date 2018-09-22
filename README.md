@@ -20,6 +20,6 @@ git clone https://github.com/djangosee/TFGShinyApp.git
 
 ## GIF **ExampleFile.xlsx**
 
-<img src="GifReactionj.gif" />
+<img src="www/GifReactionj.gif" />
 
 Autor: Antonio Rodríguez Gómez
